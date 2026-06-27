@@ -1,0 +1,826 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reality TV Intel 2026 · BobMasterBillie</title>
+  <meta name="description" content="Indian Reality TV Season Tracker 2026 — Alliance India, Lock Upp S2, KKK 15, Traitors India S2, Bigg Boss 20">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="css/styles.css">
+  <style>
+    /* ── TOPBAR POLISH ─────────────────────────────────────── */
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 20px;
+      height: var(--topbar-h);
+      background: var(--sur);
+      border-bottom: 1px solid var(--bdr);
+      position: sticky;
+      top: 0;
+      z-index: 200;
+      gap: 12px;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      min-width: 0;
+      flex-shrink: 0;
+    }
+    .brand-icon {
+      width: 34px; height: 34px;
+      background: linear-gradient(135deg, var(--acc), #FF6B35);
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 16px;
+      flex-shrink: 0;
+      box-shadow: 0 2px 8px rgba(229,62,106,.35);
+    }
+    .brand-text { min-width: 0; }
+    .brand-name {
+      font-size: 14px; font-weight: 800;
+      letter-spacing: .03em; color: var(--txt);
+      line-height: 1.1;
+      white-space: nowrap;
+    }
+    .brand-sub {
+      font-size: 10px; font-weight: 500;
+      color: var(--mut); letter-spacing: .08em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+    .tb-divider {
+      width: 1px; height: 24px;
+      background: var(--bdr2);
+      flex-shrink: 0;
+    }
+    .tb-btns {
+      display: flex; align-items: center; gap: 6px;
+      flex-wrap: wrap;
+    }
+
+    /* ── LIVE BADGE ─────────────────────────────────────────── */
+    .live-badge {
+      display: inline-flex; align-items: center; gap: 5px;
+      background: rgba(0,200,150,.12);
+      border: 1px solid rgba(0,200,150,.25);
+      color: var(--grn);
+      font-size: 10px; font-weight: 700;
+      letter-spacing: .08em; text-transform: uppercase;
+      padding: 3px 8px; border-radius: 20px;
+      flex-shrink: 0;
+    }
+    .live-dot {
+      width: 6px; height: 6px;
+      background: var(--grn);
+      border-radius: 50%;
+      animation: pulse-dot 1.8s ease-in-out infinite;
+    }
+    @keyframes pulse-dot {
+      0%,100% { opacity:1; transform:scale(1); }
+      50%      { opacity:.4; transform:scale(.7); }
+    }
+
+    /* ── ADMIN MODAL ─────────────────────────────────────────── */
+    #admin-modal .modal { max-width: 380px; }
+    .admin-modal-icon {
+      text-align: center; font-size: 36px;
+      margin-bottom: 4px;
+    }
+    .admin-modal-title {
+      text-align: center;
+      font-size: 15px; font-weight: 800;
+      color: var(--txt); margin-bottom: 4px;
+    }
+    .admin-modal-sub {
+      text-align: center; font-size: 11px;
+      color: var(--mut); margin-bottom: 20px;
+    }
+    .admin-pw-wrap {
+      position: relative; margin-bottom: 8px;
+    }
+    .admin-pw-wrap input {
+      width: 100%; padding: 10px 44px 10px 14px;
+      background: var(--bdr); border: 1px solid var(--bdr2);
+      border-radius: var(--r); color: var(--txt);
+      font-family: var(--fn); font-size: 14px;
+      outline: none; transition: border-color .2s;
+    }
+    .admin-pw-wrap input:focus { border-color: var(--acc); }
+    .admin-pw-eye {
+      position: absolute; right: 12px; top: 50%;
+      transform: translateY(-50%);
+      background: none; border: none; cursor: pointer;
+      color: var(--mut); font-size: 15px; padding: 2px;
+    }
+    #admin-login-err {
+      color: #FF6B6B; font-size: 11px;
+      min-height: 16px; text-align: center;
+      margin-bottom: 12px;
+    }
+    .admin-note {
+      font-size: 10px; color: var(--mut);
+      text-align: center; margin-top: 12px;
+      line-height: 1.5;
+    }
+
+    /* ── FILTER BAR (public) ────────────────────────────────── */
+    .public-filter-bar {
+      display: flex; align-items: center;
+      gap: 8px; flex-wrap: wrap;
+      padding: 10px 0 6px;
+    }
+    .pf-label {
+      font-size: 10px; font-weight: 700;
+      letter-spacing: .1em; text-transform: uppercase;
+      color: var(--mut);
+    }
+
+    /* ── ENHANCED PANEL HEADER ──────────────────────────────── */
+    .ph-title { font-size: 20px; font-weight: 800; color: var(--txt); }
+    .ph-title span { color: var(--acc); }
+    .ph-desc { font-size: 12px; color: var(--mut); margin-top: 2px; }
+
+    /* ── SHOW CARDS OVERVIEW ────────────────────────────────── */
+    .cgrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 16px; }
+
+    /* ── ENHANCED STAT CARDS ────────────────────────────────── */
+    .stats-row { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 24px; }
+    .sc {
+      flex: 1; min-width: 120px;
+      background: var(--card);
+      border: 1px solid var(--bdr);
+      border-radius: var(--r2);
+      padding: 14px 16px;
+      position: relative; overflow: hidden;
+    }
+    .sc::before {
+      content:''; position:absolute;
+      top:0; left:0; right:0; height:3px;
+    }
+    .ca::before { background: var(--acc); }
+    .cg::before { background: var(--grn); }
+    .cr::before { background: var(--blu); }
+    .cb::before { background: var(--gld); }
+    .cp::before { background: var(--mut); }
+    .sc-lbl { font-size: 10px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--mut); }
+    .sc-val { font-size: 28px; font-weight: 800; color: var(--txt); line-height: 1.1; margin: 4px 0 2px; }
+    .sc-sub { font-size: 10px; color: var(--mut); }
+
+    /* ── RESPONSIVE TOPBAR ──────────────────────────────────── */
+    @media (max-width: 768px) {
+      .brand-sub, .tb-divider { display: none; }
+      .topbar { padding: 0 12px; }
+    }
+
+    /* ── GITHUB RIBBON ──────────────────────────────────────── */
+    .gh-ribbon {
+      display: inline-flex; align-items: center; gap: 5px;
+      color: var(--mut); font-size: 10px; font-weight: 600;
+      letter-spacing: .05em;
+      padding: 3px 8px;
+      border: 1px solid var(--bdr2);
+      border-radius: 4px;
+      text-decoration: none;
+      transition: color .2s, border-color .2s;
+    }
+    .gh-ribbon:hover { color: var(--txt); border-color: var(--acc); }
+
+    /* ── VIEWER INFO BANNER ─────────────────────────────────── */
+    .viewer-banner {
+      background: linear-gradient(90deg, rgba(74,158,255,.08), rgba(155,89,182,.08));
+      border: 1px solid rgba(74,158,255,.2);
+      border-radius: var(--r);
+      padding: 10px 16px;
+      display: flex; align-items: center; gap: 10px;
+      margin-bottom: 16px;
+      font-size: 12px; color: var(--txt2);
+    }
+    .viewer-banner-icon { font-size: 18px; flex-shrink: 0; }
+    .viewer-banner strong { color: var(--blu); }
+
+    /* ── SEARCH BAR GLOBAL ──────────────────────────────────── */
+    .global-search-wrap {
+      position: relative; flex: 1; min-width: 160px; max-width: 280px;
+    }
+    .global-search-wrap .gs-icon {
+      position: absolute; left: 10px; top: 50%; transform: translateY(-50%);
+      color: var(--mut); pointer-events: none; font-size: 13px;
+    }
+    .global-search-wrap input {
+      width: 100%; padding: 6px 10px 6px 30px;
+      background: var(--bdr); border: 1px solid var(--bdr2);
+      border-radius: 20px; color: var(--txt);
+      font-family: var(--fn); font-size: 12px; outline: none;
+      transition: border-color .2s;
+    }
+    .global-search-wrap input:focus { border-color: var(--acc); }
+    .global-search-wrap input::placeholder { color: var(--mut); }
+
+    /* ── ADMIN INDICATOR (topbar pill) ──────────────────────── */
+    #admin-toggle-btn.admin-active {
+      background: rgba(0,200,150,.1);
+      border-color: var(--grn) !important;
+      color: var(--grn) !important;
+    }
+  </style>
+</head>
+<body>
+
+<div class="app">
+
+  <!-- ═══ TOPBAR ══════════════════════════════════════════ -->
+  <header class="topbar">
+    <div class="brand">
+      <div class="brand-icon">📺</div>
+      <div class="brand-text">
+        <div class="brand-name">Reality TV Intel</div>
+        <div class="brand-sub">2026 Season Tracker</div>
+      </div>
+    </div>
+
+    <div class="live-badge">
+      <div class="live-dot"></div>
+      Live Season
+    </div>
+
+    <div class="tb-divider"></div>
+
+    <div class="tb-btns">
+      <!-- PUBLIC: always visible -->
+      <button class="btn b-gh b-sm" id="themeBtn" onclick="toggleTheme()">☾ Dark</button>
+      <button class="btn b-pur b-sm" onclick="captureCurrentPanel()">📷 Capture</button>
+      <button class="btn b-gh b-sm" onclick="window.print()">🖨 Print</button>
+
+      <!-- ADMIN ONLY: hidden until login -->
+      <button class="btn b-gh b-sm admin-only" id="editBtn" onclick="toggleEdit()" style="display:none">✎ Edit: OFF</button>
+      <button class="btn b-gh b-sm admin-only" id="showMgrBtn" onclick="openShowMgr()" style="display:none">⚙ Shows</button>
+      <button class="btn b-gh b-sm admin-only" id="hideMgrBtn" onclick="openHideMgr('')" style="display:none">👁 Visibility</button>
+      <button class="btn b-gh b-sm admin-only" id="save-btn-tb" onclick="toggleSaveBar()" style="display:none">💾 Save</button>
+
+      <div class="tb-divider"></div>
+      <button class="btn b-gh b-sm" id="admin-toggle-btn" onclick="openAdminLogin()" title="Admin login">🔒 Admin</button>
+    </div>
+  </header>
+
+  <div class="body-wrap">
+
+    <!-- ═══ SIDEBAR ════════════════════════════════════════ -->
+    <nav class="sidebar">
+      <div class="sb-sec">Navigation</div>
+      <div class="sb-item active" data-panel="overview"    onclick="showPanel('overview')">🏠 Overview</div>
+      <div class="sb-item"        data-panel="rankings"    onclick="showPanel('rankings')">🏆 Rankings</div>
+      <div class="sb-item"        data-panel="growth-all"  onclick="showPanel('growth-all')">📈 All Growth</div>
+      <div class="sb-item"        data-panel="export"      onclick="showPanel('export')">↓ Export</div>
+
+      <div class="sb-sec" style="margin-top:8px">Shows</div>
+      <div id="sidebar-shows"></div>
+    </nav>
+
+    <!-- ═══ CONTENT ════════════════════════════════════════ -->
+    <main class="content">
+
+      <!-- ══ OVERVIEW PANEL ══════════════════════════════════ -->
+      <div class="panel active" id="panel-overview">
+        <div class="ph">
+          <div>
+            <div class="ph-title">🏠 Season <span>Overview</span></div>
+            <div class="ph-desc">All shows at a glance — click any card to view full roster</div>
+          </div>
+          <div class="ph-act no-capture">
+            <button class="btn b-gh b-sm admin-only" style="display:none" onclick="hideRumoured()">Hide Rumoured</button>
+            <button class="btn b-grn b-sm admin-only" style="display:none" onclick="showAll()">✓ Show All</button>
+            <button class="btn b-pur b-sm" onclick="capture('panel-overview-body','Overview')">📷 Capture</button>
+          </div>
+        </div>
+
+        <!-- Viewer info banner (hidden in admin mode) -->
+        <div class="viewer-banner" id="viewer-banner">
+          <div class="viewer-banner-icon">👀</div>
+          <div>
+            <strong>Public viewer</strong> — Browse, filter &amp; capture screenshots freely.
+            Data is updated by the admin. Use <strong>📷 Capture</strong> to screenshot any panel.
+          </div>
+        </div>
+
+        <div class="stats-row">
+          <div class="sc ca"><div class="sc-lbl">Shows</div><div class="sc-val" id="st-shows">—</div><div class="sc-sub">Active season</div></div>
+          <div class="sc cg"><div class="sc-lbl">Total Tracked</div><div class="sc-val" id="st-total">—</div><div class="sc-sub">All contestants</div></div>
+          <div class="sc cr"><div class="sc-lbl">Confirmed</div><div class="sc-val" id="st-conf">—</div><div class="sc-sub">Officially announced</div></div>
+          <div class="sc cb"><div class="sc-lbl">Rumoured</div><div class="sc-val" id="st-rum">—</div><div class="sc-sub">Unverified reports</div></div>
+          <div class="sc cp"><div class="sc-lbl">Hidden</div><div class="sc-val" id="st-hid">—</div><div class="sc-sub">Filtered out</div></div>
+        </div>
+
+        <div id="panel-overview-body">
+          <div class="cgrid" id="ov-cards"></div>
+        </div>
+
+        <!-- RECENT ACTIVITY -->
+        <div style="margin-top:28px;display:none" class="admin-only" id="activity-section">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px">
+            <div style="font-size:11px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:var(--mut)">⏱ Recent Activity</div>
+            <button class="btn b-gh b-sm" onclick="localStorage.removeItem('realityTV2026_activity');renderActivityFeed();toast('Activity cleared','warn')" style="font-size:10px">Clear</button>
+          </div>
+          <div id="recent-activity-list" class="activity-feed">
+            <div class="activity-empty">No activity yet</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ══ RANKINGS PANEL ═══════════════════════════════════ -->
+      <div class="panel" id="panel-rankings">
+        <div class="ph">
+          <div>
+            <div class="ph-title">🏆 Cross-Show <span>Rankings</span></div>
+            <div class="ph-desc">All visible contestants sorted by overall score</div>
+          </div>
+          <div class="ph-act no-capture">
+            <button class="btn b-gld b-sm" onclick="capture('panel-rankings','Rankings')">📷 Capture</button>
+            <button class="btn b-gh b-sm"  onclick="exportRankCSV()">⚙ CSV</button>
+          </div>
+        </div>
+
+        <!-- Public filter bar for Rankings -->
+        <div class="public-filter-bar no-capture">
+          <span class="pf-label">Filter:</span>
+          <select class="fsel" id="rank-status-filter" onchange="filterRankings()">
+            <option value="">All Status</option>
+            <option>CONFIRMED</option>
+            <option>RUMOURED</option>
+            <option>APPROACHED</option>
+            <option>REPORTEDLY CONFIRMED</option>
+          </select>
+          <select class="fsel" id="rank-show-filter" onchange="filterRankings()">
+            <option value="">All Shows</option>
+          </select>
+          <select class="fsel" id="rank-gender-filter" onchange="filterRankings()">
+            <option value="">All Genders</option>
+            <option value="M">Male</option>
+            <option value="F">Female</option>
+          </select>
+          <div class="global-search-wrap">
+            <span class="gs-icon">🔍</span>
+            <input type="text" id="rank-search" placeholder="Search contestant…" oninput="filterRankings()">
+          </div>
+        </div>
+
+        <div class="twrap">
+          <table id="rank-table">
+            <thead>
+              <tr>
+                <th style="width:40px">Rank</th>
+                <th>Contestant</th>
+                <th>Show</th>
+                <th>Status</th>
+                <th>Followers</th>
+                <th>Tier / Role</th>
+                <th>Known For</th>
+              </tr>
+            </thead>
+            <tbody id="rank-tbody"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- ══ ALL GROWTH PANEL ════════════════════════════════ -->
+      <div class="panel" id="panel-growth-all">
+        <div class="ph">
+          <div>
+            <div class="ph-title">📈 All Shows <span>Growth</span></div>
+            <div class="ph-desc">Instagram follower tracking across every show</div>
+          </div>
+          <div class="ph-act no-capture">
+            <button class="btn b-gh b-sm" onclick="exportAllGrowth()">↓ All Growth CSV</button>
+          </div>
+        </div>
+        <div id="ga-wrap"></div>
+      </div>
+
+      <!-- ══ EXPORT PANEL ════════════════════════════════════ -->
+      <div class="panel" id="panel-export">
+        <div class="ph">
+          <div>
+            <div class="ph-title">↓ Export <span>&amp; Save</span></div>
+            <div class="ph-desc">Download data as JSON, CSV, or capture screenshots</div>
+          </div>
+        </div>
+
+        <div class="instr">
+          <div class="instr-t">💡 How to use this data</div>
+          <ul>
+            <li><strong>Screenshots:</strong> click any <strong>📷 Capture</strong> button — saves as 2× HD PNG</li>
+            <li><strong>CSV:</strong> import into Excel or Google Sheets for analysis</li>
+            <li><strong>Print / PDF:</strong> use your browser's print dialog (Ctrl+P)</li>
+            <li><strong>JSON backup:</strong> admin-only — full data export/restore</li>
+          </ul>
+        </div>
+
+        <div class="exp-grid">
+          <div class="ecard admin-only" onclick="exportJSON()">
+            <div class="ecard-ico">📁</div>
+            <div class="ecard-t">Save as JSON</div>
+            <div class="ecard-d">Full backup — shows, contestants, all data</div>
+          </div>
+          <div class="ecard" onclick="openImportModal()">
+            <div class="ecard-ico">↑</div>
+            <div class="ecard-t">Load from JSON</div>
+            <div class="ecard-d">Restore a previous backup or import bulk data</div>
+          </div>
+          <div class="ecard" onclick="exportAllCSV()">
+            <div class="ecard-ico">📊</div>
+            <div class="ecard-t">All Rosters CSV</div>
+            <div class="ecard-d">Every show's roster in separate CSV files</div>
+          </div>
+          <div class="ecard" onclick="exportAllGrowth()">
+            <div class="ecard-ico">📈</div>
+            <div class="ecard-t">All Growth CSV</div>
+            <div class="ecard-d">Follower growth data for every show</div>
+          </div>
+          <div class="ecard" onclick="exportRankCSV()">
+            <div class="ecard-ico">🏆</div>
+            <div class="ecard-t">Rankings CSV</div>
+            <div class="ecard-d">Full cross-show rankings sorted by score</div>
+          </div>
+          <div class="ecard" onclick="captureCurrentPanel()">
+            <div class="ecard-ico">📷</div>
+            <div class="ecard-t">Screenshot</div>
+            <div class="ecard-d">2× HD PNG of the current panel</div>
+          </div>
+          <div class="ecard" onclick="window.print()">
+            <div class="ecard-ico">🖨</div>
+            <div class="ecard-t">Print / PDF</div>
+            <div class="ecard-d">Browser print dialog — save as PDF</div>
+          </div>
+        </div>
+
+        <div style="margin-top:20px">
+          <div style="font-size:11px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:var(--mut);margin-bottom:10px">Per-Show Captures</div>
+          <div style="display:flex;gap:7px;flex-wrap:wrap" id="per-show-exp"></div>
+        </div>
+      </div>
+
+      <!-- Dynamic show panels injected by buildShowPanel() -->
+      <div id="dynamic-panels"></div>
+
+    </main>
+  </div><!-- .body-wrap -->
+</div><!-- .app -->
+
+<!-- ═══ TOAST ══════════════════════════════════════════════ -->
+<div class="toast" id="toast"><span id="toast-msg"></span></div>
+
+<!-- ═══ SAVE BAR ═══════════════════════════════════════════ -->
+<div class="save-bar" id="save-bar">
+  <div class="save-bar-title">💾 Save Options</div>
+  <div class="save-section">
+    <span class="save-section-lbl">Browser</span>
+    <span class="ls-dot" id="ls-dot" title="Auto-save status"></span>
+    <label class="autosave-toggle" title="Auto-save every 30 seconds">
+      <input type="checkbox" id="autosave-chk" onchange="toggleAutosave(this.checked)">
+      <div class="toggle-track"><div class="toggle-thumb"></div></div>
+      <span id="autosave-lbl">Auto-save OFF</span>
+    </label>
+    <button class="btn b-grn b-sm" onclick="saveToLocalStorage(true)">💾 Save Now</button>
+    <button class="btn b-gh b-sm"  onclick="loadFromLocalStorage()">↺ Restore Saved</button>
+    <button class="btn b-red b-sm" onclick="clearLocalStorage()">🗑 Clear Saved</button>
+  </div>
+  <div class="save-section">
+    <span class="save-section-lbl">File</span>
+    <button class="btn b-gld b-sm" onclick="exportJSON()">↓ Save as JSON</button>
+    <button class="btn b-gh b-sm"  onclick="openImportModal()">↑ Load from JSON</button>
+    <button class="btn b-gh b-sm"  onclick="exportAllCSV()">↓ All CSV</button>
+    <button class="btn b-gh b-sm"  onclick="exportAllGrowth()">↓ All Growth CSV</button>
+  </div>
+  <div class="save-section">
+    <span class="save-section-lbl">Screenshot</span>
+    <button class="btn b-pur b-sm" onclick="captureCurrentPanel()">📷 Capture Current View</button>
+    <button class="btn b-gh b-sm"  onclick="window.print()">🖨 Print / PDF</button>
+  </div>
+  <button class="save-bar-close" onclick="toggleSaveBar()" title="Close">✕</button>
+</div>
+
+<!-- ═══ CONTESTANT MODAL ════════════════════════════════════ -->
+<div class="mbg" id="modal-c">
+  <div class="modal">
+    <div class="mhdr">
+      <div class="mtitle" id="mc-title">Add Contestant</div>
+      <button class="mclose" onclick="closeModal('modal-c')">✕</button>
+    </div>
+    <div class="msec">
+      <div class="msec-t">Basic Info</div>
+      <div class="fg">
+        <div class="fi full">
+          <label class="fl">Show</label>
+          <select class="fsel-modal" id="f-show"></select>
+        </div>
+        <div class="fi">
+          <label class="fl">Name <em>required</em></label>
+          <input class="finp" id="f-name" placeholder="Full name">
+        </div>
+        <div class="fi">
+          <label class="fl">Gender</label>
+          <select class="fsel-modal" id="f-gender">
+            <option value="M">Male</option>
+            <option value="F">Female</option>
+          </select>
+        </div>
+        <div class="fi">
+          <label class="fl">Status</label>
+          <select class="fsel-modal" id="f-status">
+            <option>CONFIRMED</option>
+            <option>RUMOURED</option>
+            <option>APPROACHED</option>
+            <option>REPORTEDLY CONFIRMED</option>
+          </select>
+        </div>
+        <div class="fi">
+          <label class="fl">Tier / Label</label>
+          <input class="finp" id="f-tier" placeholder="CHAMPION / CHALLENGER / etc.">
+        </div>
+        <div class="fi">
+          <label class="fl">Profession</label>
+          <input class="finp" id="f-profession" placeholder="Actor / Creator / etc.">
+        </div>
+        <div class="fi">
+          <label class="fl">Instagram Handle</label>
+          <input class="finp" id="f-ig" placeholder="@handle or N/V">
+        </div>
+      </div>
+    </div>
+    <div class="msec">
+      <div class="msec-t">Follower Data</div>
+      <div class="fg">
+        <div class="fi"><label class="fl">Before Show</label><input class="finp" id="f-fb" placeholder="e.g. 1.2M"></div>
+        <div class="fi"><label class="fl">Before Date</label><input class="finp" id="f-fbd" placeholder="e.g. Oct 2025"></div>
+        <div class="fi"><label class="fl">Last Checked</label><input class="finp" id="f-fl" placeholder="e.g. 2.5M"></div>
+        <div class="fi"><label class="fl">Last Check Date</label><input class="finp" id="f-fld" placeholder="e.g. Jun 10 2026"></div>
+        <div class="fi"><label class="fl">Current <em>latest</em></label><input class="finp" id="f-fc" placeholder="e.g. 2.8M"></div>
+        <div class="fi"><label class="fl">Current Date</label><input class="finp" id="f-fcd" placeholder="e.g. Jun 22 2026"></div>
+      </div>
+    </div>
+    <div class="msec">
+      <div class="msec-t">Intel</div>
+      <div class="fg">
+        <div class="fi full"><label class="fl">Contestant Photo URL</label><input class="finp" id="f-photo" placeholder="https://..."></div>
+        <div class="fi full"><label class="fl">Known For</label><textarea class="finp fta" id="f-kf" placeholder="Shows, movies, accolades…"></textarea></div>
+        <div class="fi full"><label class="fl">History / Past Shows</label><textarea class="finp fta" id="f-his" placeholder="Prior reality TV appearances…"></textarea></div>
+      </div>
+    </div>
+    <div class="mftr">
+      <button class="btn b-gh"  onclick="closeModal('modal-c')">Cancel</button>
+      <button class="btn b-acc" onclick="saveContestant()">✓ Save</button>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ HIDE MANAGER MODAL ══════════════════════════════════ -->
+<div class="mbg" id="modal-hide">
+  <div class="modal" style="width:660px">
+    <div class="mhdr">
+      <div class="mtitle">👁 Show / Hide Contestants</div>
+      <button class="mclose" onclick="closeModal('modal-hide')">✕</button>
+    </div>
+    <div style="display:flex;gap:8px;margin-bottom:12px;flex-wrap:wrap;align-items:center">
+      <select class="fsel" id="hm-show-filter" onchange="renderHideMgr()">
+        <option value="">All Shows</option>
+      </select>
+      <input class="finp" id="hm-search" placeholder="Search name…"
+        style="width:150px;padding:5px 9px;font-size:11px" oninput="renderHideMgr()">
+      <button class="btn b-grn b-sm"  onclick="showAll()">✓ Show All</button>
+      <button class="btn b-warn b-sm" onclick="hideRumoured()">Hide All Rumoured</button>
+      <button class="btn b-gh b-sm"   onclick="hideAllVisible()">Hide All Visible</button>
+    </div>
+    <div class="dnote" style="margin-bottom:12px">
+      <strong>How it works:</strong> Tick = visible, untick = hidden. Hidden contestants are dimmed in
+      tables/cards and excluded from growth tables, rankings, and screenshots.
+    </div>
+    <div id="hm-grid" class="hm-grid"></div>
+    <div class="mftr">
+      <span style="font-size:11px;color:var(--mut)">Hidden: <strong id="hm-count" style="color:var(--gld)">0</strong></span>
+      <button class="btn b-gh" onclick="closeModal('modal-hide')">Done</button>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ SHOW MANAGER MODAL ══════════════════════════════════ -->
+<div class="mbg" id="modal-shows">
+  <div class="modal" style="width:620px">
+    <div class="mhdr">
+      <div class="mtitle" id="show-edit-title">⚙ Manage Shows</div>
+      <button class="mclose" onclick="closeModal('modal-shows')">✕</button>
+    </div>
+    <div id="show-list"></div>
+    <div class="msec" style="margin-top:16px">
+      <div class="msec-t">Add a New Show</div>
+      <div class="fg">
+        <div class="fi"><label class="fl">Show Name <em>required</em></label><input class="finp" id="ns-name" placeholder="e.g. Bigg Boss OTT 4"></div>
+        <div class="fi"><label class="fl">Unique Key <em>required</em></label><input class="finp" id="ns-key" placeholder="e.g. bbott4 (letters+numbers only)"></div>
+        <div class="fi"><label class="fl">Platform</label><input class="finp" id="ns-platform" placeholder="e.g. JioHotstar"></div>
+        <div class="fi"><label class="fl">Host</label><input class="finp" id="ns-host" placeholder="e.g. Salman Khan"></div>
+        <div class="fi"><label class="fl">Premiere Date</label><input class="finp" id="ns-date" type="date"></div>
+        <div class="fi"><label class="fl">Emoji</label><input class="finp" id="ns-emoji" placeholder="📺" style="max-width:80px"></div>
+        <div class="fi"><label class="fl">Accent Colour</label><input type="color" id="ns-color" value="#4A9EFF" style="width:48px;height:34px;border:none;background:none;cursor:pointer"></div>
+        <div class="fi full"><label class="fl">Description</label><input class="finp" id="ns-desc" placeholder="Short tagline or format description"></div>
+      </div>
+    </div>
+    <div class="mftr">
+      <button class="btn b-gh"  onclick="closeModal('modal-shows')">Close</button>
+      <button class="btn b-acc" id="ns-add-btn" onclick="addShow()">+ Create Show</button>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ IMPORT MODAL ════════════════════════════════════════ -->
+<div class="mbg" id="modal-import">
+  <div class="modal" style="width:560px">
+    <div class="mhdr">
+      <div class="mtitle">↑ Load / Import Data</div>
+      <button class="mclose" onclick="closeModal('modal-import')">✕</button>
+    </div>
+    <div class="clarify-box">
+      <h3>📌 About Social Blade Auto-Fetch</h3>
+      <p><strong>Short answer: No, entering a username does NOT automatically fetch data from Social Blade or Instagram.</strong></p>
+      <p>❌ Instagram's API requires OAuth from the account owner — you cannot query public follower counts without login.</p>
+      <p>❌ CORS restrictions block cross-origin requests from the browser.</p>
+      <div style="display:flex;gap:8px;margin-top:8px;flex-wrap:wrap">
+        <span class="verdict verdict-no">❌ Auto-fetch: NOT possible</span>
+        <span class="verdict verdict-yes">✓ Manual update via Edit Mode: works</span>
+      </div>
+    </div>
+    <div style="margin-bottom:14px">
+      <div style="font-size:12px;font-weight:700;color:var(--txt);margin-bottom:8px">📊 Bulk Follower Import</div>
+      <div style="font-size:11px;color:var(--mut);margin-bottom:8px">
+        One per line: <code style="background:var(--bdr);padding:1px 5px;border-radius:3px;font-size:10px">ContestantName, ShowKey, currentFollowers</code>
+      </div>
+      <textarea class="finp fta" id="bulk-import-txt"
+        placeholder="Gaurav Khanna, kkk, 2.1M&#10;Rubina Dilaik, kkk, 8.6M"
+        style="min-height:100px;font-family:var(--mo);font-size:11px"></textarea>
+      <button class="btn b-grn b-sm" style="margin-top:8px" onclick="bulkImportFollowers()">✓ Apply All</button>
+    </div>
+    <div class="import-drop" id="import-drop"
+      onclick="document.getElementById('json-file-input').click()"
+      ondragover="event.preventDefault();this.classList.add('drag-over')"
+      ondragleave="this.classList.remove('drag-over')"
+      ondrop="handleJSONDrop(event)">
+      <div class="import-drop-ico">📁</div>
+      <div class="import-drop-txt">Drop a JSON backup file here, or click to browse</div>
+      <div class="import-drop-sub">Restores all shows and contestant data from a previous export</div>
+    </div>
+    <input type="file" id="json-file-input" accept=".json" style="display:none" onchange="handleJSONFile(this)">
+    <div class="mftr">
+      <button class="btn b-gh" onclick="closeModal('modal-import')">Close</button>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ ADMIN LOGIN MODAL ════════════════════════════════════ -->
+<div class="mbg" id="admin-modal">
+  <div class="modal" style="max-width:380px">
+    <div class="mhdr">
+      <div class="mtitle">Admin Access</div>
+      <button class="mclose" onclick="closeAdminLogin()">✕</button>
+    </div>
+    <div style="padding:0 4px 8px">
+      <div class="admin-modal-icon">🔐</div>
+      <div class="admin-modal-title">Admin Login</div>
+      <div class="admin-modal-sub">Enter your password to unlock editing, show management, and save controls.</div>
+      <div class="admin-pw-wrap">
+        <input type="password" id="admin-pw-input" placeholder="Admin password" autocomplete="current-password">
+        <button class="admin-pw-eye" onclick="
+          const i=document.getElementById('admin-pw-input');
+          i.type=i.type==='password'?'text':'password';
+          this.textContent=i.type==='password'?'👁':'🙈'
+        ">👁</button>
+      </div>
+      <div id="admin-login-err"></div>
+      <button class="btn b-acc" style="width:100%;justify-content:center" onclick="submitAdminLogin()">Unlock Admin Mode</button>
+      <div class="admin-note">
+        Session lasts 4 hours.<br>
+        Public visitors can browse, filter, and capture screenshots without a password.
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ CAPTURE PREVIEW MODAL ═══════════════════════════════ -->
+<div class="cap-modal-bg" id="cap-modal-bg">
+  <div class="cap-modal">
+    <div class="cap-modal-header">
+      <div class="cap-modal-title">
+        📷 Screenshot Preview
+        <span class="cap-badge">2× HD</span>
+      </div>
+      <button class="cap-modal-close" onclick="closeCaptureModal()">✕</button>
+    </div>
+    <div class="cap-preview-wrap" id="cap-preview-wrap">
+      <div class="cap-preview-spinner" id="cap-spinner">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#4A9EFF" stroke-width="2.5"
+          style="animation:spin 1s linear infinite">
+          <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/>
+        </svg>
+        Generating high-resolution preview…
+      </div>
+      <img class="cap-preview-img" id="cap-preview-img" src="" alt="" style="display:none">
+    </div>
+    <div class="cap-modal-footer">
+      <span class="cap-footer-lbl">Save as</span>
+      <button class="btn b-grn b-sm" id="cap-save-png"  onclick="saveCapture('png')" disabled>↓ PNG</button>
+      <button class="btn b-gh b-sm"  id="cap-save-jpg"  onclick="saveCapture('jpg')" disabled>↓ JPG</button>
+      <button class="btn b-blu b-sm" id="cap-copy"      onclick="copyCapture()"     disabled>⏸ Copy</button>
+      <button class="btn b-gh b-sm"  id="cap-print"     onclick="printCapture()"    disabled>🖨 Print</button>
+      <div class="cap-modal-info" id="cap-info">Generating…</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ SCRIPTS ═════════════════════════════════════════════ -->
+<script src="data/data.js"></script>
+<script src="js/utils.js"></script>
+<script src="js/app.js"></script>
+<script src="js/export.js"></script>
+<script src="js/persistence.js"></script>
+<script src="js/admin.js"></script>
+<script>
+/* ─── INIT ─────────────────────────────────────────────── */
+document.addEventListener('DOMContentLoaded', () => {
+  Object.keys(window.SHOWS).forEach(k => buildShowPanel(k));
+  rebuildSidebar();
+  renderAll();
+  renderOverview();
+  updateStats();
+  populateRankingFilters();
+  if (typeof renderActivityFeed === 'function') renderActivityFeed();
+
+  // Hide viewer banner for admin
+  document.addEventListener('adminStateChange', e => {
+    const vb = document.getElementById('viewer-banner');
+    const as = document.getElementById('activity-section');
+    if (vb) vb.style.display = e.detail.admin ? 'none' : '';
+    if (as) as.style.display = e.detail.admin ? '' : 'none';
+  });
+});
+
+/* ─── POPULATE RANKING FILTERS ──────────────────────────── */
+function populateRankingFilters() {
+  const sel = document.getElementById('rank-show-filter');
+  if (!sel) return;
+  sel.innerHTML = '<option value="">All Shows</option>' +
+    (typeof getShowKeys === 'function' ? getShowKeys() : Object.keys(window.SHOWS))
+      .map(k => `<option value="${k}">${window.SHOWS[k].label}</option>`).join('');
+}
+
+/* ─── FILTER RANKINGS ───────────────────────────────────── */
+function filterRankings() {
+  const status  = (document.getElementById('rank-status-filter')?.value||'').toLowerCase();
+  const show    = document.getElementById('rank-show-filter')?.value||'';
+  const gender  = (document.getElementById('rank-gender-filter')?.value||'').toLowerCase();
+  const q       = (document.getElementById('rank-search')?.value||'').toLowerCase();
+
+  document.querySelectorAll('#rank-tbody tr').forEach(tr => {
+    const ds = (tr.dataset.status||'').toLowerCase();
+    const dk = tr.dataset.show||'';
+    const dg = (tr.dataset.gender||'').toLowerCase();
+    const dn = (tr.dataset.name||'').toLowerCase();
+
+    const okStatus  = !status  || ds.includes(status);
+    const okShow    = !show    || dk === show;
+    const okGender  = !gender  || dg === gender;
+    const okSearch  = !q       || dn.includes(q);
+
+    tr.style.display = (okStatus && okShow && okGender && okSearch) ? '' : 'none';
+  });
+}
+
+/* ─── PATCH renderRankings TO ADD data-* ATTRS ──────────── */
+const _origRenderRankings = window.renderRankings;
+window.renderRankings = function() {
+  _origRenderRankings?.();
+  // Add filter data attributes to each row
+  const all = [];
+  Object.keys(window.DB).forEach(k =>
+    (window.DB[k]||[]).filter(c => !isH(k,c.id)).forEach(c =>
+      all.push({...c, _k:k})
+    )
+  );
+  all.sort((a,b) => (b.overall||0)-(a.overall||0));
+  const rows = document.querySelectorAll('#rank-tbody tr');
+  rows.forEach((tr, i) => {
+    const c = all[i];
+    if (c) {
+      tr.dataset.status = (c.status||'').toLowerCase();
+      tr.dataset.show   = c._k;
+      tr.dataset.gender = (c.gender||'').toLowerCase();
+      tr.dataset.name   = (c.name||'').toLowerCase();
+    }
+  });
+  // Repopulate show filter
+  populateRankingFilters();
+};
+</script>
+
+</body>
+</html>
