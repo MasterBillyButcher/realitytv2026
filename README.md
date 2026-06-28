@@ -1,132 +1,254 @@
-# 📺 Reality TV Intel 2026 — BobMasterBillie
+# 📺 Reality TV Intel 2026
 
-> Indian Reality TV tracker — live follower data, rankings, growth tables.
-> **Zero server. Zero tokens. Zero complexity.**
+A lightweight, browser-based dashboard for tracking Indian reality TV contestants, social media followers, rankings, and growth trends.
 
----
-
-## How It Works
-
-Every visitor's browser fetches your latest `data.js` directly from GitHub on each page load.
-You update → everyone sees it. That's it.
-
-```
-You edit data on site
-       ↓
-Click ↓ Save JSON
-       ↓
-Upload file to GitHub as public/data/data.js
-       ↓
-Every visitor worldwide sees the update immediately ✓
-```
+Built as a **fully static web application**, it requires no backend, database, or external APIs. All data is managed through a single file, making deployment simple, maintenance minimal, and performance fast.
 
 ---
 
-## Setup — 3 Steps, 10 Minutes
+## Features
 
-### Step 1 — Push to GitHub
+### Dashboard
+- 📊 Contestant rankings
+- 📈 Follower growth tracking
+- 🔍 Search and filtering
+- 🏆 Multi-show support
+- 👁 Show or hide contestants
 
-Create a **public** GitHub repo (e.g. `realitytv2026`) and push the zip contents:
+### Exports
+- 📄 CSV export
+- 🖨 Print-friendly layout
+- 📷 High-resolution screenshot capture
+
+### Administration
+- ✏️ Inline editing
+- ➕ Add or remove contestants
+- 🗂 Manage shows
+- 💾 Download updated dataset
+- 💻 Automatic local backup
+
+### User Experience
+- 🌙 Light & Dark themes
+- 📱 Responsive design
+- ⚡ Fast loading
+- 🌐 No installation required
+
+---
+
+## Technology Stack
+
+- HTML5
+- CSS3
+- Vanilla JavaScript
+- GitHub (Data Storage)
+- Vercel (Hosting)
+
+No frameworks, databases, servers, or API keys are required.
+
+---
+
+## Architecture
+
+```
+Browser
+    │
+    ▼
+Loads latest data.js
+    │
+    ▼
+Renders dashboard
+    │
+    ▼
+Admin edits data
+    │
+    ▼
+Download updated file
+    │
+    ▼
+Commit & Push
+    │
+    ▼
+Updated data available to all visitors
+```
+
+---
+
+## Getting Started
+
+### 1. Clone the Repository
 
 ```bash
-cd realitytv2026
-git init
-git add .
-git commit -m "Initial deploy"
-git remote add origin https://github.com/YOUR_USERNAME/realitytv2026.git
-git push -u origin main
+git clone <repository-url>
+cd <repository-name>
 ```
+
+### 2. Install
+
+No installation is required.
+
+Open `public/index.html` for local development or deploy the repository to any static hosting platform.
+
+### 3. Deploy
+
+This project works with any static hosting provider, including:
+
+- Vercel
+- GitHub Pages
+- Netlify
+- Cloudflare Pages
+
+Recommended deployment settings:
+
+| Setting | Value |
+|---------|-------|
+| Framework | Other |
+| Build Command | None |
+| Output Directory | public |
 
 ---
 
-### Step 2 — Deploy to Vercel
+## Updating Data
 
-1. Go to **vercel.com → Add New → Project**
-2. Import your GitHub repo
-3. Framework Preset: **Other**  |  Root Directory: **(leave blank)**
-4. Click **Deploy**
+All application data is stored in:
 
-Done. Your site is live at `[https://yourrepo.vercel.app](https://realitytv2026.vercel.app/)`.
+```
+public/data/data.js
+```
+
+To publish updates:
+
+1. Open the dashboard.
+2. Sign in as an administrator.
+3. Enable Edit Mode.
+4. Make your changes.
+5. Download the updated data file.
+6. Replace `public/data/data.js`.
+7. Commit and push the changes.
+
+The latest data will be served on the next page refresh after deployment.
 
 ---
 
-## Day-to-Day Workflow
+## Bulk Import
 
-1. Visit your site → click **🔒 Admin** → enter password
-2. Toggle **✎ Edit Mode** → click any cell to edit inline
-3. Use **+ Add** buttons to add contestants
-4. Click **↓ Save JSON** to download the updated data file
-5. Upload it to GitHub as `public/data/data.js` (see below)
-6. Everyone sees the update immediately ✓
+Bulk updates use the following format:
 
-### How to Upload data.js to GitHub
-
-**Option A — GitHub website (easiest):**
-- Go to your repo → `public/data/data.js` → click ✏️ pencil → upload icon → choose file → Commit changes
-
-**Option B — GitHub Desktop:**
-- Copy the downloaded file into your local repo → commit → push
-
-**Option C — Terminal:**
-```bash
-cp ~/Downloads/RealityTV2026.json /path/to/repo/public/data/data.js
-git add public/data/data.js
-git commit -m "Update data"
-git push
+```text
+Contestant Name, Show Key, Followers
 ```
+
+Example:
+
+```text
+Contestant A, show1, 8.7M
+Contestant B, show2, 9200000
+Contestant C, show3, 430K
+```
+
+Supported follower formats:
+
+- 8.7M
+- 430K
+- 9200000
 
 ---
 
-## File Structure
+## Project Structure
 
 ```
-/
-├── vercel.json              ← Routes all requests to /public
-├── public/
-│   ├── index.html           ← Main dashboard
-│   ├── css/styles.css       ← All styles — dark + light mode
-│   ├── data/data.js         ← Show + contestant data (you update this)
-│   └── js/
-│       ├── utils.js         ← Helpers
-│       ├── app.js           ← Rendering, navigation, CRUD
-│       ├── export.js        ← CSV / JSON exports
-│       ├── persistence.js   ← Local backup + screenshots
-│       ├── admin.js         ← Password auth
-│       └── dataloader.js    ← Fetches fresh data from GitHub on load
+.
+├── public
+│   ├── css
+│   │   └── styles.css
+│   │
+│   ├── data
+│   │   └── data.js
+│   │
+│   ├── js
+│   │   ├── admin.js
+│   │   ├── app.js
+│   │   ├── dataloader.js
+│   │   ├── export.js
+│   │   ├── persistence.js
+│   │   └── utils.js
+│   │
+│   └── index.html
+│
+├── vercel.json
 └── README.md
 ```
 
 ---
 
-## Admin vs Public
+## Permissions
 
-| Feature | Everyone | Admin |
-|---|---|---|
-| Browse shows / rosters | ✅ | ✅ |
-| Filter + search | ✅ | ✅ |
-| Screenshot / Capture (2× HD) | ✅ | ✅ |
+| Feature | Public | Admin |
+|:--------------------------|:------:|:------:|
+| View Dashboard | ✅ | ✅ |
+| Browse Shows | ✅ | ✅ |
+| Search & Filter | ✅ | ✅ |
 | Export CSV | ✅ | ✅ |
-| Light / Dark mode | ✅ | ✅ |
+| Screenshot Export | ✅ | ✅ |
 | Print / PDF | ✅ | ✅ |
-| Edit data (inline) | ❌ | ✅ |
-| Add / delete contestants | ❌ | ✅ |
-| Manage shows | ❌ | ✅ |
-| Hide / show contestants | ❌ | ✅ |
-| ↓ Save JSON | ❌ | ✅ |
-| Local browser backup | ❌ | ✅ |
+| Edit Contestants | ❌ | ✅ |
+| Add Contestants | ❌ | ✅ |
+| Delete Contestants | ❌ | ✅ |
+| Manage Shows | ❌ | ✅ |
+| Hide / Show Contestants | ❌ | ✅ |
+| Download Updated Data | ❌ | ✅ |
+| Local Backup | ❌ | ✅ |
 
 ---
 
-## Bulk Follower Update
+## Browser Support
 
-Go to **↑ Load from JSON → Bulk Follower Import**, paste:
-```
-Rubina Dilaik, kkk, 8.7M
-Jasmin Bhasin, kkk, 9.2M
-```
-Format: `Contestant Name, showKey, newFollowers`
-Then download JSON → upload to GitHub.
+- Google Chrome
+- Microsoft Edge
+- Mozilla Firefox
+- Safari
 
 ---
 
-*Built for BobMasterBillie · 2026*
+## Troubleshooting
+
+### Changes do not appear
+
+- Confirm `public/data/data.js` has been updated.
+- Verify changes have been committed and pushed.
+- Perform a hard refresh (`Ctrl + Shift + R` or `Cmd + Shift + R`).
+- Allow a short time for hosting cache to refresh if applicable.
+
+---
+
+## Security
+
+This is a static web application.
+
+Administrative features provide client-side access control intended for trusted users. They should not be considered a substitute for server-side authentication or authorization.
+
+---
+
+## License
+
+Add your preferred open-source or proprietary license before distributing the project.
+
+---
+
+## Contributing
+
+Contributions are welcome.
+
+If you would like to improve the project:
+
+1. Fork the repository.
+2. Create a feature branch.
+3. Commit your changes.
+4. Submit a pull request.
+
+Please ensure code is well documented and follows the existing project structure.
+
+---
+
+## Overview
+
+Reality TV Intel 2026 provides a simple, fast, and maintainable solution for tracking contestant statistics without relying on a backend infrastructure. All data is version-controlled, deployments are straightforward, and updates can be published with a single file replacement.
