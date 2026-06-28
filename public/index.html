@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Reality TV Intel 2026 · BobMasterBillie</title>
-  <meta name="description" content="Indian Reality TV Season Tracker 2026 — Alliance India, Lock Upp S2, KKK 15, Traitors India S2, Bigg Boss 20">
+  <meta name="description" content="Indian Reality TV Season Tracker 2026 — live follower analytics, rankings and contestant intel">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="css/styles.css">
@@ -23,36 +23,52 @@
       </div>
     </div>
 
-    <div class="live-badge">
-      <div class="live-dot"></div>Live Season
-    </div>
+    <div class="live-badge"><div class="live-dot"></div>Live Season</div>
     <div class="tb-divider"></div>
 
     <div class="tb-btns">
-      <!-- PUBLIC — visible to everyone -->
-      <button class="btn b-gh b-sm" id="themeBtn" onclick="toggleTheme()" title="Toggle light/dark mode">☾ Dark</button>
-      <button class="btn b-pur b-sm" onclick="captureCurrentPanel()" title="Screenshot current panel">📷 Capture</button>
-      <button class="btn b-gh b-sm" onclick="window.print()" title="Print or save as PDF">🖨</button>
+      <!-- PUBLIC — everyone sees these -->
+      <button class="btn b-gh b-sm" id="themeBtn" onclick="toggleTheme()">☾ Dark</button>
+      <button class="btn b-pur b-sm" onclick="captureCurrentPanel()">📷 Capture</button>
+      <button class="btn b-gh b-sm" onclick="window.print()">🖨</button>
 
-      <!-- ADMIN ONLY — revealed by body.admin-active class -->
+      <!-- ADMIN ONLY — shown by body.admin-active -->
       <button class="btn b-gh b-sm admin-only" id="editBtn" onclick="toggleEdit()">✎ Edit: OFF</button>
       <button class="btn b-gh b-sm admin-only" onclick="openShowMgr()">⚙ Shows</button>
       <button class="btn b-gh b-sm admin-only" onclick="openHideMgr('')">👁 Visibility</button>
-      <button class="btn b-grn b-sm admin-only" onclick="globalSave()" title="Ctrl+Shift+G">🌐 Save Global</button>
+      <button class="btn b-gld b-sm admin-only" onclick="exportJSON()" title="Download JSON → upload to GitHub">↓ Save JSON</button>
       <button class="btn b-gh b-sm admin-only" onclick="toggleSaveBar()">💾 Local</button>
 
       <div class="tb-divider"></div>
-      <button class="btn b-gh b-sm" id="admin-toggle-btn" onclick="openAdminLogin()" title="Admin login">🔒 Admin</button>
+      <button class="btn b-gh b-sm" id="admin-toggle-btn" onclick="openAdminLogin()">🔒 Admin</button>
     </div>
   </header>
 
-  <!-- Admin global save status (only visible when admin-active) -->
-  <div class="save-status-bar admin-only" id="global-save-status" style="margin:8px 24px 0">
-    <div class="save-status-dot synced" id="global-save-dot"></div>
-    <span class="save-status-txt" id="global-save-txt">
-      <strong>Global save ready</strong> — hit 🌐 Save Global to push data to GitHub; everyone sees changes in ~30s
-    </span>
-    <button class="btn b-grn b-sm" onclick="globalSave()">🌐 Save Global</button>
+  <!-- ══ DATA LOAD STATUS ══════════════════════════════════ -->
+  <div id="data-load-status" style="
+    text-align:center;font-size:11px;padding:6px;
+    color:var(--mut);background:var(--sur);
+    border-bottom:1px solid var(--bdr);
+    display:none">
+  </div>
+
+  <!-- ══ ADMIN SAVE WORKFLOW BANNER ════════════════════════ -->
+  <div id="save-workflow" style="display:none;
+    background:rgba(0,200,150,.06);border-bottom:1px solid rgba(0,200,150,.18);
+    padding:8px 24px;display:none;align-items:center;gap:12px;flex-wrap:wrap">
+    <div style="font-size:10px;font-weight:900;letter-spacing:.12em;text-transform:uppercase;color:var(--grn)">
+      📋 Admin Save Workflow
+    </div>
+    <div style="font-size:11px;color:var(--txt2);flex:1">
+      <strong style="color:var(--txt)">Step 1:</strong> Edit data in Edit Mode
+      &nbsp;→&nbsp;
+      <strong style="color:var(--txt)">Step 2:</strong> Click <strong style="color:var(--gld)">↓ Save JSON</strong>
+      &nbsp;→&nbsp;
+      <strong style="color:var(--txt)">Step 3:</strong> Upload the file to GitHub as <code style="background:var(--bdr);padding:1px 6px;border-radius:3px;font-size:10px">public/data/data.js</code>
+      &nbsp;→&nbsp;
+      <strong style="color:var(--grn)">Everyone sees the update immediately ✓</strong>
+    </div>
+    <button class="btn b-gld b-sm" onclick="exportJSON()">↓ Save JSON Now</button>
   </div>
 
   <div class="body-wrap">
@@ -65,7 +81,6 @@
       <div class="sb-item"        data-panel="growth-all" onclick="showPanel('growth-all')">📈 All Growth</div>
       <div class="sb-item"        data-panel="export"     onclick="showPanel('export')">↓ Export</div>
       <div class="sb-item"        data-panel="help"       onclick="showPanel('help')">❓ Help</div>
-
       <div class="sb-sec" style="margin-top:6px">Shows</div>
       <div id="sidebar-shows"></div>
     </nav>
@@ -78,7 +93,7 @@
         <div class="ph">
           <div>
             <div class="ph-title">🏠 Season <span>Overview</span></div>
-            <div class="ph-desc">All shows at a glance — click any show to view full roster</div>
+            <div class="ph-desc">All shows at a glance — click any show to view the full roster</div>
           </div>
           <div class="ph-act no-capture">
             <button class="btn b-gh b-sm admin-only"  onclick="hideRumoured()">Hide Rumoured</button>
@@ -87,20 +102,19 @@
           </div>
         </div>
 
-        <!-- Viewer notice (hidden when admin) -->
         <div class="viewer-banner" id="viewer-banner">
           <div class="viewer-banner-icon">👀</div>
           <div>
-            <strong>Public viewer</strong> — Browse, filter &amp; capture screenshots freely.
-            Data is updated by <strong>BobMasterBillie</strong> and syncs globally in ~30 seconds when changed.
+            <strong>Public viewer</strong> — Browse, filter &amp; capture freely.
+            Data is updated by <strong>BobMasterBillie</strong> and loads fresh on every visit directly from GitHub.
           </div>
         </div>
 
         <div class="stats-row">
           <div class="sc ca"><div class="sc-lbl">Shows</div><div class="sc-val" id="st-shows">—</div><div class="sc-sub">Active seasons</div></div>
           <div class="sc cg"><div class="sc-lbl">Tracked</div><div class="sc-val" id="st-total">—</div><div class="sc-sub">All contestants</div></div>
-          <div class="sc cr"><div class="sc-lbl">Confirmed</div><div class="sc-val" id="st-conf">—</div><div class="sc-sub">Officially announced</div></div>
-          <div class="sc cb"><div class="sc-lbl">Rumoured</div><div class="sc-val" id="st-rum">—</div><div class="sc-sub">Unverified reports</div></div>
+          <div class="sc cr"><div class="sc-lbl">Confirmed</div><div class="sc-val" id="st-conf">—</div><div class="sc-sub">Official</div></div>
+          <div class="sc cb"><div class="sc-lbl">Rumoured</div><div class="sc-val" id="st-rum">—</div><div class="sc-sub">Unverified</div></div>
           <div class="sc cp"><div class="sc-lbl">Hidden</div><div class="sc-val" id="st-hid">—</div><div class="sc-sub">Filtered out</div></div>
         </div>
 
@@ -108,11 +122,10 @@
           <div class="cgrid" id="ov-cards"></div>
         </div>
 
-        <!-- Activity feed — admin only -->
         <div id="activity-section" style="display:none">
           <div style="display:flex;align-items:center;justify-content:space-between;margin:24px 0 10px">
             <div style="font-size:9px;font-weight:900;letter-spacing:.18em;text-transform:uppercase;color:var(--mut)">⏱ Recent Activity</div>
-            <button class="btn b-gh b-sm" onclick="localStorage.removeItem('realityTV2026_activity');renderActivityFeed();toast('Activity cleared','warn')" style="font-size:10px">Clear</button>
+            <button class="btn b-gh b-sm" onclick="localStorage.removeItem('realityTV2026_activity');renderActivityFeed();toast('Cleared','warn')" style="font-size:10px">Clear</button>
           </div>
           <div id="recent-activity-list" class="activity-feed">
             <div class="activity-empty">No activity yet</div>
@@ -125,7 +138,7 @@
         <div class="ph">
           <div>
             <div class="ph-title">🏆 Cross-Show <span>Rankings</span></div>
-            <div class="ph-desc">All visible contestants — filter by show, status, or search by name</div>
+            <div class="ph-desc">All contestants — filter by show, status, or search by name</div>
           </div>
           <div class="ph-act no-capture">
             <button class="btn b-gld b-sm" onclick="capture('rank-table','Rankings')">📷 Capture</button>
@@ -133,23 +146,19 @@
           </div>
         </div>
 
-        <!-- Public filter bar — no admin needed -->
         <div class="public-filter-bar no-capture">
           <span class="pf-label">Filter:</span>
           <select class="fsel" id="rank-status-filter" onchange="filterRankings()">
             <option value="">All Status</option>
-            <option>CONFIRMED</option>
-            <option>RUMOURED</option>
-            <option>APPROACHED</option>
-            <option>REPORTEDLY CONFIRMED</option>
+            <option>CONFIRMED</option><option>RUMOURED</option>
+            <option>APPROACHED</option><option>REPORTEDLY CONFIRMED</option>
           </select>
           <select class="fsel" id="rank-show-filter" onchange="filterRankings()">
             <option value="">All Shows</option>
           </select>
           <select class="fsel" id="rank-gender-filter" onchange="filterRankings()">
             <option value="">All Genders</option>
-            <option value="m">Male</option>
-            <option value="f">Female</option>
+            <option value="m">Male</option><option value="f">Female</option>
           </select>
           <div class="global-search-wrap">
             <span class="gs-icon">🔍</span>
@@ -159,17 +168,11 @@
 
         <div class="twrap">
           <table id="rank-table">
-            <thead>
-              <tr>
-                <th style="width:44px">Rank</th>
-                <th>Contestant</th>
-                <th>Show</th>
-                <th>Status</th>
-                <th>Followers</th>
-                <th>Tier</th>
-                <th>Known For</th>
-              </tr>
-            </thead>
+            <thead><tr>
+              <th style="width:44px">Rank</th>
+              <th>Contestant</th><th>Show</th><th>Status</th>
+              <th>Followers</th><th>Tier</th><th>Known For</th>
+            </tr></thead>
             <tbody id="rank-tbody"></tbody>
           </table>
         </div>
@@ -194,30 +197,28 @@
         <div class="ph">
           <div>
             <div class="ph-title">↓ Export <span>&amp; Capture</span></div>
-            <div class="ph-desc">Download data or screenshot any panel</div>
+            <div class="ph-desc">Download data, take screenshots, or print</div>
           </div>
         </div>
-
         <div class="instr">
           <div class="instr-t">💡 How to export</div>
           <ul>
-            <li><strong>Screenshots:</strong> hit any <strong>📷 Capture</strong> — 2× HD PNG download</li>
-            <li><strong>CSV:</strong> import into Excel or Google Sheets for analysis</li>
-            <li><strong>Print / PDF:</strong> Ctrl+P → Save as PDF in your browser</li>
-            <li><strong>Global save (admin only):</strong> 🌐 Save Global commits to GitHub — everyone sees updates in ~30s</li>
+            <li><strong>📷 Capture:</strong> 2× HD PNG screenshot of any panel</li>
+            <li><strong>CSV:</strong> import into Excel or Google Sheets</li>
+            <li><strong>🖨 Print / PDF:</strong> Ctrl+P → Save as PDF</li>
+            <li><strong>↓ Save JSON (admin):</strong> download → upload to GitHub → everyone sees updates instantly</li>
           </ul>
         </div>
-
         <div class="exp-grid">
           <div class="ecard admin-only" onclick="exportJSON()">
             <div class="ecard-ico">📁</div>
             <div class="ecard-t">Save as JSON</div>
-            <div class="ecard-d">Full local backup of all data</div>
+            <div class="ecard-d">Download → upload to GitHub to push to everyone</div>
           </div>
           <div class="ecard" onclick="openImportModal()">
             <div class="ecard-ico">↑</div>
             <div class="ecard-t">Load from JSON</div>
-            <div class="ecard-d">Restore or bulk import data</div>
+            <div class="ecard-d">Restore or bulk-import data</div>
           </div>
           <div class="ecard" onclick="exportAllCSV()">
             <div class="ecard-ico">📊</div>
@@ -227,7 +228,7 @@
           <div class="ecard" onclick="exportAllGrowth()">
             <div class="ecard-ico">📈</div>
             <div class="ecard-t">All Growth CSV</div>
-            <div class="ecard-d">Follower growth every show</div>
+            <div class="ecard-d">Follower growth for every show</div>
           </div>
           <div class="ecard" onclick="exportRankCSV()">
             <div class="ecard-ico">🏆</div>
@@ -237,15 +238,14 @@
           <div class="ecard" onclick="captureCurrentPanel()">
             <div class="ecard-ico">📷</div>
             <div class="ecard-t">Screenshot</div>
-            <div class="ecard-d">2× HD PNG of this panel</div>
+            <div class="ecard-d">2× HD PNG of current panel</div>
           </div>
           <div class="ecard" onclick="window.print()">
             <div class="ecard-ico">🖨</div>
             <div class="ecard-t">Print / PDF</div>
-            <div class="ecard-d">Browser print → Save as PDF</div>
+            <div class="ecard-d">Browser print dialog</div>
           </div>
         </div>
-
         <div style="margin-top:20px">
           <div style="font-size:9px;font-weight:900;letter-spacing:.18em;text-transform:uppercase;color:var(--mut);margin-bottom:10px">Per-Show Captures</div>
           <div style="display:flex;gap:7px;flex-wrap:wrap" id="per-show-exp"></div>
@@ -263,55 +263,74 @@
 
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:20px">
           <div class="msec">
-            <div class="msec-t">👀 Public Viewers (everyone)</div>
+            <div class="msec-t">👀 Public Viewers</div>
             <div style="font-size:11px;color:var(--txt2);line-height:2">
               • Browse all shows and contestant rosters<br>
-              • Filter by status, show, gender<br>
+              • Filter by status, show, or gender<br>
               • Search any contestant by name<br>
               • 📷 Screenshot any panel (2× HD PNG)<br>
-              • Download data as CSV<br>
+              • Download CSV for any show or growth table<br>
               • ☾ Toggle light / dark mode<br>
-              • 🖨 Print or save as PDF
+              • 🖨 Print or save as PDF<br>
+              • Data is always fresh — loaded from GitHub on every visit
             </div>
           </div>
           <div class="msec">
-            <div class="msec-t">🔒 Admin (BobMasterBillie only)</div>
+            <div class="msec-t">🔒 Admin (BobMasterBillie)</div>
             <div style="font-size:11px;color:var(--txt2);line-height:2">
               • Click <strong style="color:var(--txt)">🔒 Admin</strong> → enter password<br>
-              • <strong style="color:var(--txt)">✎ Edit: OFF</strong> → toggle inline editing<br>
+              • <strong style="color:var(--txt)">✎ Edit Mode</strong> → click any cell to edit inline<br>
               • <strong style="color:var(--txt)">⚙ Shows</strong> → add / rename / delete shows<br>
-              • <strong style="color:var(--txt)">👁 Visibility</strong> → hide/show contestants<br>
-              • <strong style="color:var(--txt)">🌐 Save Global</strong> → push to GitHub, everyone sees updates in ~30s<br>
-              • <strong style="color:var(--txt)">💾 Local</strong> → local browser-only backup<br>
-              • Shortcut: <strong style="color:var(--txt)">Ctrl+Shift+G</strong> = global save
+              • <strong style="color:var(--txt)">👁 Visibility</strong> → hide or show contestants<br>
+              • <strong style="color:var(--txt)">↓ Save JSON</strong> → download the updated data file<br>
+              • Upload that file to GitHub → everyone sees it instantly<br>
+              • <strong style="color:var(--txt)">💾 Local</strong> → browser-only backup while working
             </div>
           </div>
         </div>
 
         <div class="clarify-box">
-          <h3>🌐 How Global Save Works</h3>
+          <h3>🌐 How Data Updates Work</h3>
           <p>
-            When you click <strong>🌐 Save Global</strong>, the site sends your updated data to a Vercel serverless
-            function (<code style="background:var(--bdr);padding:1px 5px;border-radius:3px;font-size:10px">/api/save</code>)
-            which commits it to GitHub as <code style="background:var(--bdr);padding:1px 5px;border-radius:3px;font-size:10px">public/data/data.js</code>.
-            Vercel detects the commit and rebuilds — every visitor worldwide sees the update in ~30 seconds.
-            No database. No extra services.
+            Every time someone opens the site, it fetches the latest
+            <code style="background:var(--bdr);padding:1px 5px;border-radius:3px;font-size:10px">data.js</code>
+            file directly from your GitHub repo. So all you need to do is:
           </p>
-          <div style="display:flex;gap:8px;margin-top:10px;flex-wrap:wrap">
-            <span class="verdict verdict-yes">✓ Global in ~30 seconds</span>
-            <span class="verdict verdict-yes">✓ Full version history on GitHub</span>
-            <span class="verdict verdict-yes">✓ Zero extra cost</span>
+          <div style="display:flex;gap:6px;align-items:center;font-size:13px;font-weight:700;color:var(--txt);margin:12px 0;flex-wrap:wrap">
+            <span style="background:var(--card);border:1px solid var(--bdr2);padding:6px 14px;border-radius:8px">1. Edit data in Edit Mode</span>
+            <span style="color:var(--acc)">→</span>
+            <span style="background:var(--card);border:1px solid var(--bdr2);padding:6px 14px;border-radius:8px">2. Click ↓ Save JSON</span>
+            <span style="color:var(--acc)">→</span>
+            <span style="background:var(--card);border:1px solid var(--bdr2);padding:6px 14px;border-radius:8px">3. Upload to GitHub</span>
+            <span style="color:var(--grn)">→</span>
+            <span style="background:rgba(0,200,150,.1);border:1px solid rgba(0,200,150,.25);padding:6px 14px;border-radius:8px;color:var(--grn)">✓ Everyone sees it</span>
+          </div>
+          <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:4px">
+            <span class="verdict verdict-yes">✓ No server needed</span>
+            <span class="verdict verdict-yes">✓ No tokens or API keys</span>
+            <span class="verdict verdict-yes">✓ Nothing can break</span>
+            <span class="verdict verdict-yes">✓ Free forever</span>
           </div>
         </div>
 
-        <div class="dnote">
-          <strong>Note on follower auto-fetch:</strong> Instagram and Social Blade block cross-origin browser requests.
-          Follower counts must be entered manually via Edit Mode or via the Bulk Follower Import in Load from JSON.
-          This is a platform restriction, not a bug.
+        <div class="clarify-box" style="margin-top:12px">
+          <h3>📤 How to Upload data.js to GitHub</h3>
+          <p><strong>Option A — GitHub website (easiest):</strong></p>
+          <p>Go to your repo → <code style="background:var(--bdr);padding:1px 5px;border-radius:3px;font-size:10px">public/data/data.js</code> → click the pencil ✏️ icon → click the upload icon → choose your downloaded file → click <strong>Commit changes</strong>.</p>
+          <p style="margin-top:8px"><strong>Option B — GitHub Desktop:</strong> copy the downloaded file into your local repo folder, then commit and push in GitHub Desktop.</p>
+          <p style="margin-top:8px"><strong>Option C — Terminal:</strong></p>
+          <pre style="background:var(--bdr);padding:8px 12px;border-radius:6px;font-size:10px;color:var(--txt);overflow-x:auto;margin-top:4px">cp ~/Downloads/RealityTV2026.json /path/to/your/repo/public/data/data.js
+git add public/data/data.js
+git commit -m "Update data"
+git push</pre>
+        </div>
+
+        <div class="dnote" style="margin-top:12px">
+          <strong>Note on Instagram auto-fetch:</strong> Instagram blocks browser requests. Follower counts must be entered manually via Edit Mode or the Bulk Follower Import in Load from JSON. This is a platform restriction, not a bug.
         </div>
       </div>
 
-      <!-- Dynamic per-show panels (built by JS on load) -->
+      <!-- Dynamic per-show panels -->
       <div id="dynamic-panels"></div>
 
     </main>
@@ -321,12 +340,12 @@
 <!-- ═══ TOAST ════════════════════════════════════════════════ -->
 <div class="toast" id="toast"><span id="toast-msg"></span></div>
 
-<!-- ═══ LOCAL SAVE BAR (admin only) ═════════════════════════ -->
+<!-- ═══ LOCAL SAVE BAR ══════════════════════════════════════ -->
 <div class="save-bar" id="save-bar">
   <div class="save-bar-title">💾 Local Backup</div>
   <div class="save-section">
     <span class="save-section-lbl">Browser</span>
-    <span class="ls-dot" id="ls-dot" title="Save status"></span>
+    <span class="ls-dot" id="ls-dot"></span>
     <label class="autosave-toggle">
       <input type="checkbox" id="autosave-chk" onchange="toggleAutosave(this.checked)">
       <div class="toggle-track"><div class="toggle-thumb"></div></div>
@@ -434,7 +453,7 @@
       <div class="msec-t">Add New Show</div>
       <div class="fg">
         <div class="fi"><label class="fl">Show Name <em>required</em></label><input class="finp" id="ns-name" placeholder="e.g. Bigg Boss OTT 4"></div>
-        <div class="fi"><label class="fl">Unique Key <em>required</em></label><input class="finp" id="ns-key"  placeholder="e.g. bbott4 (letters+numbers)"></div>
+        <div class="fi"><label class="fl">Unique Key <em>required</em></label><input class="finp" id="ns-key"  placeholder="e.g. bbott4"></div>
         <div class="fi"><label class="fl">Platform</label><input class="finp" id="ns-platform" placeholder="e.g. JioHotstar"></div>
         <div class="fi"><label class="fl">Host</label><input class="finp" id="ns-host" placeholder="e.g. Salman Khan"></div>
         <div class="fi"><label class="fl">Premiere Date</label><input class="finp" id="ns-date" type="date"></div>
@@ -459,19 +478,17 @@
     </div>
     <div class="clarify-box">
       <h3>ℹ️ About Auto-Fetch</h3>
-      <p>Instagram blocks cross-origin browser requests. Enter follower counts manually via Edit Mode, or use Bulk Import below for fast batch updates.</p>
+      <p>Instagram blocks cross-origin requests. Enter follower counts manually via Edit Mode, or use Bulk Import below for fast batch updates.</p>
       <span class="verdict verdict-no">❌ Auto-fetch: not possible</span>
       <span class="verdict verdict-yes" style="margin-left:6px">✓ Manual via Edit Mode: works</span>
     </div>
     <div style="margin-bottom:16px">
       <div style="font-size:11px;font-weight:700;color:var(--txt);margin-bottom:6px">📊 Bulk Follower Import</div>
-      <div style="font-size:10px;color:var(--mut);margin-bottom:8px">
-        One per line: <code style="background:var(--bdr);padding:1px 5px;border-radius:3px;font-size:10px">Contestant Name, showKey, newFollowers</code>
-      </div>
+      <div style="font-size:10px;color:var(--mut);margin-bottom:8px">One per line: <code style="background:var(--bdr);padding:1px 5px;border-radius:3px;font-size:10px">Contestant Name, showKey, newFollowers</code></div>
       <textarea class="finp fta" id="bulk-import-txt"
         placeholder="Gaurav Khanna, kkk, 2.1M&#10;Rubina Dilaik, kkk, 8.6M"
         style="min-height:90px;font-family:var(--mo);font-size:11px"></textarea>
-      <button class="btn b-grn b-sm" style="margin-top:8px" onclick="bulkImportFollowers()">✓ Apply Bulk Import</button>
+      <button class="btn b-grn b-sm" style="margin-top:8px" onclick="bulkImportFollowers()">✓ Apply</button>
     </div>
     <div class="import-drop" id="import-drop"
       onclick="document.getElementById('json-file-input').click()"
@@ -480,12 +497,10 @@
       ondrop="handleJSONDrop(event)">
       <div class="import-drop-ico">📁</div>
       <div class="import-drop-txt">Drop a JSON backup here, or click to browse</div>
-      <div class="import-drop-sub">Restores all shows and contestant data from a previous export</div>
+      <div class="import-drop-sub">Restores all shows and contestant data</div>
     </div>
     <input type="file" id="json-file-input" accept=".json" style="display:none" onchange="handleJSONFile(this)">
-    <div class="mftr">
-      <button class="btn b-gh" onclick="closeModal('modal-import')">Close</button>
-    </div>
+    <div class="mftr"><button class="btn b-gh" onclick="closeModal('modal-import')">Close</button></div>
   </div>
 </div>
 
@@ -499,7 +514,7 @@
     <div>
       <div class="admin-modal-icon">🔐</div>
       <div class="admin-modal-title">Admin Login</div>
-      <div class="admin-modal-sub">Unlocks editing, show management, and global save.<br>Everyone else browses without logging in.</div>
+      <div class="admin-modal-sub">Unlocks editing, show management, and data export.<br>Public visitors browse without logging in.</div>
       <div class="admin-pw-wrap">
         <input type="password" id="admin-pw-input" placeholder="Admin password" autocomplete="current-password">
         <button class="admin-pw-eye" onclick="
@@ -512,20 +527,18 @@
         Unlock Admin Mode
       </button>
       <div class="admin-note">
-        Session lasts 4 hours · Password verified server-side<br>
-        Set via Vercel Environment Variables (ADMIN_HASH)
+        Session lasts 8 hours · Password is hashed locally<br>
+        To change it: run <code style="background:var(--bdr);padding:1px 5px;border-radius:3px">adminHash('newpass')</code> in console
       </div>
     </div>
   </div>
 </div>
 
-<!-- ═══ CAPTURE PREVIEW MODAL ════════════════════════════════ -->
+<!-- ═══ CAPTURE MODAL ════════════════════════════════════════ -->
 <div class="cap-modal-bg" id="cap-modal-bg">
   <div class="cap-modal">
     <div class="cap-modal-header">
-      <div class="cap-modal-title">
-        📷 Screenshot Preview <span class="cap-badge">2× HD</span>
-      </div>
+      <div class="cap-modal-title">📷 Screenshot Preview <span class="cap-badge">2× HD</span></div>
       <button class="cap-modal-close" onclick="closeCaptureModal()">✕</button>
     </div>
     <div class="cap-preview-wrap" id="cap-preview-wrap">
@@ -550,32 +563,19 @@
 </div>
 
 <!-- ═══ SCRIPTS — ORDER MATTERS ══════════════════════════════ -->
+<!-- 1. Bundled data (fallback if GitHub fetch fails) -->
 <script src="data/data.js"></script>
+<!-- 2. Core libraries -->
 <script src="js/utils.js"></script>
 <script src="js/app.js"></script>
 <script src="js/export.js"></script>
 <script src="js/persistence.js"></script>
+<!-- 3. Admin auth -->
 <script src="js/admin.js"></script>
+<!-- 4. Data loader — fetches fresh data from GitHub, then boots the app -->
+<script src="js/dataloader.js"></script>
+
 <script>
-/* ─── BOOT ────────────────────────────────────────────────── */
-document.addEventListener('DOMContentLoaded', () => {
-  // Build all per-show panels and sidebar
-  Object.keys(window.SHOWS || {}).forEach(k => buildShowPanel(k));
-  rebuildSidebar();
-  renderAll();
-  renderOverview();
-  updateStats();
-  _populateRankFilters();
-  if (typeof rebuildExportPanel === 'function') rebuildExportPanel();
-  if (typeof renderActivityFeed === 'function') renderActivityFeed();
-
-  // Restore theme from localStorage
-  try {
-    const t = localStorage.getItem('realityTV2026_theme') || 'dark';
-    setTheme(t, false);
-  } catch {}
-});
-
 /* ─── RANKINGS FILTER ─────────────────────────────────────── */
 function _populateRankFilters() {
   const sel = document.getElementById('rank-show-filter');
@@ -593,45 +593,65 @@ function filterRankings() {
   const q      = (document.getElementById('rank-search')?.value || '').toLowerCase().trim();
 
   document.querySelectorAll('#rank-tbody tr').forEach(tr => {
-    const ds = (tr.dataset.status || '').toLowerCase();
-    const dk = tr.dataset.show   || '';
-    const dg = (tr.dataset.gender || '').toLowerCase();
-    const dn = (tr.dataset.name   || '').toLowerCase();
-
-    const ok = (!status || ds.includes(status))
-            && (!show   || dk === show)
-            && (!gender || dg.startsWith(gender))
-            && (!q      || dn.includes(q));
-
+    const ok = (!status || (tr.dataset.status||'').includes(status))
+            && (!show   || tr.dataset.show === show)
+            && (!gender || (tr.dataset.gender||'').startsWith(gender))
+            && (!q      || (tr.dataset.name||'').includes(q));
     tr.style.display = ok ? '' : 'none';
   });
 }
 
-/* Patch renderRankings to tag rows for filtering */
+/* Patch renderRankings to add filter data attributes */
 (function() {
   const _orig = window.renderRankings;
   if (typeof _orig !== 'function') return;
   window.renderRankings = function() {
     _orig();
     _populateRankFilters();
-    // Build an ordered list matching what renderRankings just wrote
     const all = [];
     Object.keys(window.DB || {}).forEach(k =>
-      (window.DB[k] || []).filter(c => typeof isH === 'function' && !isH(k, c.id)).forEach(c =>
-        all.push({ ...c, _k: k })
-      )
+      (window.DB[k]||[]).filter(c => !isH(k,c.id)).forEach(c => all.push({...c,_k:k}))
     );
-    all.sort((a, b) => (b.overall || 0) - (a.overall || 0));
-    document.querySelectorAll('#rank-tbody tr').forEach((tr, i) => {
-      const c = all[i];
-      if (!c) return;
-      tr.dataset.status = (c.status || '').toLowerCase();
+    all.sort((a,b) => (b.overall||0)-(a.overall||0));
+    document.querySelectorAll('#rank-tbody tr').forEach((tr,i) => {
+      const c = all[i]; if (!c) return;
+      tr.dataset.status = (c.status||'').toLowerCase();
       tr.dataset.show   = c._k;
-      tr.dataset.gender = (c.gender || '').toLowerCase();
-      tr.dataset.name   = (c.name   || '').toLowerCase();
+      tr.dataset.gender = (c.gender||'').toLowerCase();
+      tr.dataset.name   = (c.name||'').toLowerCase();
     });
   };
 })();
+
+/* ─── BOOT ────────────────────────────────────────────────── */
+// dataloader.js calls bootApp() after fetching fresh data from GitHub.
+// This DOMContentLoaded just does a fast first render from bundled data
+// while the GitHub fetch is in-flight — so the page is never blank.
+document.addEventListener('DOMContentLoaded', () => {
+  // Quick first render from bundled data.js
+  Object.keys(window.SHOWS || {}).forEach(k => buildShowPanel(k));
+  rebuildSidebar();
+  renderAll();
+  renderOverview();
+  updateStats();
+  _populateRankFilters();
+  if (typeof rebuildExportPanel === 'function') rebuildExportPanel();
+
+  // Show the data-load-status bar while fetching
+  const s = document.getElementById('data-load-status');
+  if (s) { s.style.display = 'block'; s.textContent = '⟳ Loading latest data from GitHub…'; }
+
+  // dataloader.js bootApp() runs after this, updates everything with fresh data
+  bootApp().then(() => {
+    if (s) s.style.display = 'none';
+  });
+
+  // Restore saved theme
+  try {
+    const t = localStorage.getItem('realityTV2026_theme') || 'dark';
+    setTheme(t, false);
+  } catch {}
+});
 </script>
 
 </body>

@@ -1,60 +1,49 @@
 /* ═══════════════════════════════════════════════════════════
    admin.js  —  Reality TV Intelligence Dashboard 2026
-   Password-protected admin mode + GitHub global save.
+   Simple password-protected admin mode.
+   No server. No API. No tokens.
 
-   HOW TO CHANGE YOUR PASSWORD:
-   1. Open console on your live site → run: await adminHash('newpass')
-   2. Copy the 64-char hash
-   3. Vercel → Settings → Environment Variables → update ADMIN_HASH
-   4. Redeploy once
+   HOW TO CHANGE PASSWORD:
+   1. Open browser console on your site
+   2. Run:  await adminHash('your-new-password')
+   3. Copy the 64-character hash
+   4. Replace ADMIN_HASH below with it
+   5. Commit + push → done
 ═══════════════════════════════════════════════════════════ */
 
-const ADMIN_SESSION_KEY = 'rtv2026_admin_v1';
-const ADMIN_SESSION_TTL = 4 * 60 * 60 * 1000; // 4 hours
+/* ── YOUR PASSWORD HASH ─────────────────────────────────────
+   Default password: BobAdmin2026!
+   Change it: run adminHash('newpass') in console, paste result here
+─────────────────────────────────────────────────────────── */
+const ADMIN_HASH = 'c34e14750f49b0b8ba7a9635143ab6345faa98b57a9ce23d20f6d611586a4704';
 
-/* ─── HASH HELPER (also available in browser console) ────── */
+const ADMIN_SESSION_KEY = 'rtv2026_admin_v1';
+const ADMIN_SESSION_TTL = 8 * 60 * 60 * 1000; // 8 hours
+
+/* ── HASH HELPER (use in browser console) ────────────────── */
 async function adminHash(str) {
   const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(str));
-  const hex = Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2, '0')).join('');
-  console.log('[Admin] Hash:', hex);
+  const hex = Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2,'0')).join('');
+  console.log('[Admin] Hash for your password:', hex);
+  console.log('[Admin] Paste this into ADMIN_HASH in admin.js');
   return hex;
 }
 
-/* ─── SESSION ────────────────────────────────────────────── */
-function _getSession() {
-  try { return JSON.parse(sessionStorage.getItem(ADMIN_SESSION_KEY) || '{}'); }
-  catch { return {}; }
-}
+/* ── SESSION ─────────────────────────────────────────────── */
 function _isAdminSession() {
-  const { ts, hash } = _getSession();
-  return !!hash && !!ts && (Date.now() - ts) < ADMIN_SESSION_TTL;
+  try {
+    const { ts } = JSON.parse(sessionStorage.getItem(ADMIN_SESSION_KEY) || '{}');
+    return !!ts && (Date.now() - ts) < ADMIN_SESSION_TTL;
+  } catch { return false; }
 }
-function _getSessionHash() { return _getSession().hash || ''; }
-function _setSession(hash) {
-  sessionStorage.setItem(ADMIN_SESSION_KEY, JSON.stringify({ ts: Date.now(), hash }));
-}
+function _setSession()   { sessionStorage.setItem(ADMIN_SESSION_KEY, JSON.stringify({ ts: Date.now() })); }
 function _clearSession() { sessionStorage.removeItem(ADMIN_SESSION_KEY); }
 
-/* ─── STATE ──────────────────────────────────────────────── */
+/* ── STATE ───────────────────────────────────────────────── */
 let _isAdmin = false;
 function isAdmin() { return _isAdmin; }
 
-/* ─── VERIFY PASSWORD AGAINST /api/verify ────────────────── */
-async function _verifyPassword(pw) {
-  const hash = await adminHash(pw);
-  try {
-    const r = await fetch('/api/verify', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'X-Admin-Hash': hash },
-      body: JSON.stringify({ probe: true }),
-    });
-    return r.ok ? hash : null;
-  } catch {
-    return null;
-  }
-}
-
-/* ─── LOGIN MODAL ────────────────────────────────────────── */
+/* ── LOGIN MODAL ─────────────────────────────────────────── */
 function openAdminLogin() {
   document.getElementById('admin-modal').classList.add('open');
   setTimeout(() => document.getElementById('admin-pw-input')?.focus(), 80);
@@ -72,15 +61,13 @@ async function submitAdminLogin() {
   const err = document.getElementById('admin-login-err');
   const btn = document.getElementById('admin-login-btn');
   if (!pw) { if (err) err.textContent = 'Enter your password.'; return; }
+
   if (btn) { btn.textContent = 'Verifying…'; btn.disabled = true; }
-  if (err) err.textContent = '';
-
-  const hash = await _verifyPassword(pw);
-
+  const hash = await adminHash(pw);
   if (btn) { btn.textContent = 'Unlock Admin Mode'; btn.disabled = false; }
 
-  if (hash) {
-    _setSession(hash);
+  if (hash === ADMIN_HASH) {
+    _setSession();
     _isAdmin = true;
     closeAdminLogin();
     applyAdminUI(true);
@@ -95,113 +82,88 @@ async function submitAdminLogin() {
 function adminLogout() {
   _clearSession();
   _isAdmin = false;
-  // Turn off edit mode if on
   if (typeof editMode !== 'undefined' && editMode && typeof toggleEdit === 'function') {
-    toggleEdit();
+    toggleEdit(); // turn off edit mode
   }
   applyAdminUI(false);
   toast('Logged out of admin mode', 'warn');
 }
 
-/* ─── APPLY ADMIN UI ─────────────────────────────────────── */
+/* ── APPLY ADMIN UI ──────────────────────────────────────── */
 function applyAdminUI(on) {
-  // body class drives all .admin-only visibility via CSS
   document.body.classList.toggle('admin-active', on);
 
-  // Update the admin toggle button
   const btn = document.getElementById('admin-toggle-btn');
   if (btn) {
     btn.textContent       = on ? '🔓 Admin: ON' : '🔒 Admin';
-    btn.style.color       = on ? 'var(--grn)'  : '';
-    btn.style.borderColor = on ? 'var(--grn)'  : '';
+    btn.style.color       = on ? 'var(--grn)' : '';
+    btn.style.borderColor = on ? 'var(--grn)' : '';
     btn.onclick = on ? adminLogout : openAdminLogin;
     btn.title   = on ? 'Click to log out' : 'Admin login';
   }
 
-  // Viewer banner & activity section
   const vb = document.getElementById('viewer-banner');
   const as = document.getElementById('activity-section');
+  const sw = document.getElementById('save-workflow');
   if (vb) vb.style.display = on ? 'none' : '';
   if (as) as.style.display = on ? '' : 'none';
+  if (sw) sw.style.display = on ? '' : 'none';
 
-  // Re-render after a tick so guard patches apply to freshly built rows
   if (typeof renderAll === 'function') {
     setTimeout(() => {
       renderAll();
-      _applyPublicHideToShowPanels(on);
+      _fixShowPanelButtons(on);
     }, 60);
   }
 }
 
-// When not admin: hide Edit/Add/CSV/Delete buttons inside each show panel
-function _applyPublicHideToShowPanels(isAdminOn) {
+function _fixShowPanelButtons(on) {
   if (typeof getShowKeys !== 'function') return;
   getShowKeys().forEach(k => {
     const panel = document.getElementById('panel-show-' + k);
     if (!panel) return;
     panel.querySelectorAll('.ph-act .btn, .tb-r .btn').forEach(b => {
       const txt = (b.textContent || '').trim();
-      const isCapture = txt.includes('📷') || txt.toLowerCase().includes('capture');
-      if (!isCapture) b.style.display = isAdminOn ? '' : 'none';
+      if (!txt.includes('📷') && !txt.toLowerCase().includes('capture')) {
+        b.style.display = on ? '' : 'none';
+      }
     });
-    // Also hide action column buttons (edit/delete/hide) in table rows
-    if (!isAdminOn) {
+    if (!on) {
       panel.querySelectorAll('.hide-btn, .btn.b-xs, .btn.b-red').forEach(b => b.style.display = 'none');
       panel.querySelectorAll('.ccard-footer').forEach(f => f.style.display = 'none');
     }
   });
 }
 
-/* ─── GUARD WRITE OPERATIONS ─────────────────────────────── */
-// Called once after DOMContentLoaded when all functions are defined
+/* ── GUARD ALL WRITE OPERATIONS ─────────────────────────── */
 function _installGuards() {
-  function guard(name, fn) {
+  function guard(name) {
     const orig = window[name];
     if (typeof orig === 'function') {
       window[name] = function(...args) {
         if (!_isAdmin) { openAdminLogin(); return; }
-        return fn ? fn.apply(this, args) : orig.apply(this, args);
+        return orig.apply(this, args);
       };
     }
   }
-  guard('toggleEdit');
-  guard('openAdd');
-  guard('openEdit');
-  guard('delRow');
-  guard('openShowMgr');
-  guard('openShowEdit');
-  guard('openHideMgr');
-  guard('showAll');
-  guard('hideRumoured');
-  guard('hideAllVisible');
-  guard('showAllInShow');
+  ['toggleEdit','openAdd','openEdit','delRow','openShowMgr',
+   'openShowEdit','openHideMgr','showAll','hideRumoured',
+   'hideAllVisible','showAllInShow','toggleSaveBar'].forEach(guard);
 
-  // toggleH is a silent no-op for non-admins (called from row clicks)
-  const _origToggleH = window.toggleH;
-  if (typeof _origToggleH === 'function') {
-    window.toggleH = function(k, id) {
-      if (!_isAdmin) return;
-      _origToggleH(k, id);
-    };
+  // toggleH is silent no-op for non-admins
+  const _origH = window.toggleH;
+  if (typeof _origH === 'function') {
+    window.toggleH = function(k, id) { if (_isAdmin) _origH(k, id); };
   }
 
-  // toggleSaveBar — redirect to login if not admin
-  const _origSaveBar = window.toggleSaveBar;
-  if (typeof _origSaveBar === 'function') {
-    window.toggleSaveBar = function() {
-      if (!_isAdmin) { openAdminLogin(); return; }
-      _origSaveBar();
-    };
-  }
-
-  // Patch renderTable: after render, hide action buttons for public
+  // Patch renderTable: hide action buttons for public
   const _origRT = window.renderTable;
   if (typeof _origRT === 'function') {
     window.renderTable = function(key) {
       _origRT(key);
       if (!_isAdmin) {
-        const tbody = document.getElementById('tb-' + key);
-        if (tbody) tbody.querySelectorAll('.hide-btn, .btn.b-xs, .btn.b-red').forEach(b => b.style.display = 'none');
+        const tb = document.getElementById('tb-' + key);
+        if (tb) tb.querySelectorAll('.hide-btn,.btn.b-xs,.btn.b-red').forEach(b => b.style.display = 'none');
       }
     };
   }
@@ -212,62 +174,17 @@ function _installGuards() {
     window.renderCards = function(key) {
       _origRC(key);
       if (!_isAdmin) {
-        const grid = document.getElementById('sw-' + key + '-cgrid');
-        if (grid) grid.querySelectorAll('.ccard-footer').forEach(f => f.style.display = 'none');
+        const g = document.getElementById('sw-' + key + '-cgrid');
+        if (g) g.querySelectorAll('.ccard-footer').forEach(f => f.style.display = 'none');
       }
     };
   }
 }
 
-/* ─── GLOBAL SAVE TO GITHUB ─────────────────────────────── */
-let _saveInProgress = false;
-
-async function globalSave() {
-  if (!_isAdmin) { openAdminLogin(); return; }
-  if (_saveInProgress) { toast('Save already in progress…', 'warn'); return; }
-
-  const hash = _getSessionHash();
-  if (!hash) { toast('Session expired — please log in again', 'err'); adminLogout(); return; }
-
-  _saveInProgress = true;
-  _setSaveStatus('saving', 'Saving to GitHub…');
-  toast('💾 Saving to GitHub…');
-
-  try {
-    const r = await fetch('/api/save', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'X-Admin-Hash': hash },
-      body: JSON.stringify({ shows: window.SHOWS, db: window.DB }),
-    });
-    const data = await r.json();
-    if (r.ok && data.ok) {
-      _setSaveStatus('synced', 'Saved ✓ — Vercel rebuilding (~30s) — everyone will see updates shortly');
-      toast('✓ Saved! Everyone sees updates in ~30 seconds');
-      if (typeof logActivity === 'function') logActivity('Global save to GitHub', Object.keys(window.DB).length + ' shows', '🌐');
-    } else {
-      throw new Error(data.error || 'Unknown server error');
-    }
-  } catch (e) {
-    _setSaveStatus('error', 'Save failed — ' + e.message);
-    toast('Save failed: ' + e.message, 'err');
-  } finally {
-    _saveInProgress = false;
-  }
-}
-
-function _setSaveStatus(state, msg) {
-  const dot = document.getElementById('global-save-dot');
-  const txt = document.getElementById('global-save-txt');
-  if (dot) dot.className = 'save-status-dot' + (state ? ' ' + state : '');
-  if (txt) txt.innerHTML = msg;
-}
-
-/* ─── INIT ──────────────────────────────────────────────── */
+/* ── INIT ────────────────────────────────────────────────── */
 document.addEventListener('DOMContentLoaded', () => {
-  // Install guards FIRST (before any render)
   _installGuards();
 
-  // Restore session if still valid
   if (_isAdminSession()) {
     _isAdmin = true;
     applyAdminUI(true);
@@ -275,16 +192,7 @@ document.addEventListener('DOMContentLoaded', () => {
     applyAdminUI(false);
   }
 
-  // Enter key on password input
   document.getElementById('admin-pw-input')?.addEventListener('keydown', e => {
     if (e.key === 'Enter') submitAdminLogin();
-  });
-
-  // Keyboard shortcut: Ctrl+Shift+G = global save
-  document.addEventListener('keydown', e => {
-    if ((e.ctrlKey || e.metaKey) && e.shiftKey && e.key === 'G') {
-      e.preventDefault();
-      globalSave();
-    }
   });
 });
