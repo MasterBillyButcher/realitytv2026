@@ -104,7 +104,7 @@ function handleJSONDrop(e) {
   e.preventDefault();
   document.getElementById('import-drop').classList.remove('drag-over');
   const file = e.dataTransfer.files[0];
-  if (!file || !file.name.endsWith('.json')) { toast('Please drop a .json file', 'err'); return; }
+  if (!file || (!file.name.endsWith('.json') && !file.name.endsWith('.js'))) { toast('Please drop a data.js or .json file', 'err'); return; }
   const reader = new FileReader();
   reader.onload = ev => importJSONData(ev.target.result);
   reader.readAsText(file);
@@ -472,3 +472,42 @@ document.addEventListener('DOMContentLoaded', () => {
   // Render activity feed on load
   setTimeout(renderActivityFeed, 200);
 });
+
+/* ─── PATCHED IMPORT — handles both data.js and old JSON ─── */
+/* Overrides the original importJSONData to accept .js files */
+function importJSONData(raw) {
+  try {
+    // Try new data.js format first (contains window.SHOWS = ...; window.DB = ...;)
+    if (raw.includes('window.SHOWS') && raw.includes('window.DB')) {
+      if (!confirm('Import this data.js file? It will replace all current data.')) return;
+      // Execute the JS to populate window.SHOWS and window.DB
+      // eslint-disable-next-line no-new-func
+      const fn = new Function(raw);
+      fn();
+      // Now refresh the UI with the newly populated globals
+      if (typeof refreshShowUIs === 'function') {
+        refreshShowUIs();
+      } else {
+        document.getElementById('dynamic-panels').innerHTML = '';
+        Object.keys(window.SHOWS).forEach(k => buildShowPanel(k));
+        rebuildSidebar(); renderAll(); renderOverview(); updateStats();
+      }
+      closeModal('modal-import');
+      toast('✓ data.js imported successfully');
+      logActivity('Imported data.js', Object.keys(window.SHOWS).length + ' shows', '📥');
+      return;
+    }
+
+    // Fall back to old JSON format: { shows, db } or { shows, contestants }
+    const data = JSON.parse(raw);
+    if (!confirm('Import this JSON file? It will replace all current data.')) return;
+    _applyImport(data);
+    closeModal('modal-import');
+    toast('✓ Data imported successfully');
+    logActivity('Imported JSON', Object.keys(data.shows || {}).length + ' shows', '📥');
+
+  } catch (e) {
+    toast('Import failed: ' + e.message, 'err');
+    console.error('[Import]', e);
+  }
+}

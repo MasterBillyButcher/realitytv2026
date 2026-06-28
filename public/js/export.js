@@ -1,7 +1,7 @@
 /* ═══════════════════════════════════════════════════════════
    export.js  —  Reality TV Intelligence Dashboard 2026
    All CSV / JSON download helpers.
-   Depends on: utils.js (sanitizeFilename), app.js (calcGrowth, isH, getCurrentTheme)
+   Depends on: utils.js (sanitizeFilename), app.js (calcGrowth, isH)
 ═══════════════════════════════════════════════════════════ */
 
 /* ─── FILE DOWNLOAD HELPER ──────────────────────────────── */
@@ -66,16 +66,32 @@ function exportRankCSV() {
   toast('Rankings CSV');
 }
 
-/* ─── JSON EXPORT ───────────────────────────────────────── */
+/* ─── SAVE DATA.JS ───────────────────────────────────────────
+   Downloads a file called data.js — upload it straight to
+   GitHub at public/data/data.js and everyone sees your
+   changes on their next page load. No conversion needed.
+─────────────────────────────────────────────────────────── */
 function exportJSON() {
-  dlFile(
-    JSON.stringify({
-      shows: window.SHOWS,
-      contestants: window.DB,
-      theme: typeof getCurrentTheme === 'function' ? getCurrentTheme() : 'dark'
-    }, null, 2),
-    'application/json',
-    'RealityTV2026.json'
-  );
-  toast('JSON exported');
+  const ts = new Date().toLocaleString('en-GB', {
+    day: 'numeric', month: 'short', year: 'numeric',
+    hour: '2-digit', minute: '2-digit'
+  });
+
+  const content =
+`/* ═══════════════════════════════════════════════════════════
+   data.js  —  Reality TV Intelligence Dashboard 2026
+   Last saved: ${ts}
+
+   HOW TO UPDATE EVERYONE:
+   Upload this file to GitHub at:  public/data/data.js
+   Everyone sees your changes on their next page load.
+═══════════════════════════════════════════════════════════ */
+
+window.SHOWS = ${JSON.stringify(window.SHOWS, null, 2)};
+
+window.DB = ${JSON.stringify(window.DB, null, 2)};
+`;
+
+  dlFile(content, 'text/javascript', 'data.js');
+  toast('✓ data.js downloaded — upload to GitHub to go live');
 }

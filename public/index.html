@@ -496,10 +496,10 @@ git push</pre>
       ondragleave="this.classList.remove('drag-over')"
       ondrop="handleJSONDrop(event)">
       <div class="import-drop-ico">📁</div>
-      <div class="import-drop-txt">Drop a JSON backup here, or click to browse</div>
-      <div class="import-drop-sub">Restores all shows and contestant data</div>
+      <div class="import-drop-txt">Drop your data.js or old JSON backup here, or click to browse</div>
+      <div class="import-drop-sub">Accepts data.js (new format) or old JSON backups</div>
     </div>
-    <input type="file" id="json-file-input" accept=".json" style="display:none" onchange="handleJSONFile(this)">
+    <input type="file" id="json-file-input" accept=".js,.json" style="display:none" onchange="handleJSONFile(this)">
     <div class="mftr"><button class="btn b-gh" onclick="closeModal('modal-import')">Close</button></div>
   </div>
 </div>
