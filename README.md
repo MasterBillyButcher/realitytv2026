@@ -46,21 +46,7 @@ git push -u origin main
 3. Framework Preset: **Other**  |  Root Directory: **(leave blank)**
 4. Click **Deploy**
 
-Done. Your site is live at `https://yourrepo.vercel.app`.
-
----
-
-### Step 3 — Set Your Password (optional but recommended)
-
-The default admin password is: **`BobAdmin2026!`**
-
-To change it:
-1. Open your live site → browser console (F12)
-2. Run: `await adminHash('your-new-password')`
-3. Copy the 64-character hash
-4. Open `public/js/admin.js` in your repo
-5. Replace the `ADMIN_HASH` value on line 17
-6. Commit + push → done
+Done. Your site is live at `[https://yourrepo.vercel.app](https://realitytv2026.vercel.app/)`.
 
 ---
 
