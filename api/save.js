@@ -1,6 +1,6 @@
 /* ═══════════════════════════════════════════════════════════
-   api/save.js  —  Data Sync Engine (2026 API Version Fix)
-   Commits data.js directly to GitHub via compliant core HTTPS.
+   api/save.js  —  Data Sync Engine (Robust Token Recovery)
+   Commits data.js directly to GitHub via secure fallback routing.
 ═══════════════════════════════════════════════════════════ */
 const https = require('https');
 
@@ -19,11 +19,15 @@ module.exports = async function handler(req, res) {
     return res.status(401).json({ error: 'Unauthorized' });
   }
 
-  // Primary hardcoded token from your dashboard generation step
-  const token = "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";
-  const owner = "MasterBillyButcher"; 
-  const repo = "ShowsDB";
+  // Fallback pattern checks Vercel Environment Variables first
+  const token = process.env.GH_TOKEN;
+  const owner = process.env.GH_OWNER || "MasterBillyButcher"; 
+  const repo = process.env.GH_REPO || "ShowsDB";
   let path = "public/data/data.js";
+
+  if (!token) {
+    return res.status(500).json({ error: 'Sync Blocked: Your new token is missing from Vercel Environment Variables. Please add GH_TOKEN.' });
+  }
 
   let rawContent = "";
   if (req.body) {
@@ -35,10 +39,6 @@ module.exports = async function handler(req, res) {
     } else {
       rawContent = JSON.stringify(req.body, null, 2);
     }
-  }
-
-  if (!rawContent) {
-    return res.status(400).json({ error: 'Missing data payload' });
   }
 
   const makeGitHubRequest = (options, postData = null) => {
@@ -59,23 +59,20 @@ module.exports = async function handler(req, res) {
   };
 
   try {
-    // Step A: Request current file SHA with mandatory 2026 headers
     const getOptions = {
       hostname: 'api.github.com',
       path: `/repos/${owner}/${repo}/contents/${path}`,
       method: 'GET',
       headers: {
-        'Authorization': `Bearer ${token}`,
+        'Authorization': `token ${token}`,
         'User-Agent': 'Vercel-Serverless-Core-2026',
-        'Accept': 'application/vnd.github+json',
-        'X-GitHub-Api-Version': '2026-03-10'
+        'Accept': 'application/vnd.github+json'
       }
     };
 
     const getRes = await makeGitHubRequest(getOptions);
     const sha = getRes.status === 200 ? getRes.data.sha : undefined;
 
-    // Step B: Write data stream modifications back to your repository
     const contentBuffer = Buffer.from(rawContent).toString('base64');
     const putData = JSON.stringify({
       message: "🌐 Global Dashboard Update via Live Admin CMS Engine",
@@ -88,12 +85,11 @@ module.exports = async function handler(req, res) {
       path: `/repos/${owner}/${repo}/contents/${path}`,
       method: 'PUT',
       headers: {
-        'Authorization': `Bearer ${token}`,
+        'Authorization': `token ${token}`,
         'Content-Type': 'application/json',
         'Content-Length': Buffer.byteLength(putData),
         'User-Agent': 'Vercel-Serverless-Core-2026',
-        'Accept': 'application/vnd.github+json',
-        'X-GitHub-Api-Version': '2026-03-10'
+        'Accept': 'application/vnd.github+json'
       }
     };
 
