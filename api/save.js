@@ -1,6 +1,6 @@
 /* ═══════════════════════════════════════════════════════════
-   api/save.js  —  Data Sync Engine (Node 24 Crash Protection)
-   Commits data.js directly to GitHub via stable payload strings.
+   api/save.js  —  Data Sync Engine (Protocol Stripping Fix)
+   Commits data.js directly to GitHub via secure string filtering.
 ═══════════════════════════════════════════════════════════ */
 const https = require('https');
 
@@ -19,25 +19,32 @@ module.exports = async function handler(req, res) {
     return res.status(401).json({ error: 'Unauthorized' });
   }
 
-  // Ensure you paste your fresh secure ghp_ token string here
+  // Active secure functional storage credential configs
   const token = "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";
   const owner = "MasterBillyButcher"; 
   const repo = "ShowsDB";
-  const path = "public/data/data.js";
-
+  
+  let targetPath = "public/data/data.js";
   let rawContent = "";
+
   if (req.body) {
     if (typeof req.body === 'string') {
       rawContent = req.body;
     } else if (req.body.data) {
       rawContent = req.body.data;
+      if (req.body.path) targetPath = req.body.path;
     } else {
       rawContent = JSON.stringify(req.body, null, 2);
     }
   }
 
+  // CRITICAL SANITIZER: Automatically drops stray protocol fragments if sent by frontend
+  targetPath = targetPath.replace(/^https?:\/\//i, '');
+  targetPath = targetPath.replace(/^github\.com\//i, '');
+  targetPath = targetPath.trim();
+
   if (!rawContent) {
-    return res.status(400).json({ error: 'Missing data payload text string.' });
+    return res.status(400).json({ error: 'Missing data payload payload.' });
   }
 
   const makeGitHubRequest = (options, postData = null) => {
@@ -58,9 +65,10 @@ module.exports = async function handler(req, res) {
   };
 
   try {
+    // Step A: Request current file validation tracking SHA
     const getOptions = {
-      hostname: '://github.com',
-      path: `/repos/${owner}/${repo}/contents/${path}`,
+      hostname: 'api.github.com',
+      path: `/repos/${owner}/${repo}/contents/${targetPath}`,
       method: 'GET',
       headers: {
         'Authorization': `token ${token}`,
@@ -74,7 +82,6 @@ module.exports = async function handler(req, res) {
 
     const contentBuffer = Buffer.from(rawContent).toString('base64');
     
-    // Explicit payload object layout prevents JSON.stringify crashes on Node 24
     const payloadObject = {
       message: "🌐 Global Dashboard Update via Live Admin CMS Engine",
       content: contentBuffer
@@ -84,8 +91,8 @@ module.exports = async function handler(req, res) {
     const putData = JSON.stringify(payloadObject);
 
     const putOptions = {
-      hostname: '://github.com',
-      path: `/repos/${owner}/${repo}/contents/${path}`,
+      hostname: 'api.github.com',
+      path: `/repos/${owner}/${repo}/contents/${targetPath}`,
       method: 'PUT',
       headers: {
         'Authorization': `token ${token}`,
@@ -99,11 +106,11 @@ module.exports = async function handler(req, res) {
     const putRes = await makeGitHubRequest(putOptions, putData);
 
     if (putRes.status !== 200 && putRes.status !== 201) {
-      return res.status(putRes.status).json({ error: `GitHub Write Interrupted: ${JSON.stringify(putRes.data)}` });
+      return res.status(putRes.status).json({ error: `GitHub Engine Blocked Request: ${JSON.stringify(putRes.data)}` });
     }
 
     return res.status(200).json({ ok: true });
   } catch (error) {
-    return res.status(500).json({ error: `Server Crash Caught: ${error.message}` });
+    return res.status(500).json({ error: `Server Crash Recovery Caught: ${error.message}` });
   }
 };
