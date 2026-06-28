@@ -1,6 +1,6 @@
 /* ═══════════════════════════════════════════════════════════
-   api/save.js  —  Data Sync Engine (Robust Token Recovery)
-   Commits data.js directly to GitHub via secure fallback routing.
+   api/save.js  —  Data Sync Engine (Node 24 Crash Protection)
+   Commits data.js directly to GitHub via stable payload strings.
 ═══════════════════════════════════════════════════════════ */
 const https = require('https');
 
@@ -19,15 +19,11 @@ module.exports = async function handler(req, res) {
     return res.status(401).json({ error: 'Unauthorized' });
   }
 
-  // Fallback pattern checks Vercel Environment Variables first
-  const token = process.env.GH_TOKEN "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";
-  const owner = process.env.GH_OWNER || "MasterBillyButcher"; 
-  const repo = process.env.GH_REPO || "ShowsDB";
-  let path = "public/data/data.js";
-
-  if (!token) {
-    return res.status(500).json({ error: 'Sync Blocked: Your new token is missing from Vercel Environment Variables. Please add GH_TOKEN.' });
-  }
+  // Ensure you paste your fresh secure ghp_ token string here
+  const token = "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";
+  const owner = "MasterBillyButcher"; 
+  const repo = "ShowsDB";
+  const path = "public/data/data.js";
 
   let rawContent = "";
   if (req.body) {
@@ -35,10 +31,13 @@ module.exports = async function handler(req, res) {
       rawContent = req.body;
     } else if (req.body.data) {
       rawContent = req.body.data;
-      if (req.body.path) path = req.body.path;
     } else {
       rawContent = JSON.stringify(req.body, null, 2);
     }
+  }
+
+  if (!rawContent) {
+    return res.status(400).json({ error: 'Missing data payload text string.' });
   }
 
   const makeGitHubRequest = (options, postData = null) => {
@@ -60,7 +59,7 @@ module.exports = async function handler(req, res) {
 
   try {
     const getOptions = {
-      hostname: 'api.github.com',
+      hostname: '://github.com',
       path: `/repos/${owner}/${repo}/contents/${path}`,
       method: 'GET',
       headers: {
@@ -71,17 +70,21 @@ module.exports = async function handler(req, res) {
     };
 
     const getRes = await makeGitHubRequest(getOptions);
-    const sha = getRes.status === 200 ? getRes.data.sha : undefined;
+    const sha = (getRes.status === 200 && getRes.data && getRes.data.sha) ? getRes.data.sha : null;
 
     const contentBuffer = Buffer.from(rawContent).toString('base64');
-    const putData = JSON.stringify({
+    
+    // Explicit payload object layout prevents JSON.stringify crashes on Node 24
+    const payloadObject = {
       message: "🌐 Global Dashboard Update via Live Admin CMS Engine",
-      content: contentBuffer,
-      sha: sha
-    });
+      content: contentBuffer
+    };
+    if (sha) payloadObject.sha = sha;
+
+    const putData = JSON.stringify(payloadObject);
 
     const putOptions = {
-      hostname: 'api.github.com',
+      hostname: '://github.com',
       path: `/repos/${owner}/${repo}/contents/${path}`,
       method: 'PUT',
       headers: {
@@ -96,11 +99,11 @@ module.exports = async function handler(req, res) {
     const putRes = await makeGitHubRequest(putOptions, putData);
 
     if (putRes.status !== 200 && putRes.status !== 201) {
-      return res.status(putRes.status).json({ error: `GitHub Engine Block: ${JSON.stringify(putRes.data)}` });
+      return res.status(putRes.status).json({ error: `GitHub Write Interrupted: ${JSON.stringify(putRes.data)}` });
     }
 
     return res.status(200).json({ ok: true });
   } catch (error) {
-    return res.status(500).json({ error: `Server HTTPS Native Error: ${error.message}` });
+    return res.status(500).json({ error: `Server Crash Caught: ${error.message}` });
   }
 };
