@@ -1,7 +1,9 @@
 /* ═══════════════════════════════════════════════════════════
-   api/save.js  —  Data Sync Engine (Multi-Format Payload Fix)
+   api/save.js  —  Data Sync Engine (Stable HTTPS Core Engine)
    Commits data.js directly to GitHub via hardcoded credentials.
 ═══════════════════════════════════════════════════════════ */
+const https = require('https');
+
 module.exports = async function handler(req, res) {
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
@@ -17,15 +19,12 @@ module.exports = async function handler(req, res) {
     return res.status(401).json({ error: 'Unauthorized' });
   }
 
-  // Hardcoded direct structural configurations 
   const token = "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";
   const owner = "MasterBillyButcher"; 
   const repo = "ShowsDB";
-  
-  // Detect if frontend is sending raw text data or wrapped inside an object
-  let rawContent = "";
-  let path = "public/data/data.js"; // Standard default fallback path
+  let path = "public/data/data.js";
 
+  let rawContent = "";
   if (req.body) {
     if (typeof req.body === 'string') {
       rawContent = req.body;
@@ -33,57 +32,77 @@ module.exports = async function handler(req, res) {
       rawContent = req.body.data;
       if (req.body.path) path = req.body.path;
     } else {
-      // Fallback: convert entire body back to string if it doesn't match keys
       rawContent = JSON.stringify(req.body, null, 2);
     }
   }
 
   if (!rawContent) {
-    return res.status(400).json({ error: 'Missing data payload structure: No text content received.' });
+    return res.status(400).json({ error: 'Missing data payload' });
   }
 
-  try {
-    const githubApiUrl = `https://github.com{owner}/${repo}/contents/${path}`;
+  // Safe HTTPS network wrapper function
+  const makeGitHubRequest = (options, postData = null) => {
+    return new Promise((resolve, reject) => {
+      const request = https.request(options, (response) => {
+        let chunks = '';
+        response.on('data', (chunk) => { chunks += chunk; });
+        response.on('end', () => {
+          let parsed = {};
+          try { parsed = JSON.parse(chunks); } catch (e) { parsed = { raw: chunks }; }
+          resolve({ status: response.statusCode, data: parsed });
+        });
+      });
+      request.on('error', (err) => reject(err));
+      if (postData) request.write(postData);
+      request.end();
+    });
+  };
 
-    // Step A: Fetch current file data from GitHub to extract its unique tracking SHA
-    let sha;
-    const fileCheckResponse = await fetch(githubApiUrl, {
+  try {
+    // Step A: Request the current file SHA via standard https
+    const getOptions = {
+      hostname: 'api.github.com',
+      path: `/repos/${owner}/${repo}/contents/${path}`,
       method: 'GET',
       headers: {
         'Authorization': `token ${token}`,
-        'User-Agent': 'Vercel-Serverless-Fetch'
+        'User-Agent': 'Vercel-Serverless-Core',
+        'Accept': 'application/vnd.github+json'
       }
+    };
+
+    const getRes = await makeGitHubRequest(getOptions);
+    const sha = getRes.status === 200 ? getRes.data.sha : undefined;
+
+    // Step B: Write back changes with a forced file payload build
+    const contentBuffer = Buffer.from(rawContent).toString('base64');
+    const putData = JSON.stringify({
+      message: "🌐 Global Dashboard Update via Live Admin CMS Engine",
+      content: contentBuffer,
+      sha: sha
     });
 
-    if (fileCheckResponse.ok) {
-      const fileData = await fileCheckResponse.json();
-      sha = fileData.sha;
-    }
-
-    // Step B: Commit the raw base64 data string straight to GitHub
-    const contentBuffer = Buffer.from(rawContent).toString('base64');
-    const updateResponse = await fetch(githubApiUrl, {
+    const putOptions = {
+      hostname: 'api.github.com',
+      path: `/repos/${owner}/${repo}/contents/${path}`,
       method: 'PUT',
       headers: {
         'Authorization': `token ${token}`,
         'Content-Type': 'application/json',
-        'User-Agent': 'Vercel-Serverless-Fetch'
-      },
-      body: JSON.stringify({
-        message: "🌐 Global Dashboard Update via Live Admin CMS Engine",
-        content: contentBuffer,
-        sha: sha || undefined
-      })
-    });
+        'Content-Length': Buffer.byteLength(putData),
+        'User-Agent': 'Vercel-Serverless-Core',
+        'Accept': 'application/vnd.github+json'
+      }
+    };
 
-    if (!updateResponse.ok) {
-      const errorText = await updateResponse.text();
-      return res.status(updateResponse.status).json({ error: `GitHub API error: ${errorText}` });
+    const putRes = await makeGitHubRequest(putOptions, putData);
+
+    if (putRes.status !== 200 && putRes.status !== 201) {
+      return res.status(putRes.status).json({ error: `GitHub Engine Block: ${JSON.stringify(putRes.data)}` });
     }
 
     return res.status(200).json({ ok: true });
   } catch (error) {
-    console.error(error);
-    return res.status(500).json({ error: `Serverless Native Error: ${error.message}` });
+    return res.status(500).json({ error: `Server HTTPS Native Error: ${error.message}` });
   }
 };
