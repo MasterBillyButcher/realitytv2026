@@ -1,141 +1,226 @@
+<div align="center">
+
 # 📺 Reality TV Intel 2026
 
-A lightweight, browser-based dashboard for tracking Indian reality TV contestants, social media followers, rankings, and growth trends.
+### A modern, static dashboard for tracking Indian reality TV contestants, follower counts, rankings, and growth analytics.
 
-Built as a **fully static web application**, it requires no backend, database, or external APIs. All data is managed through a single file, making deployment simple, maintenance minimal, and performance fast.
+![Status](https://img.shields.io/badge/Status-Active-success?style=for-the-badge)
+![Version](https://img.shields.io/badge/Version-2026-blue?style=for-the-badge)
+![JavaScript](https://img.shields.io/badge/Vanilla-JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
+![License](https://img.shields.io/badge/License-Custom-lightgrey?style=for-the-badge)
 
----
+*A fast, lightweight, zero-backend solution built for simplicity.*
 
-## Features
-
-### Dashboard
-- 📊 Contestant rankings
-- 📈 Follower growth tracking
-- 🔍 Search and filtering
-- 🏆 Multi-show support
-- 👁 Show or hide contestants
-
-### Exports
-- 📄 CSV export
-- 🖨 Print-friendly layout
-- 📷 High-resolution screenshot capture
-
-### Administration
-- ✏️ Inline editing
-- ➕ Add or remove contestants
-- 🗂 Manage shows
-- 💾 Download updated dataset
-- 💻 Automatic local backup
-
-### User Experience
-- 🌙 Light & Dark themes
-- 📱 Responsive design
-- ⚡ Fast loading
-- 🌐 No installation required
+</div>
 
 ---
 
-## Technology Stack
+## ✨ Overview
 
-- HTML5
-- CSS3
-- Vanilla JavaScript
-- GitHub (Data Storage)
-- Vercel (Hosting)
+Reality TV Intel 2026 is a fully static web application designed to manage and visualize contestant data across multiple Indian reality television shows.
 
-No frameworks, databases, servers, or API keys are required.
+The project eliminates the need for databases, APIs, or backend infrastructure by storing all application data in a single version-controlled file.
+
+This approach provides:
+
+- ⚡ Fast performance
+- 🔒 Minimal maintenance
+- 🌐 Easy deployment
+- 📁 Complete data ownership
+- 💰 Zero hosting infrastructure
 
 ---
 
-## Architecture
+# 🚀 Features
+
+## 📊 Dashboard
+
+- Live contestant rankings
+- Social media follower tracking
+- Growth analytics
+- Multi-show support
+- Smart search
+- Advanced filtering
+- Responsive tables
+
+---
+
+## ✏️ Administration
+
+- Inline editing
+- Add contestants
+- Delete contestants
+- Create and manage shows
+- Hide or restore contestants
+- Bulk follower updates
+- Download updated dataset
+- Local browser backup
+
+---
+
+## 📤 Export Options
+
+- CSV Export
+- Print-ready pages
+- High-resolution screenshots
+- JSON/Data export
+
+---
+
+## 🎨 User Experience
+
+- Light & Dark Mode
+- Responsive layout
+- Mobile friendly
+- Keyboard shortcuts
+- Instant search
+- Zero page reloads
+
+---
+
+# 🏗 Architecture
 
 ```
-Browser
-    │
-    ▼
-Loads latest data.js
-    │
-    ▼
-Renders dashboard
-    │
-    ▼
-Admin edits data
-    │
-    ▼
-Download updated file
-    │
-    ▼
-Commit & Push
-    │
-    ▼
-Updated data available to all visitors
+               Browser
+                  │
+                  ▼
+        Load latest data file
+                  │
+                  ▼
+        Render Dashboard UI
+                  │
+        ┌─────────┴─────────┐
+        ▼                   ▼
+ Public Viewing      Admin Editing
+        │                   │
+        └─────────┬─────────┘
+                  ▼
+         Download Updated Data
+                  │
+                  ▼
+        Replace public/data/data.js
+                  │
+                  ▼
+           Commit & Deploy
 ```
 
 ---
 
-## Getting Started
+# 🛠 Technology Stack
 
-### 1. Clone the Repository
+| Technology | Purpose |
+|------------|---------|
+| HTML5 | Application Structure |
+| CSS3 | Styling |
+| Vanilla JavaScript | Application Logic |
+| GitHub | Version Control |
+| Vercel / Netlify / GitHub Pages | Static Hosting |
+
+**No backend required.**
+
+**No database required.**
+
+**No server required.**
+
+**No API keys required.**
+
+---
+
+# 📁 Project Structure
+
+```
+.
+├── public
+│
+├── css
+│   └── styles.css
+│
+├── data
+│   └── data.js
+│
+├── js
+│   ├── admin.js
+│   ├── app.js
+│   ├── dataloader.js
+│   ├── export.js
+│   ├── persistence.js
+│   └── utils.js
+│
+├── index.html
+│
+├── vercel.json
+│
+└── README.md
+```
+
+---
+
+# 🚀 Getting Started
+
+## Clone
 
 ```bash
 git clone <repository-url>
-cd <repository-name>
+
+cd <project-folder>
 ```
-
-### 2. Install
-
-No installation is required.
-
-Open `public/index.html` for local development or deploy the repository to any static hosting platform.
-
-### 3. Deploy
-
-This project works with any static hosting provider, including:
-
-- Vercel
-- GitHub Pages
-- Netlify
-- Cloudflare Pages
-
-Recommended deployment settings:
-
-| Setting | Value |
-|---------|-------|
-| Framework | Other |
-| Build Command | None |
-| Output Directory | public |
 
 ---
 
-## Updating Data
+## Local Development
 
-All application data is stored in:
+No installation is required.
+
+Simply open:
+
+```
+public/index.html
+```
+
+or serve the folder using any static web server.
+
+---
+
+## Deployment
+
+Deploy to any static hosting platform.
+
+Recommended providers:
+
+- Vercel
+- Netlify
+- GitHub Pages
+- Cloudflare Pages
+
+No build process is required.
+
+---
+
+# 📝 Updating Data
+
+All application data lives inside:
 
 ```
 public/data/data.js
 ```
 
-To publish updates:
+Publishing updates is straightforward:
 
 1. Open the dashboard.
 2. Sign in as an administrator.
 3. Enable Edit Mode.
-4. Make your changes.
+4. Make changes.
 5. Download the updated data file.
 6. Replace `public/data/data.js`.
-7. Commit and push the changes.
+7. Commit and push.
 
-The latest data will be served on the next page refresh after deployment.
+The latest version will be available after deployment.
 
 ---
 
-## Bulk Import
+# 📥 Bulk Import
 
-Bulk updates use the following format:
-
-```text
-Contestant Name, Show Key, Followers
-```
+Import multiple follower updates using plain text.
 
 Example:
 
@@ -145,110 +230,86 @@ Contestant B, show2, 9200000
 Contestant C, show3, 430K
 ```
 
-Supported follower formats:
+Supported values:
 
-- 8.7M
 - 430K
+- 8.7M
 - 9200000
 
 ---
 
-## Project Structure
-
-```
-.
-├── public
-│   ├── css
-│   │   └── styles.css
-│   │
-│   ├── data
-│   │   └── data.js
-│   │
-│   ├── js
-│   │   ├── admin.js
-│   │   ├── app.js
-│   │   ├── dataloader.js
-│   │   ├── export.js
-│   │   ├── persistence.js
-│   │   └── utils.js
-│   │
-│   └── index.html
-│
-├── vercel.json
-└── README.md
-```
-
----
-
-## Permissions
+# 👥 Permissions
 
 | Feature | Public | Admin |
-|:--------------------------|:------:|:------:|
+|:---------------------------|:------:|:------:|
 | View Dashboard | ✅ | ✅ |
-| Browse Shows | ✅ | ✅ |
-| Search & Filter | ✅ | ✅ |
+| Search | ✅ | ✅ |
+| Filter | ✅ | ✅ |
 | Export CSV | ✅ | ✅ |
-| Screenshot Export | ✅ | ✅ |
-| Print / PDF | ✅ | ✅ |
-| Edit Contestants | ❌ | ✅ |
+| Print | ✅ | ✅ |
+| Screenshot | ✅ | ✅ |
+| Edit Data | ❌ | ✅ |
 | Add Contestants | ❌ | ✅ |
 | Delete Contestants | ❌ | ✅ |
 | Manage Shows | ❌ | ✅ |
-| Hide / Show Contestants | ❌ | ✅ |
-| Download Updated Data | ❌ | ✅ |
-| Local Backup | ❌ | ✅ |
+| Bulk Import | ❌ | ✅ |
+| Download Data | ❌ | ✅ |
 
 ---
 
-## Browser Support
+# 🌐 Browser Support
 
-- Google Chrome
-- Microsoft Edge
-- Mozilla Firefox
-- Safari
-
----
-
-## Troubleshooting
-
-### Changes do not appear
-
-- Confirm `public/data/data.js` has been updated.
-- Verify changes have been committed and pushed.
-- Perform a hard refresh (`Ctrl + Shift + R` or `Cmd + Shift + R`).
-- Allow a short time for hosting cache to refresh if applicable.
+| Browser | Supported |
+|----------|-----------|
+| Chrome | ✅ |
+| Edge | ✅ |
+| Firefox | ✅ |
+| Safari | ✅ |
 
 ---
 
-## Security
+# 🔍 Troubleshooting
 
-This is a static web application.
+### Changes are not visible
 
-Administrative features provide client-side access control intended for trusted users. They should not be considered a substitute for server-side authentication or authorization.
-
----
-
-## License
-
-Add your preferred open-source or proprietary license before distributing the project.
+- Verify `public/data/data.js` has been updated.
+- Confirm the latest changes have been committed.
+- Refresh the page using a hard reload.
+- Allow a short time for hosting caches to refresh.
 
 ---
 
-## Contributing
+# 🔒 Security
+
+This application is entirely client-side.
+
+Administrative features are intended for trusted users and provide basic client-side access control. They are not a replacement for server-side authentication.
+
+---
+
+# 🤝 Contributing
 
 Contributions are welcome.
-
-If you would like to improve the project:
 
 1. Fork the repository.
 2. Create a feature branch.
 3. Commit your changes.
 4. Submit a pull request.
 
-Please ensure code is well documented and follows the existing project structure.
+Please keep code clean, documented, and consistent with the existing architecture.
 
 ---
 
-## Overview
+# 📄 License
 
-Reality TV Intel 2026 provides a simple, fast, and maintainable solution for tracking contestant statistics without relying on a backend infrastructure. All data is version-controlled, deployments are straightforward, and updates can be published with a single file replacement.
+Add your preferred license before distributing or publishing this project.
+
+---
+
+<div align="center">
+
+### Built for speed, simplicity, and maintainability.
+
+**Reality TV Intel 2026**
+
+</div>
