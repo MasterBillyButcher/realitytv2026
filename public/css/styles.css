@@ -1144,6 +1144,7 @@ body.theme-light .filter-select:focus {
   width: 100%;
   border-collapse: collapse;
   background: transparent;
+  table-layout: fixed; /* fixes column-bleed bug seen when most cells are "N/V" */
 }
 
 /* Header row — very dark navy */
@@ -1192,13 +1193,23 @@ body.theme-light .filter-select:focus {
   font-size: 12px;
   font-weight: 400;
   font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 /* Name column — bold black */
 .gtbl-wrap td:nth-child(1) {
   font-weight: 700;
   color: #000000;
-  min-width: 180px;
+  width: 20%;
+}
+.gtbl-wrap td:nth-child(n+2) {
+  width: 11.43%;
+  text-align: center;
+}
+.gtbl-wrap thead th:nth-child(n+2) {
+  text-align: center;
 }
 
 /* Growth colour classes — dark tones visible on cyan bg */
