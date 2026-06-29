@@ -1,6 +1,6 @@
 /* ═══════════════════════════════════════════════════════════
    data.js  —  Reality TV Intelligence Dashboard 2026
-   Last saved: 29 Jun 2026, 10:11
+   Last saved: 29 Jun 2026, 10:15
 
    HOW TO UPDATE EVERYONE:
    Upload this file to GitHub at:  public/data/data.js
@@ -494,7 +494,7 @@ window.DB = {
       "profession": "Actress, Influencer",
       "tier": "",
       "ig": "akankshagkhanna",
-      "photo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRwdvPgTqUSdHDSmEbUx7jzU-M-bGmfoeOCxoFdlNBqUQ&s=10",
+      "photo": "https://wd-image.webdunia.com/processimg/1200x/webp/_media/hi/img/article/2026-01/14/full/1768390305-7391.jpg",
       "follBefore": "941.0K",
       "follBeforeDate": "June 27",
       "follLast": "N/V",
