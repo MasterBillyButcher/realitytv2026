@@ -121,35 +121,6 @@ open public/index.html
 > 💡 **Deploy to Vercel:** Go to [vercel.com/new](https://vercel.com/new) → import the repo → done. Zero config.
 
 ---
-
-## 📝 Updating Data
-
-All data lives in `public/data/data.js` — one file, no database, no migrations.
-
-```
-🔒 Admin Login  →  ✎ Edit Mode  →  click any cell to edit
-       ↓
-  💾 Save JSON  →  data.js downloads to your machine
-       ↓
-  📤 Push to GitHub at public/data/data.js
-       ↓
-  🌍 Everyone sees the update on next page load ✓
-```
-
-### ⚡ Bulk Follower Import
-
-Go to **Export → Bulk Follower Import** and paste:
-
-```
-Gaurav Khanna,   kkk,      2.1M
-Rubina Dilaik,   kkk,      8.6M
-Shivangi Joshi,  lockupp,  10.5M
-```
-
-> **Format:** `Name, showKey, followers` — accepts `430K` · `2.5M` · `9200000`
-
----
-
 ## 👥 Permissions
 
 <div align="center">
