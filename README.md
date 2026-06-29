@@ -1,33 +1,27 @@
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://capsule-render.vercel.app/api?type=cylinder&color=0:0d0221,30:1a0533,60:0d1b4b,100:040d1a&height=280&section=header&text=Reality%20TV%20Intel%202026&fontSize=60&fontColor=ffffff&animation=scaleIn&fontAlignY=45&desc=%E2%80%9CIndia%E2%80%99s%20Biggest%20Shows.%20One%20Dashboard.%E2%80%9D&descAlignY=65&descSize=18&descColor=c4b5fd&stroke=7c3aed&strokeWidth=3"/>
+  <source media="(prefers-color-scheme: light)" srcset="https://capsule-render.vercel.app/api?type=cylinder&color=0:ede9fe,30:ddd6fe,60:c4b5fd,100:a78bfa&height=280&section=header&text=Reality%20TV%20Intel%202026&fontSize=60&fontColor=1e1b4b&animation=scaleIn&fontAlignY=45&desc=%E2%80%9CIndia%E2%80%99s%20Biggest%20Shows.%20One%20Dashboard.%E2%80%9D&descAlignY=65&descSize=18&descColor=4c1d95&stroke=7c3aed&strokeWidth=3"/>
+  <img width="100%" src="https://capsule-render.vercel.app/api?type=cylinder&color=0:0d0221,30:1a0533,60:0d1b4b,100:040d1a&height=280&section=header&text=Reality%20TV%20Intel%202026&fontSize=60&fontColor=ffffff&animation=scaleIn&fontAlignY=45&desc=%E2%80%9CIndia%E2%80%99s%20Biggest%20Shows.%20One%20Dashboard.%E2%80%9D&descAlignY=65&descSize=18&descColor=c4b5fd&stroke=7c3aed&strokeWidth=3" alt="Reality TV Intel 2026"/>
+</picture>
+
 <div align="center">
 
-<img src="https://capsule-render.vercel.app/api?type=venom&color=0:0f0f1a,50:1a0a3e,100:0a1628&height=300&section=header&text=Reality%20TV%20Intel&fontSize=72&fontColor=ffffff&animation=fadeIn&fontAlignY=40&desc=2026%20Edition%20%E2%80%94%20India%27s%20Premier%20Contestant%20Analytics%20Dashboard&descAlignY=62&descSize=17&descColor=a78bfa&stroke=6d28d9&strokeWidth=2" width="100%" alt="Reality TV Intel 2026 Banner"/>
+<img src="https://readme-typing-svg.demolab.com?font=Montserrat&weight=900&size=18&duration=2800&pause=900&color=A78BFA&center=true&vCenter=true&width=700&lines=%F0%9F%93%8A+Track+Followers+%C2%B7+Rankings+%C2%B7+Growth+%E2%80%94+All+in+One+Place;%F0%9F%87%AE%F0%9F%87%B3+Built+for+India%E2%80%99s+Biggest+Reality+Shows;%E2%9A%A1+Zero+Backend+%C2%B7+Zero+Build+Step+%C2%B7+100%25+Static;%F0%9F%8E%AC+Bigg+Boss+%C2%B7+Lock+Upp+%C2%B7+Khatron+%C2%B7+Every+Show+Covered" alt="Typing SVG"/>
 
 <br/>
 
-<img src="https://readme-typing-svg.demolab.com?font=Montserrat&weight=800&size=22&duration=3000&pause=1000&color=A78BFA&center=true&vCenter=true&width=600&lines=%F0%9F%93%BA+Track+%C2%B7+Analyze+%C2%B7+Compare+%C2%B7+Export;India%27s+Biggest+Reality+Shows+%E2%80%94+One+Dashboard;Live+Rankings+%C2%B7+Growth+Tracking+%C2%B7+Admin+Controls;Fast+%C2%B7+Cinematic+%C2%B7+Static+%C2%B7+Zero+Backend" alt="Typing SVG" />
-
-<br/><br/>
-
-<a href="https://realitytv2026.vercel.app/" target="_blank">
-  <img src="https://img.shields.io/badge/🌐%20Live%20Demo-Visit%20Website-7C3AED?style=for-the-badge&labelColor=1a0a3e" alt="Live Demo"/>
-</a>
+[![Live Demo](https://img.shields.io/badge/🌐_LIVE_DEMO-realitytv2026.vercel.app-7C3AED?style=for-the-badge&labelColor=0d0221)](https://realitytv2026.vercel.app/)
 &nbsp;
-<a href="https://github.com/MasterBillyButcher/realitytv2026" target="_blank">
-  <img src="https://img.shields.io/badge/GitHub-Repository-181717?style=for-the-badge&logo=github&labelColor=0d1117" alt="Repository"/>
-</a>
+[![GitHub](https://img.shields.io/badge/GitHub-Source_Code-181717?style=for-the-badge&logo=github&labelColor=0d1117)](https://github.com/MasterBillyButcher/realitytv2026)
 
-<br/><br/>
+<br/>
 
 <img src="https://img.shields.io/badge/Version-2026-7C3AED?style=flat-square&labelColor=1a0a3e"/>
-<img src="https://img.shields.io/badge/Status-Active%20%E2%9C%85-22C55E?style=flat-square&labelColor=052e16"/>
-<img src="https://img.shields.io/badge/JavaScript-Vanilla%20ES2020-F7DF1E?style=flat-square&logo=javascript&logoColor=black&labelColor=1a1a00"/>
-<img src="https://img.shields.io/badge/Hosting-Vercel-000000?style=flat-square&logo=vercel&labelColor=111"/>
-<img src="https://img.shields.io/badge/Backend-None%20(Static)-FF6B6B?style=flat-square&labelColor=2d0000"/>
-<img src="https://img.shields.io/badge/Database-GitHub%20Raw-181717?style=flat-square&logo=github&labelColor=0d1117"/>
-
-<br/><br/>
-
-> *A modern, cinematic analytics dashboard built for fast, reliable tracking of Indian reality TV contestant data — follower counts, growth, rankings, and more.*
+<img src="https://img.shields.io/badge/Status-🟢_Live-22C55E?style=flat-square&labelColor=052e16"/>
+<img src="https://img.shields.io/badge/JS-Vanilla_ES2020-F7DF1E?style=flat-square&logo=javascript&logoColor=black&labelColor=1a1500"/>
+<img src="https://img.shields.io/badge/Hosted_on-Vercel-000?style=flat-square&logo=vercel&labelColor=111"/>
+<img src="https://img.shields.io/badge/Backend-None-FF6B6B?style=flat-square&labelColor=2d0000"/>
+<img src="https://img.shields.io/badge/Data-GitHub_Raw-181717?style=flat-square&logo=github&labelColor=0d1117"/>
 
 </div>
 
@@ -35,26 +29,11 @@
 
 <div align="center">
 
-## 🌐 Live at → **[realitytv2026.vercel.app](https://realitytv2026.vercel.app/)**
+## 🧭 Navigate
+
+[✨ Features](#-features) · [🏗 How It Works](#-how-it-works) · [📁 File Map](#-file-map) · [🚀 Quick Start](#-quick-start) · [📝 Update Data](#-update-data) · [👥 Permissions](#-permissions) · [⌨️ Shortcuts](#%EF%B8%8F-shortcuts) · [🔧 Troubleshooting](#-troubleshooting)
 
 </div>
-
----
-
-## 📌 Table of Contents
-
-- [✨ Features](#-features)
-- [🏗 Architecture](#-architecture)
-- [⚙ Tech Stack](#-tech-stack)
-- [📁 Project Structure](#-project-structure)
-- [🚀 Quick Start](#-quick-start)
-- [📝 Updating Data](#-updating-data)
-- [👥 Permissions](#-permissions)
-- [⌨️ Keyboard Shortcuts](#-keyboard-shortcuts)
-- [🌍 Browser Support](#-browser-support)
-- [🔧 Troubleshooting](#-troubleshooting)
-- [🔒 Security](#-security-note)
-- [🤝 Contributing](#-contributing)
 
 ---
 
@@ -62,45 +41,36 @@
 
 <table>
 <tr>
-<td width="50%" valign="top">
+<td width="25%" align="center">
 
-### 📊 Analytics Engine
-- **Live Rankings** — Contestants sorted by follower count in real time
-- **Growth Tracking** — Before Show → Last Checked → Current, all in one row
-- **Multi-Show Dashboard** — Per-show views and cross-show comparison
-- **Smart Search** — Filter by status, show, gender with instant results
-- **7 Sort Modes** — Drag-to-reorder growth tables, your way
+### 📊
+### Analytics
+
+Track **live rankings** by follower count. Monitor Instagram growth across three checkpoints: *Before Show → Last Checked → Current*. View all contestants cross-show or per-show.
 
 </td>
-<td width="50%" valign="top">
+<td width="25%" align="center">
 
-### ✏️ Admin Controls
-- **Inline Editing** — Click any cell in Edit Mode to update it instantly
-- **Full CRUD** — Add, edit, delete contestants without touching code
-- **Show Management** — Create, rename, and remove shows on the fly
-- **Bulk Import** — Paste CSV-style lines to update hundreds of followers at once
-- **One-Click Deploy** — Download `data.js` → push to GitHub → everyone sees it
+### 🔍
+### Smart Filter
+
+Search by name, filter by **status, show, gender**. Seven drag-to-reorder sort modes on the growth table. Find what you need in seconds.
 
 </td>
-</tr>
-<tr>
-<td width="50%" valign="top">
+<td width="25%" align="center">
 
-### 📤 Export Suite
-- **CSV Export** — Per show, all rosters, growth tables, rankings
-- **HD Screenshot** — 2× PNG capture of any panel via html2canvas
-- **Print-Ready** — `Ctrl+P` → PDF in one step
-- **JSON Export** — Full data file download for backup or migration
+### ✏️
+### Admin Panel
+
+Full inline editing — click any cell in Edit Mode. Add, delete, rename contestants and shows. SHA-256 password auth, no server needed.
 
 </td>
-<td width="50%" valign="top">
+<td width="25%" align="center">
 
-### 🎨 User Experience
-- **Cinematic Dark Mode** (default) + clean Light Mode
-- **Montserrat + Inter** typography system
-- **Animated Entrances** — Smooth transitions on every render
-- **Fully Responsive** — Desktop, tablet, and mobile
-- **Keyboard Shortcuts** — Power-user navigation built in
+### 📤
+### Export Suite
+
+CSV per show, full roster, growth tables, rankings. **2× HD PNG** screenshot. `Ctrl+P` → print-ready PDF. Full JSON data export for backup.
 
 </td>
 </tr>
@@ -108,94 +78,86 @@
 
 ---
 
-## 🏗 Architecture
+## 🏗 How It Works
 
 ```
-╔══════════════════════════════════════════════════════════════╗
-║                   Browser  (Any Visitor)                     ║
-╚══════════════════════════╦═══════════════════════════════════╝
-                           ║
-                           ▼
-           ┌───────────────────────────────┐
-           │  Loads bundled data/data.js   │  ← instant, no wait
-           └──────────────┬────────────────┘
-                          ║
-                          ▼
-           ┌───────────────────────────────┐
-           │  Fetches latest from GitHub   │  ← cache-busted on every load
-           │  (raw.githubusercontent.com)  │
-           └──────────────┬────────────────┘
-                          ║
-                          ▼
-           ┌───────────────────────────────┐
-           │   Re-renders with fresh data  │
-           └───────┬───────────────┬───────┘
-                   ║               ║
-            ┌──────▼──────┐ ┌─────▼───────────┐
-            │ Public View │ │  Administrator   │
-            │  (read only)│ │ (edit + export)  │
-            └──────┬──────┘ └─────┬────────────┘
-                   ║               ║
-                   └───────┬───────┘
-                           ▼
-              ┌────────────────────────┐
-              │  Download data.js      │
-              └────────────┬───────────┘
-                           ▼
-              ┌────────────────────────┐
-              │  Push to GitHub        │
-              └────────────┬───────────┘
-                           ▼
-              ┌────────────────────────┐
-              │  Live for everyone ✓   │
-              └────────────────────────┘
+┌─────────────────────────────────────────────────────────────────────┐
+│                                                                     │
+│   Any Browser                                                       │
+│       │                                                             │
+│       ▼                                                             │
+│   ① Loads bundled data/data.js ──────── instant, no waiting        │
+│       │                                                             │
+│       ▼                                                             │
+│   ② Fetches latest from GitHub Raw ──── cache-busted every load    │
+│       │                                                             │
+│       ▼                                                             │
+│   ③ Re-renders with freshest data                                  │
+│       │                                                             │
+│       ├──────────────────────┬──────────────────────┐              │
+│       ▼                      ▼                      ▼              │
+│  🌐 Public Viewer       🔐 Admin Mode         📤 Export            │
+│  Browse • Filter        Edit • Add            CSV • PNG            │
+│  Search • Export        Delete • Import       JSON • PDF           │
+│       │                      │                                      │
+│       └──────────────────────┘                                      │
+│                      │                                              │
+│                      ▼                                              │
+│   ④ Download updated data.js                                       │
+│                      │                                              │
+│                      ▼                                              │
+│   ⑤ Push to GitHub → public/data/data.js                          │
+│                      │                                              │
+│                      ▼                                              │
+│   ⑥ Everyone sees the update on next load ✓                       │
+│                                                                     │
+└─────────────────────────────────────────────────────────────────────┘
 ```
 
 ---
 
-## ⚙ Tech Stack
+## ⚙️ Tech Stack
 
 <div align="center">
 
-| Layer | Technology | Purpose |
-|:------|:-----------|:--------|
-| 🏗 Structure | HTML5 | Semantic app shell + all modals |
-| 🎨 Styling | CSS3 + Custom Properties | Design tokens, dark/light mode, animations |
-| ⚡ Logic | Vanilla JavaScript (ES2020) | All rendering, CRUD, filtering, export |
-| 🔤 Typography | Montserrat + Inter | Cinematic headline + clean body type |
-| 📸 Screenshot | html2canvas | 2× HD PNG export from any panel |
-| 📡 Data Delivery | GitHub Raw CDN | Live data, cache-busted on every load |
-| 🚀 Hosting | Vercel | Static deployment + global CDN |
+| | Technology | Role |
+|:-:|:-----------|:-----|
+| 🏗 | **HTML5** | Semantic app shell + all modals |
+| 🎨 | **CSS3 + Custom Properties** | Design tokens, dark/light themes, animations |
+| ⚡ | **Vanilla JavaScript ES2020** | All rendering, CRUD, filtering, sorting, export |
+| 🔤 | **Montserrat + Inter** | Cinematic headlines + clean body typography |
+| 📸 | **html2canvas** | 2× HD PNG panel screenshots |
+| 📡 | **GitHub Raw CDN** | Live data delivery, cache-busted on every load |
+| 🚀 | **Vercel** | Static hosting + global edge CDN |
 
 </div>
 
 ---
 
-## 📁 Project Structure
+## 📁 File Map
 
 ```
 realitytv2026/
 │
 ├── 📂 public/
-│   │
 │   ├── 📂 css/
-│   │   └── styles.css          ← Full design system with CSS tokens
+│   │   └── 🎨 styles.css         ← Design system · CSS tokens · themes · animations
 │   │
 │   ├── 📂 data/
-│   │   └── data.js             ← All show + contestant data (edit & upload to update)
+│   │   └── 📦 data.js            ← ALL show + contestant data  ← edit this to update
 │   │
 │   ├── 📂 js/
-│   │   ├── utils.js            ← Sanitization, validation, debounce  (loads first)
-│   │   ├── app.js              ← Rendering, navigation, CRUD, growth logic
-│   │   ├── export.js           ← CSV, JSON export, screenshot capture
-│   │   ├── persistence.js      ← LocalStorage, bulk import, activity log
-│   │   ├── admin.js            ← SHA-256 password auth + session management
-│   │   └── dataloader.js       ← GitHub fetch + boot sequence
+│   │   ├── 🛡️ utils.js           ← Sanitization · validation · debounce  (loads first)
+│   │   ├── 🖥️ app.js             ← Rendering · navigation · CRUD · growth logic
+│   │   ├── 📤 export.js          ← CSV · JSON export · screenshot capture
+│   │   ├── 💾 persistence.js     ← LocalStorage · bulk import · activity log
+│   │   ├── 🔐 admin.js           ← SHA-256 auth · session management
+│   │   └── 🌐 dataloader.js      ← GitHub fetch · boot sequence · fallback
 │   │
-│   └── index.html              ← App shell + all modals
+│   └── 📄 index.html             ← App shell + all modals
 │
-├── vercel.json                 ← Routing + cache headers
-└── README.md
+├── ⚙️ vercel.json                 ← Routing + cache headers
+└── 📖 README.md
 ```
 
 ---
@@ -203,48 +165,45 @@ realitytv2026/
 ## 🚀 Quick Start
 
 ```bash
-# 1. Clone the repository
+# Clone
 git clone https://github.com/MasterBillyButcher/realitytv2026.git
-
-# 2. Enter the project folder
 cd realitytv2026
 
-# 3. Open in browser — no build step required
+# Run — no install, no build, no dependencies
 open public/index.html
 ```
 
-> **Deploy to Vercel:** Import the repo at [vercel.com/new](https://vercel.com/new) — zero config needed.
+> **Deploy to Vercel in 30 seconds:** [vercel.com/new](https://vercel.com/new) → Import repo → Done. Zero config.
 
 ---
 
-## 📝 Updating Data
+## 📝 Update Data
 
-All data lives in `public/data/data.js`. No database. No backend. Just a file.
+Everything lives in `public/data/data.js`. One file. No database. No migrations.
 
-### Standard Workflow
-
-```
-1. Open the live dashboard  →  https://realitytv2026.vercel.app/
-2. Click 🔒 Admin           →  Enter password
-3. Click ✎ Edit Mode        →  Click any cell to edit inline
-4. Click ↓ Save JSON        →  data.js downloads to your machine
-5. Push data.js to GitHub   →  public/data/data.js
-6. Done ✓                   →  Everyone sees the update on next load
-```
-
-### ⚡ Bulk Follower Import (Fastest Method)
-
-Navigate to **Export → Load from JSON → Bulk Follower Import**, then paste:
+### Standard Flow
 
 ```
-Gaurav Khanna,    kkk,      2.1M
-Rubina Dilaik,    kkk,      8.6M
-Shivangi Joshi,   lockupp,  10.5M
+  Open dashboard  →  🔒 Admin  →  ✎ Edit Mode  →  click any cell
+       ↓
+  Make your edits  →  ↓ Save JSON  →  data.js downloads
+       ↓
+  Push to GitHub at public/data/data.js
+       ↓
+  Everyone sees the update on their next page load ✓
 ```
 
-**Format:** `Contestant Name, showKey, newFollowers`
+### ⚡ Bulk Follower Import
 
-**Accepted values:** `430K` · `2.5M` · `8.7M` · `9200000`
+Fastest way to update many contestants at once. Go to **Export → Load from JSON → Bulk Follower Import** and paste:
+
+```
+Gaurav Khanna,   kkk,      2.1M
+Rubina Dilaik,   kkk,      8.6M
+Shivangi Joshi,  lockupp,  10.5M
+```
+
+**Format:** `Name, showKey, followers` — supports `430K` · `2.5M` · `9200000`
 
 ---
 
@@ -255,7 +214,7 @@ Shivangi Joshi,   lockupp,  10.5M
 | Feature | 🌐 Public | 🔐 Admin |
 |:--------|:---------:|:--------:|
 | Browse Dashboard | ✅ | ✅ |
-| Search + Filter | ✅ | ✅ |
+| Search & Filter | ✅ | ✅ |
 | Export CSV | ✅ | ✅ |
 | Screenshot / Print | ✅ | ✅ |
 | Edit Contestants | ❌ | ✅ |
@@ -269,12 +228,12 @@ Shivangi Joshi,   lockupp,  10.5M
 
 ---
 
-## ⌨️ Keyboard Shortcuts
+## ⌨️ Shortcuts
 
 <div align="center">
 
-| Shortcut | Action |
-|:---------|:-------|
+| Keys | Action |
+|:-----|:-------|
 | `Ctrl + S` | Save to browser storage |
 | `Ctrl + Shift + S` | Download data.js |
 | `Ctrl + Shift + P` | Print / Save as PDF |
@@ -288,12 +247,10 @@ Shivangi Joshi,   lockupp,  10.5M
 
 <div align="center">
 
-| Browser | Supported |
-|:--------|:---------:|
-| Google Chrome | ✅ |
-| Microsoft Edge | ✅ |
-| Mozilla Firefox | ✅ |
-| Safari | ✅ |
+[![Chrome](https://img.shields.io/badge/Chrome-✅_Supported-4285F4?style=for-the-badge&logo=googlechrome&logoColor=white&labelColor=1a1a2e)](https://www.google.com/chrome/)
+[![Edge](https://img.shields.io/badge/Edge-✅_Supported-0078D7?style=for-the-badge&logo=microsoftedge&logoColor=white&labelColor=1a1a2e)](https://www.microsoft.com/edge)
+[![Firefox](https://img.shields.io/badge/Firefox-✅_Supported-FF7139?style=for-the-badge&logo=firefox&logoColor=white&labelColor=1a1a2e)](https://www.mozilla.org/firefox/)
+[![Safari](https://img.shields.io/badge/Safari-✅_Supported-006CFF?style=for-the-badge&logo=safari&logoColor=white&labelColor=1a1a2e)](https://www.apple.com/safari/)
 
 </div>
 
@@ -302,72 +259,79 @@ Shivangi Joshi,   lockupp,  10.5M
 ## 🔧 Troubleshooting
 
 <details>
-<summary><strong>📭 Updates not showing after I pushed data.js</strong></summary>
+<summary><b>🔄 Updates not showing after pushing data.js</b></summary>
 
-1. Confirm the file was replaced at `public/data/data.js` on GitHub — not somewhere else.
-2. Hard refresh: `Ctrl + Shift + R` (Windows/Linux) or `Cmd + Shift + R` (Mac).
-3. Allow 30–60 seconds for Vercel to finish deploying.
+<br/>
 
-</details>
-
-<details>
-<summary><strong>📸 Screenshot button not working</strong></summary>
-
-- Some ad blockers interfere with html2canvas. Try in an incognito/private window.
-- Use `Ctrl + P → Save as PDF` as a reliable alternative.
+- Confirm the file was replaced at **`public/data/data.js`** — not anywhere else in the repo
+- Hard refresh: `Ctrl + Shift + R` (Windows/Linux) · `Cmd + Shift + R` (Mac)
+- Vercel deploys take 30–60 seconds after a push — give it a moment
 
 </details>
 
 <details>
-<summary><strong>🌐 GitHub data fetch is failing</strong></summary>
+<summary><b>📸 Screenshot button not capturing correctly</b></summary>
 
-- The bundled `data.js` loads as a fallback — the site still works without the fetch.
-- Check the repo visibility: it must be **public** for raw GitHub URLs to work.
-- Look for the yellow warning banner at the top of the page.
+<br/>
+
+- Ad blockers sometimes interfere with html2canvas — try an **incognito window**
+- Reliable fallback: `Ctrl + P` → **Save as PDF** in any browser
+
+</details>
+
+<details>
+<summary><b>🌐 GitHub data fetch failing / yellow warning banner</b></summary>
+
+<br/>
+
+- The bundled `data.js` loads as an automatic fallback — the site still works
+- Check the repo visibility: it **must be public** for GitHub Raw URLs to work
+- Verify the raw URL is accessible: `https://raw.githubusercontent.com/MasterBillyButcher/realitytv2026/main/public/data/data.js`
 
 </details>
 
 ---
 
-## 🔒 Security Note
+## 🔒 Security
 
-This is a **client-side only** application. The admin password is hashed with SHA-256 in the browser and is never transmitted to a server. Admin controls are intended for trusted users who know the password — they are not a substitute for server-side authentication.
+This is a **fully client-side** application. The admin password is hashed with **SHA-256 in the browser** and never transmitted to any server. Admin controls are designed for trusted users who know the password — they are not a substitute for server-side authentication.
 
 ---
 
 ## 🤝 Contributing
 
-All contributions are welcome — bug fixes, new features, design improvements.
-
 ```bash
-# 1. Fork the repository on GitHub
+# 1. Fork on GitHub, then clone your fork
+git clone https://github.com/YOUR_USERNAME/realitytv2026.git
 
-# 2. Create your feature branch
+# 2. Create a feature branch
 git checkout -b feature/your-feature-name
 
-# 3. Commit your changes with a clear message
-git commit -m "feat: describe what you added"
+# 3. Make changes, then commit clearly
+git commit -m "feat: what you added and why"
 
 # 4. Push and open a Pull Request
 git push origin feature/your-feature-name
 ```
 
-Please keep PRs focused and include a short description of what changed and why.
+Keep PRs focused and include a short description of what changed and why. All skill levels welcome.
 
 ---
 
 ## 📄 License
 
-Distributed under the **MIT License** — see the `LICENSE` file for details.
+**MIT** — free to use, modify, and distribute. See `LICENSE` for details.
 
 ---
 
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://capsule-render.vercel.app/api?type=cylinder&color=0:040d1a,40:0d1b4b,70:1a0533,100:0d0221&height=160&section=footer&text=Fast%20%C2%B7%20Cinematic%20%C2%B7%20Static%20%C2%B7%20No%20Backend&fontSize=26&fontColor=c4b5fd&animation=fadeIn&fontAlignY=55&desc=Built%20with%20%E2%9D%A4%EF%B8%8F%20by%20BobMasterBillie&descAlignY=78&descSize=14&descColor=7c3aed"/>
+  <source media="(prefers-color-scheme: light)" srcset="https://capsule-render.vercel.app/api?type=cylinder&color=0:ede9fe,40:ddd6fe,70:c4b5fd,100:a78bfa&height=160&section=footer&text=Fast%20%C2%B7%20Cinematic%20%C2%B7%20Static%20%C2%B7%20No%20Backend&fontSize=26&fontColor=1e1b4b&animation=fadeIn&fontAlignY=55&desc=Built%20with%20%E2%9D%A4%EF%B8%8F%20by%20BobMasterBillie&descAlignY=78&descSize=14&descColor=4c1d95"/>
+  <img width="100%" src="https://capsule-render.vercel.app/api?type=cylinder&color=0:040d1a,40:0d1b4b,70:1a0533,100:0d0221&height=160&section=footer&text=Fast%20%C2%B7%20Cinematic%20%C2%B7%20Static%20%C2%B7%20No%20Backend&fontSize=26&fontColor=c4b5fd&animation=fadeIn&fontAlignY=55&desc=Built%20with%20%E2%9D%A4%EF%B8%8F%20by%20BobMasterBillie&descAlignY=78&descSize=14&descColor=7c3aed" alt="Footer"/>
+</picture>
+
 <div align="center">
 
-<img src="https://capsule-render.vercel.app/api?type=venom&color=0:0a1628,50:1a0a3e,100:0f0f1a&height=160&section=footer&text=Reality%20TV%20Intel%202026&fontSize=36&fontColor=ffffff&animation=fadeIn&fontAlignY=55&desc=Fast%20%C2%B7%20Cinematic%20%C2%B7%20Static%20%C2%B7%20Easy%20to%20Maintain&descAlignY=75&descSize=14&descColor=a78bfa" width="100%" alt="Footer Banner"/>
-
-**Built with ❤️ by [BobMasterBillie](https://github.com/MasterBillyButcher)**
-
-🌐 **[realitytv2026.vercel.app](https://realitytv2026.vercel.app/)**
+**[🌐 realitytv2026.vercel.app](https://realitytv2026.vercel.app/)** &nbsp;·&nbsp; **[GitHub ↗](https://github.com/MasterBillyButcher/realitytv2026)**
 
 </div>
