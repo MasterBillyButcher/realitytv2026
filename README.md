@@ -182,22 +182,6 @@ Supported formats: `430K` · `2.5M` · `8.7M` · `9200000`
 
 ---
 
-## 🔒 Admin
-
-Default password: **`realitytv2026`**
-
-### To change the password
-
-1. Open the site in your browser
-2. Open DevTools console (F12)
-3. Run: `adminHash('yournewpassword')`
-4. Copy the hash output
-5. Open `public/js/admin.js` and replace `ADMIN_HASH` value
-
-Sessions last **8 hours** and are stored in `sessionStorage`.
-
----
-
 ## 👥 Permissions
 
 | Feature | Public | Admin |
