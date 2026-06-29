@@ -12,7 +12,7 @@
    Default password: "realitytv2026"
    To change: adminHash('newpassword') in console → paste here
 ─────────────────────────────────────────────────────────── */
-const ADMIN_HASH = 'a3d7f2e1b8c4a9e6f5d2b1c8e4a7f3d9a2b5c6e8f1a4d7b3c9e2a6f5d8b1c4e7a';
+const ADMIN_HASH = '888d68953a26b1e1218b021a30c2ac217bad509e6d1ee01fea4bfb0a55b56e54';
 
 const ADMIN_SESSION_KEY = 'rtv_admin_session';
 const SESSION_HOURS     = 8;
