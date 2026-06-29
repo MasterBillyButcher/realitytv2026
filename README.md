@@ -34,7 +34,7 @@
 
 <div align="center">
 
-Track Instagram followers, rankings, and social growth for contestants across India's biggest reality TV shows — Bigg Boss, Lock Upp, Khatron Ke Khiladi, and more. Fully static. Zero backend. Data lives in one file.
+Track Instagram follower counts, live rankings, and social growth for contestants across India's biggest reality TV shows — Bigg Boss, Lock Upp, Khatron Ke Khiladi, and more. Fully static, zero backend. All data lives in a single versioned file on GitHub, served fresh on every page load via GitHub Raw CDN.
 
 </div>
 
@@ -78,8 +78,8 @@ Track Instagram followers, rankings, and social growth for contestants across In
 | ⚡ | **Vanilla JS ES2020** | Rendering, CRUD, filtering, sorting, export |
 | 🔤 | **Montserrat + Inter** | Typography system |
 | 📸 | **html2canvas** | 2× HD PNG panel screenshots |
-| 📡 | **GitHub Raw CDN** | Live data, cache-busted on every load |
-| 🚀 | **Vercel** | Static hosting + global edge CDN |
+| 📡 | **GitHub Raw CDN** | Live data delivery — URL is cache-busted with a timestamp query param on every page load, bypassing browser and CDN cache |
+| 🚀 | **Vercel** | Static hosting + global edge CDN; `vercel.json` sets `Cache-Control: no-store` on `data.js` |
 
 </div>
 
@@ -94,7 +94,7 @@ Track Instagram followers, rankings, and social growth for contestants across In
 │   ├── 🎨 css/styles.css          # Design system · tokens · themes · animations
 │   ├── 📦 data/data.js            # ← ALL data lives here · edit to update
 │   └── ⚡ js/
-│       ├── 🛡️  utils.js           # Sanitization · validation · debounce
+│       ├── 🛡️  utils.js           # Input sanitization · XSS prevention · debounce
 │       ├── 🖥️  app.js             # Rendering · CRUD · growth logic
 │       ├── 📤 export.js           # CSV · JSON · screenshot
 │       ├── 💾 persistence.js      # LocalStorage · bulk import · activity log
@@ -104,6 +104,43 @@ Track Instagram followers, rankings, and social growth for contestants across In
 ├── ⚙️  vercel.json                 # Routing + cache headers
 └── 📖 README.md
 ```
+
+---
+
+## 📦 data.js Schema
+
+All show and contestant data lives in `public/data/data.js`. It exports a single `window.RTVI_DATA` object:
+
+```js
+window.RTVI_DATA = {
+  shows: {
+    "kkk": {                        // showKey — used in bulk import & filters
+      name: "Khatron Ke Khiladi",   // Display name
+      season: "14",                 // Season string
+      year: 2026,                   // Broadcast year
+      active: true                  // false = archived, hidden from default view
+    }
+  },
+  contestants: [
+    {
+      id: "c_001",                  // Unique ID — do not change after creation
+      name: "Gaurav Khanna",        // Display name
+      showKey: "kkk",               // Must match a key in shows{}
+      status: "active",             // "active" | "eliminated" | "winner"
+      gender: "male",               // "male" | "female" | "other"
+      instagram: "@gauravkhanna",   // Handle without URL
+      followers: {
+        before: "430K",             // Followers before the show started
+        lastChecked: "1.2M",        // Last manually updated value
+        current: "1.4M"            // Latest known count
+      },
+      hidden: false                 // true = soft-deleted, not shown to public
+    }
+  ]
+};
+```
+
+> ⚠️ All `id` values must be unique. The `showKey` in each contestant must match an existing key in `shows`. Missing or mismatched keys will cause the contestant to be skipped on render.
 
 ---
 
@@ -136,9 +173,11 @@ All data lives in `public/data/data.js` — one file, no database, no migrations
   🌍 Everyone sees the update on next page load ✓
 ```
 
+> ⚠️ **Concurrent edits:** This project has no real-time sync. If two admins push `data.js` at the same time, the last push wins and overwrites the other. Coordinate edits manually or use Git's merge tools to resolve conflicts.
+
 ### ⚡ Bulk Follower Import
 
-Go to **Export → Bulk Follower Import** and paste:
+Go to **Export → Bulk Follower Import** and paste one contestant per line:
 
 ```
 Gaurav Khanna,   kkk,      2.1M
@@ -146,7 +185,18 @@ Rubina Dilaik,   kkk,      8.6M
 Shivangi Joshi,  lockupp,  10.5M
 ```
 
-> **Format:** `Name, showKey, followers` — accepts `430K` · `2.5M` · `9200000`
+**Format:** `Name, showKey, followers`
+
+| Input | Valid? | Notes |
+|:------|:------:|:------|
+| `2.1M` | ✅ | Millions shorthand |
+| `430K` | ✅ | Thousands shorthand |
+| `9200000` | ✅ | Raw number |
+| `2,100,000` | ❌ | Commas not supported — use `2.1M` |
+| `2.1 M` | ❌ | No spaces between value and unit |
+| `kkk_new` | ❌ | showKey must already exist in data.js |
+
+Lines that fail validation are skipped with a console warning. No partial imports — fix the line and re-run.
 
 ---
 
@@ -192,6 +242,8 @@ Shivangi Joshi,  lockupp,  10.5M
 
 </div>
 
+> Modern evergreen browsers only. IE11 is not supported. JavaScript must be enabled — no progressive enhancement fallback is provided.
+
 ---
 
 ## 🔧 Troubleshooting
@@ -200,18 +252,11 @@ Shivangi Joshi,  lockupp,  10.5M
 <summary>🔄 <b>Changes not showing after pushing data.js</b></summary>
 <br/>
 
-- Confirm the file was pushed to exactly `public/data/data.js`
-- Hard refresh: `Ctrl + Shift + R` (Windows) · `Cmd + Shift + R` (Mac)
-- Vercel deploys take 30–60 seconds after a push
-
-</details>
-
-<details>
-<summary>📸 <b>Screenshot not capturing correctly</b></summary>
-<br/>
-
-- Ad blockers can interfere with html2canvas — try an incognito window
-- Fallback: `Ctrl + P → Save as PDF` works in every browser
+1. Confirm the file was pushed to exactly `public/data/data.js` — not the repo root
+2. Hard refresh: `Ctrl + Shift + R` (Windows/Linux) · `Cmd + Shift + R` (Mac)
+3. Vercel deploys take 30–60 seconds — wait and refresh again
+4. Check the Vercel dashboard for a failed deploy (build log → Deployments tab)
+5. If the yellow warning banner appears, the GitHub Raw fetch failed — the bundled `data.js` is serving as fallback (site still works, but may be stale)
 
 </details>
 
@@ -219,8 +264,38 @@ Shivangi Joshi,  lockupp,  10.5M
 <summary>🌐 <b>Yellow warning banner / GitHub fetch failing</b></summary>
 <br/>
 
-- The bundled `data.js` loads as automatic fallback — the site still works
-- Repo must be **public** for GitHub Raw URLs to be accessible
+The dashboard fetches live data from:
+```
+https://raw.githubusercontent.com/MasterBillyButcher/realitytv2026/main/public/data/data.js
+```
+
+Check the following:
+- Repo visibility must be **public** — private repos return `404` on Raw URLs
+- The file path must be exactly `public/data/data.js` (case-sensitive)
+- GitHub Raw occasionally rate-limits unauthenticated requests — the bundled fallback handles this automatically
+- Open the raw URL in a browser tab to verify it returns valid JS
+
+</details>
+
+<details>
+<summary>📸 <b>Screenshot not capturing correctly</b></summary>
+<br/>
+
+- Ad blockers and privacy extensions can interfere with html2canvas — try an **incognito window**
+- Some browsers restrict canvas operations on cross-origin images — ensure all images load from the same origin
+- Reliable fallback: `Ctrl + P → Save as PDF` works in every supported browser
+
+</details>
+
+<details>
+<summary>⚡ <b>Bulk import lines being skipped</b></summary>
+<br/>
+
+Each line must follow `Name, showKey, followers` exactly:
+- No commas in the name field
+- `showKey` must match an existing key in `shows{}` (case-sensitive)
+- Follower value must be `430K`, `2.5M`, or a plain integer — no commas, no spaces before the unit
+- Check the browser console (`F12 → Console`) for per-line error messages
 
 </details>
 
@@ -228,20 +303,38 @@ Shivangi Joshi,  lockupp,  10.5M
 
 ## 🔒 Security
 
-Client-side only. The admin password is **SHA-256 hashed in the browser** — nothing is ever sent to a server. Intended for trusted users; not a substitute for server-side authentication.
+| Aspect | Detail |
+|:-------|:-------|
+| 🔐 **Auth method** | Password hashed with SHA-256 in the browser via Web Crypto API — never transmitted to any server |
+| ⏱️ **Session duration** | Admin session persists for the browser tab's lifetime. Closing the tab or window ends the session |
+| 🚪 **Logout** | Click the 🔒 Admin button again, or close the tab |
+| 🛡️ **XSS prevention** | All user inputs are sanitized in `utils.js` before being written to the DOM |
+| ⚠️ **Limitations** | No brute-force protection, no rate limiting, no HTTPS enforcement beyond Vercel's default. Intended for **trusted, known users** only — not a hardened auth system |
 
 ---
 
 ## 🤝 Contributing
 
 ```bash
+# Fork on GitHub, then:
+git clone https://github.com/YOUR_USERNAME/realitytv2026.git
 git checkout -b feature/your-feature
-git commit -m "feat: describe what you changed"
+git commit -m "feat: short description of what and why"
 git push origin feature/your-feature
-# → open a Pull Request
+# → open a Pull Request against main
 ```
 
-All skill levels welcome. Keep PRs focused with a clear description.
+**Guidelines:**
+- One concern per PR — don't bundle unrelated changes
+- Test in Chrome and Firefox before submitting
+- If fixing a bug, include steps to reproduce in the PR description
+- If adding a feature, explain the use case
+
+---
+
+## 📋 Changelog
+
+See [`CHANGELOG.md`](CHANGELOG.md) for a full version history and release notes.
 
 ---
 
