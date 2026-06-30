@@ -1,6 +1,6 @@
 /* ═══════════════════════════════════════════════════════════
    data.js  —  Reality TV Intelligence Dashboard 2026
-   Last saved: 30 Jun 2026, 02:51
+   Last saved: 30 Jun 2026, 22:50
 
    HOW TO UPDATE EVERYONE:
    Upload this file to GitHub at:  public/data/data.js
@@ -356,8 +356,8 @@ window.DB = {
       "follBeforeDate": "June 24",
       "follLast": "10.0M",
       "follLastDate": "June 24",
-      "follCur": "N/V",
-      "follCurDate": "N/V",
+      "follCur": "10.1M",
+      "follCurDate": "June 30",
       "knownFor": "Naira in YRKKH; Bade Achhe Lagte Hain 4; ex-boyfriend Kushal Tandon (now Alliance India)",
       "history": "Lock Upp S2 debut",
       "id": 1
@@ -374,8 +374,8 @@ window.DB = {
       "follBeforeDate": "June 24",
       "follLast": "370.0K",
       "follLastDate": "June 24",
-      "follCur": "N/V",
-      "follCurDate": "N/V",
+      "follCur": "371.0K",
+      "follCurDate": "June 30",
       "knownFor": "Bade Acche Lagte Hain lead; dramatic weight-loss transformation",
       "history": "N/V",
       "id": 6
@@ -392,8 +392,8 @@ window.DB = {
       "follBeforeDate": "June 24",
       "follLast": "944.0K",
       "follLastDate": "June 24",
-      "follCur": "N/V",
-      "follCurDate": "",
+      "follCur": "945.0K",
+      "follCurDate": "June 30",
       "knownFor": "Desi Bling fame\n\n",
       "history": "",
       "id": 15
@@ -410,8 +410,8 @@ window.DB = {
       "follBeforeDate": "June 24",
       "follLast": "4.3M",
       "follLastDate": "June 24",
-      "follCur": "N/V",
-      "follCurDate": "",
+      "follCur": "4.3M",
+      "follCurDate": "June 30",
       "knownFor": " Sasural Simar Ka, Kundali Bhagya; awards for popular roles.\n\n",
       "history": " TV actor; limited prior reality.\n\n",
       "id": 16
@@ -428,9 +428,9 @@ window.DB = {
       "follBeforeDate": "June 24",
       "follLast": "3.1M",
       "follLastDate": "June 24",
-      "follCur": "N/V",
-      "follCurDate": "",
-      "knownFor": "MTV Splitsvilla X6 (paired with Yogesh Rawat), modeling, pageants (Miss Universe India participation buzz), fashion &amp; lifestyle content.\n\n",
+      "follCur": "3.2M",
+      "follCurDate": "June 30",
+      "knownFor": "MTV Splitsvilla X6 (paired with Yogesh Rawat), modeling, pageants (Miss Universe India participation buzz), fashion &amp;amp; lifestyle content.\n\n",
       "history": "MTV Splitsvilla Season 16 / X6 (2026) – Major breakout role.\nPageant background and modeling shows.\nNew to big OTT prison-format shows like Lock Upp.\n\n",
       "id": 17
     },
@@ -446,9 +446,9 @@ window.DB = {
       "follBeforeDate": "June 24",
       "follLast": "1.9M",
       "follLastDate": "June 24",
-      "follCur": "N/V",
-      "follCurDate": "",
-      "knownFor": "MTV Splitsvilla X6, Roadies XX ; fitness & lifestyle content.\n\n",
+      "follCur": "2.0M",
+      "follCurDate": "June 30",
+      "knownFor": "MTV Splitsvilla X6, Roadies XX ; fitness &amp; lifestyle content.\n\n",
       "history": "MTV Splitsvilla Season 16/X6 (major breakout), Roadies appearances.\n\n",
       "id": 18
     },
@@ -464,8 +464,8 @@ window.DB = {
       "follBeforeDate": "June 24",
       "follLast": "510.0K",
       "follLastDate": "June 24",
-      "follCur": "N/V",
-      "follCurDate": "",
+      "follCur": "511.0K",
+      "follCurDate": "June 30",
       "knownFor": "Bold media appearances, family controversies.\nWife Of GOVINDA\n",
       "history": "New to this format; public figure via marriage.\n\n",
       "id": 19
@@ -482,8 +482,8 @@ window.DB = {
       "follBeforeDate": "June 24",
       "follLast": "3.8M",
       "follLastDate": "June 24",
-      "follCur": "N/V",
-      "follCurDate": "",
+      "follCur": "3.8M",
+      "follCurDate": "June 30",
       "knownFor": "Yeh Rishta Kya Kehlata Hai, Bepannah, Kuch Toh Hai.\n\n",
       "history": "Primarily scripted TV; limited prior reality TV experience.\n\n",
       "id": 21
@@ -500,8 +500,8 @@ window.DB = {
       "follBeforeDate": "June 27",
       "follLast": "941.0K",
       "follLastDate": "June 27",
-      "follCur": "N/V",
-      "follCurDate": "",
+      "follCur": "994.0K",
+      "follCurDate": "June 30",
       "knownFor": "Acting and digital content.\n\n",
       "history": "Limited prior reality; actress appearances.\n\n",
       "id": 27
@@ -518,8 +518,8 @@ window.DB = {
       "follBeforeDate": "June 27",
       "follLast": "2.1M",
       "follLastDate": "June 27",
-      "follCur": "N/V",
-      "follCurDate": "",
+      "follCur": "2.2M",
+      "follCurDate": "June 30",
       "knownFor": "Social media reels, prior shows like Rise and Fall.\n\n",
       "history": "Rise and Fall; Lock Upp entry\n\n",
       "id": 28
@@ -536,8 +536,8 @@ window.DB = {
       "follBeforeDate": "June 27",
       "follLast": "116.0K",
       "follLastDate": "June 27",
-      "follCur": "N/V",
-      "follCurDate": "",
+      "follCur": "117.0K",
+      "follCurDate": "June 30",
       "knownFor": "Business, family/public appearances\n\nWife of Ashneer Grover; fintech background (BharatPe/ZeroPe).\n\n",
       "history": "Limited; reality debut\n\n",
       "id": 29
@@ -554,8 +554,8 @@ window.DB = {
       "follBeforeDate": "June 27",
       "follLast": "420.0K",
       "follLastDate": "June 27",
-      "follCur": "N/V",
-      "follCurDate": "",
+      "follCur": "425.0K",
+      "follCurDate": "June 30",
       "knownFor": "Dance, family cricket connections.\n\n",
       "history": "Limited reality prior\n\n",
       "id": 30
@@ -572,8 +572,8 @@ window.DB = {
       "follBeforeDate": "June 27",
       "follLast": "26.6M",
       "follLastDate": "June 27",
-      "follCur": "N/V",
-      "follCurDate": "",
+      "follCur": "26.6M",
+      "follCurDate": "June 30",
       "knownFor": "Lip-sync, comedy, fashion reels.\n\nMassive TikTok/Instagram following\n\n",
       "history": "Social media; reality debut\n\n",
       "id": 31
@@ -590,7 +590,7 @@ window.DB = {
       "follBeforeDate": "June 27",
       "follLast": "1.4M",
       "follLastDate": "June 27",
-      "follCur": "N/V",
+      "follCur": "1.4M",
       "follCurDate": "",
       "knownFor": "MTV Roadies, Squid Game India (winner), other shows.\n\n",
       "history": "Roadies Revolution (wildcard), Squid Game India, music videos\n\n",
@@ -608,8 +608,8 @@ window.DB = {
       "follBeforeDate": "June 27",
       "follLast": "435.0K",
       "follLastDate": "June 27",
-      "follCur": "N/V",
-      "follCurDate": "",
+      "follCur": "434.0K",
+      "follCurDate": "June 30",
       "knownFor": "Fashion critique, social media influence, style reels, and appearances in reality formats\n\n",
       "history": "The Traitors Season 1; digital creator with growing reality TV footprint. Expected to add drama through opinions and fashion-related tasks in Lock Upp\n\n",
       "id": 33
@@ -908,3 +908,5 @@ window.DB = {
   "traitors": [],
   "bb20": []
 };
+
+window.HIDDEN_SHOWS_INIT = [];
