@@ -21,15 +21,9 @@ function _rawUrl() {
 
 /* ─── LOAD FROM GITHUB ──────────────────────────────────── */
 async function loadDataFromGitHub() {
-  const url      = _rawUrl();
-  const statusEl = document.getElementById('data-load-status');
+  const url = _rawUrl();
 
   try {
-    if (statusEl) {
-      statusEl.style.display = 'block';
-      statusEl.textContent   = '⟳ Loading latest data from GitHub…';
-    }
-
     const res = await fetch(url + '?cb=' + Date.now(), { cache: 'no-cache' });
     if (!res.ok) throw new Error(`HTTP ${res.status} — ${res.statusText}`);
 
@@ -37,17 +31,11 @@ async function loadDataFromGitHub() {
     // eslint-disable-next-line no-new-func
     new Function(code)();
 
-    if (statusEl) { statusEl.textContent = ''; statusEl.style.display = 'none'; }
     console.log('[DataLoader] ✓ Loaded from GitHub:', url);
     return true;
 
   } catch (err) {
     console.warn('[DataLoader] GitHub fetch failed, using bundled data.js:', err.message);
-    if (statusEl) {
-      statusEl.textContent = '⚠ Using local data — GitHub unreachable';
-      statusEl.style.color = 'var(--gld)';
-      setTimeout(() => { statusEl.style.display = 'none'; }, 4000);
-    }
     return false;
   }
 }
