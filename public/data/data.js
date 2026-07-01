@@ -1,6 +1,6 @@
 /* ═══════════════════════════════════════════════════════════
    data.js  —  Reality TV Intelligence Dashboard 2026
-   Last saved: 01 Jul 2026, 20:24
+   Last saved: 02 Jul 2026, 03:46
 
    HOW TO UPDATE EVERYONE:
    Upload this file to GitHub at:  public/data/data.js
@@ -777,9 +777,9 @@ window.DB = {
       "follBefore": "10.0M",
       "follBeforeDate": "June 24",
       "follLast": "10.0M",
-      "follLastDate": "June 24",
-      "follCur": "10.1M",
-      "follCurDate": "June 30",
+      "follLastDate": "June 30",
+      "follCur": "10114184",
+      "follCurDate": "2 Jul 2026",
       "knownFor": "Naira in YRKKH; Bade Achhe Lagte Hain 4; ex-boyfriend Kushal Tandon (now Alliance India)",
       "history": "Lock Upp S2 debut",
       "id": 1,
@@ -825,9 +825,9 @@ window.DB = {
       "follBefore": "370.0K",
       "follBeforeDate": "June 24",
       "follLast": "370.0K",
-      "follLastDate": "June 24",
-      "follCur": "371.0K",
-      "follCurDate": "June 30",
+      "follLastDate": "June 30",
+      "follCur": "371650",
+      "follCurDate": "2 Jul 2026",
       "knownFor": "Bade Acche Lagte Hain lead; dramatic weight-loss transformation",
       "history": "N/V",
       "id": 6,
@@ -881,9 +881,9 @@ window.DB = {
       "follBefore": "944.0K",
       "follBeforeDate": "June 24",
       "follLast": "944.0K",
-      "follLastDate": "June 24",
-      "follCur": "945.0K",
-      "follCurDate": "June 30",
+      "follLastDate": "June 30",
+      "follCur": "954567",
+      "follCurDate": "2 Jul 2026",
       "knownFor": "Desi Bling fame\n\n",
       "history": "",
       "id": 15,
@@ -929,9 +929,9 @@ window.DB = {
       "follBefore": "4.3M",
       "follBeforeDate": "June 24",
       "follLast": "4.3M",
-      "follLastDate": "June 24",
-      "follCur": "4.3M",
-      "follCurDate": "June 30",
+      "follLastDate": "June 30",
+      "follCur": "4363946",
+      "follCurDate": "2 Jul 2026",
       "knownFor": " Sasural Simar Ka, Kundali Bhagya; awards for popular roles.\n\n",
       "history": " TV actor; limited prior reality.\n\n",
       "id": 16,
@@ -977,9 +977,9 @@ window.DB = {
       "follBefore": "1.9M",
       "follBeforeDate": "June 24",
       "follLast": "1.9M",
-      "follLastDate": "June 24",
-      "follCur": "2.0M",
-      "follCurDate": "June 30",
+      "follLastDate": "June 30",
+      "follCur": "2085211",
+      "follCurDate": "2 Jul 2026",
       "knownFor": "MTV Splitsvilla X6, Roadies XX ; fitness &amp; lifestyle content.\n\n",
       "history": "MTV Splitsvilla Season 16/X6 (major breakout), Roadies appearances.\n\n",
       "id": 18,
@@ -1013,9 +1013,9 @@ window.DB = {
       "follBefore": "3.1M",
       "follBeforeDate": "June 24",
       "follLast": "3.1M",
-      "follLastDate": "June 24",
-      "follCur": "3.2M",
-      "follCurDate": "June 30",
+      "follLastDate": "June 30",
+      "follCur": "3302698",
+      "follCurDate": "2 Jul 2026",
       "knownFor": "MTV Splitsvilla X6 (paired with Yogesh Rawat), modeling, pageants (Miss Universe India participation buzz), fashion &amp;amp; lifestyle content.\n\n",
       "history": "MTV Splitsvilla Season 16 / X6 (2026) – Major breakout role.\nPageant background and modeling shows.\nNew to big OTT prison-format shows like Lock Upp.\n\n",
       "id": 17,
@@ -1049,9 +1049,9 @@ window.DB = {
       "follBefore": "510.0K",
       "follBeforeDate": "June 24",
       "follLast": "510.0K",
-      "follLastDate": "June 24",
-      "follCur": "511.0K",
-      "follCurDate": "June 30",
+      "follLastDate": "June 30",
+      "follCur": "513412",
+      "follCurDate": "2 Jul 2026",
       "knownFor": "Bold media appearances, family controversies.\nWife Of GOVINDA\n",
       "history": "New to this format; public figure via marriage.\n\n",
       "id": 19,
@@ -1093,9 +1093,9 @@ window.DB = {
       "follBefore": "3.8M",
       "follBeforeDate": "June 24",
       "follLast": "3.8M",
-      "follLastDate": "June 24",
-      "follCur": "3.8M",
-      "follCurDate": "June 30",
+      "follLastDate": "June 30",
+      "follCur": "3911958",
+      "follCurDate": "2 Jul 2026",
       "knownFor": "Yeh Rishta Kya Kehlata Hai, Bepannah, Kuch Toh Hai.\n\n",
       "history": "Primarily scripted TV; limited prior reality TV experience.\n\n",
       "id": 21,
@@ -1141,9 +1141,9 @@ window.DB = {
       "follBefore": "941.0K",
       "follBeforeDate": "June 27",
       "follLast": "941.0K",
-      "follLastDate": "June 27",
-      "follCur": "994.0K",
-      "follCurDate": "June 30",
+      "follLastDate": "June 30",
+      "follCur": "1049242",
+      "follCurDate": "2 Jul 2026",
       "knownFor": "Acting and digital content.\n\n",
       "history": "Limited prior reality; actress appearances.\n\n",
       "id": 27,
@@ -1217,9 +1217,9 @@ window.DB = {
       "follBefore": "116.0K",
       "follBeforeDate": "June 27",
       "follLast": "116.0K",
-      "follLastDate": "June 27",
-      "follCur": "117.0K",
-      "follCurDate": "June 30",
+      "follLastDate": "June 30",
+      "follCur": "117196",
+      "follCurDate": "2 Jul 2026",
       "knownFor": "Business, family/public appearances\n\nWife of Ashneer Grover; fintech background (BharatPe/ZeroPe).\n\n",
       "history": "Limited; reality debut\n\n",
       "id": 29,
@@ -1261,9 +1261,9 @@ window.DB = {
       "follBefore": "420.0K",
       "follBeforeDate": "June 27",
       "follLast": "420.0K",
-      "follLastDate": "June 27",
-      "follCur": "425.0K",
-      "follCurDate": "June 30",
+      "follLastDate": "June 30",
+      "follCur": "426119",
+      "follCurDate": "2 Jul 2026",
       "knownFor": "Dance, family cricket connections.\n\n",
       "history": "Limited reality prior\n\n",
       "id": 30,
@@ -1293,9 +1293,9 @@ window.DB = {
       "follBefore": "26.6M",
       "follBeforeDate": "June 27",
       "follLast": "26.6M",
-      "follLastDate": "June 27",
-      "follCur": "26.6M",
-      "follCurDate": "June 30",
+      "follLastDate": "June 30",
+      "follCur": "26665845",
+      "follCurDate": "2 Jul 2026",
       "knownFor": "Lip-sync, comedy, fashion reels.\n\nMassive TikTok/Instagram following\n\n",
       "history": "Social media; reality debut\n\n",
       "id": 31,
@@ -1345,9 +1345,9 @@ window.DB = {
       "follBefore": "1.4M",
       "follBeforeDate": "June 27",
       "follLast": "1.4M",
-      "follLastDate": "June 27",
-      "follCur": "1.4M",
-      "follCurDate": "",
+      "follLastDate": "2 Jul 2026",
+      "follCur": "1446674",
+      "follCurDate": "2 Jul 2026",
       "knownFor": "MTV Roadies, Squid Game India (winner), other shows.\n\n",
       "history": "Roadies Revolution (wildcard), Squid Game India, music videos\n\n",
       "id": 32,
@@ -1381,9 +1381,9 @@ window.DB = {
       "follBefore": "435.0K",
       "follBeforeDate": "June 27",
       "follLast": "435.0K",
-      "follLastDate": "June 27",
-      "follCur": "434.0K",
-      "follCurDate": "June 30",
+      "follLastDate": "June 30",
+      "follCur": "437433",
+      "follCurDate": "2 Jul 2026",
       "knownFor": "Fashion critique, social media influence, style reels, and appearances in reality formats\n\n",
       "history": "The Traitors Season 1; digital creator with growing reality TV footprint. Expected to add drama through opinions and fashion-related tasks in Lock Upp\n\n",
       "id": 33,
@@ -1428,8 +1428,8 @@ window.DB = {
       "follBeforeDate": "June 23",
       "follLast": "3.9M",
       "follLastDate": "30 Jun 2026",
-      "follCur": "N/V",
-      "follCurDate": "",
+      "follCur": "4001604",
+      "follCurDate": "2 Jul 2026",
       "knownFor": "Bhojpuri superstar; Lok Sabha MP BJP Gorakhpur; Maa Behen (Netflix 2026)",
       "history": "Bigg Boss 1 (2006); Survivor India 2012; Jhalak S5",
       "id": 1,
@@ -1469,146 +1469,6 @@ window.DB = {
       ]
     },
     {
-      "name": "Daisy Shah",
-      "gender": "F",
-      "status": "CONFIRMED",
-      "profession": "Actress / Dancer",
-      "tier": "",
-      "ig": "@shahdaisy",
-      "photo": "https://i.postimg.cc/63qDP2X3/Daisy-Shah.jpg",
-      "follBefore": "8.3M",
-      "follBeforeDate": "June 23",
-      "follLast": "8.3M",
-      "follLastDate": "June 23",
-      "follCur": "N/V",
-      "follCurDate": "",
-      "knownFor": "Jai Ho (2014); Race 3 (2018); dancer",
-      "history": "N/V",
-      "id": 2,
-      "bio": [
-        {
-          "heading": "Personal Details",
-          "html": "<ul><li><strong>Born:</strong> August 25, 1984 (age 41)</li><li><strong>Birthplace:</strong> Mumbai, Maharashtra, India</li><li><strong>Family:</strong> Mangalorean Catholic family</li><li><strong>Spouse:</strong> Unmarried</li></ul>"
-        },
-        {
-          "heading": "Early Life & Career Beginnings",
-          "html": "<p>Started as a background dancer and choreographer before transitioning to acting.</p>"
-        },
-        {
-          "heading": "Film Career",
-          "html": "<ul><li><em>Jai Ho</em> (2014): Rinku — Bollywood debut opposite Salman Khan</li><li><em>Race 3</em> (2018): Sanjana — major Bollywood role</li><li>Also worked in Kannada cinema</li><li>Previously worked as a choreographer (assistant to Ganesh Acharya)</li></ul>"
-        },
-        {
-          "heading": "Reality Television Journey",
-          "html": "<ul><li><em>Alliance India</em> (Prime Video, 2026): Contestant — paired with Zaid Darbar</li></ul>"
-        },
-        {
-          "heading": "Personal Life",
-          "html": "<p>Unmarried. Close to the Salman Khan circle.</p>"
-        },
-        {
-          "heading": "Trivia / Fun Facts",
-          "html": "<ul><li>Started as a background dancer before Bollywood</li><li>Paired with Zaid Darbar in Alliance as close friends</li></ul>"
-        }
-      ]
-    },
-    {
-      "name": "Kushal Tandon",
-      "gender": "M",
-      "status": "CONFIRMED",
-      "profession": "Television Actor",
-      "tier": "",
-      "ig": "@therealkushaltandon",
-      "photo": "https://i.postimg.cc/j52G1wbn/Kushal-Tandon.jpg",
-      "follBefore": "1.5M",
-      "follBeforeDate": "June 23",
-      "follLast": "1.5M",
-      "follLastDate": "June 23",
-      "follCur": "N/V",
-      "follCurDate": "",
-      "knownFor": "Beyhadh; Barsatein; BB7; ex-girlfriend Shivangi Joshi (simultaneously in Lock Upp S2)",
-      "history": "Bigg Boss 7 (2013)",
-      "id": 3,
-      "bio": [
-        {
-          "heading": "Personal Details",
-          "html": "<ul><li><strong>Born:</strong> March 28, 1985 (age 41)</li><li><strong>Birthplace:</strong> Lucknow, Uttar Pradesh, India</li><li><strong>Spouse:</strong> Unmarried</li></ul>"
-        },
-        {
-          "heading": "Early Life & Career Beginnings",
-          "html": "<p>Moved to Mumbai for acting; started with modeling before TV.</p>"
-        },
-        {
-          "heading": "Television Career",
-          "html": "<ul><li><em>Ek Hazaaron Mein Meri Behna Hai</em> (2011–2013): Virat — breakout role</li><li><em>Beyhadh</em> (2016–2017): Arjun — lead</li></ul>"
-        },
-        {
-          "heading": "Professional Career (Outside Entertainment)",
-          "html": "<p>Restaurant business in Mumbai.</p>"
-        },
-        {
-          "heading": "Reality Television Journey",
-          "html": "<ul><li><em>Bigg Boss 7</em> (2013): Contestant</li><li><em>Khatron Ke Khiladi 5</em> (2014): Contestant</li><li><em>Alliance India</em> (Prime Video, 2026): Contestant — paired with Arslan Goni</li></ul>"
-        },
-        {
-          "heading": "Personal Life",
-          "html": "<p>Previously dated actress Gauahar Khan. Bold and outspoken personality.</p>"
-        },
-        {
-          "heading": "Trivia / Fun Facts",
-          "html": "<ul><li>Has proven his mettle in reality shows (Bigg Boss 7 and KKK 5)</li><li>Known for bold and outspoken personality</li><li>Teams up with Arslan Goni in Alliance</li></ul>"
-        }
-      ]
-    },
-    {
-      "name": "Ruhee Dosani",
-      "gender": "F",
-      "status": "CONFIRMED",
-      "profession": "Digital Creator",
-      "tier": "",
-      "ig": "@ruheedosani",
-      "photo": "https://i.postimg.cc/SsRwP2h6/Ruhee-Dosani.jpg",
-      "follBefore": "2.4M",
-      "follBeforeDate": "June 23",
-      "follLast": "2.4M",
-      "follLastDate": "N/V",
-      "follCur": "N/V",
-      "follCurDate": "",
-      "knownFor": "US-based creator; Diljit Dosanjh shared her viral reel",
-      "history": "N/V",
-      "id": 5,
-      "bio": [
-        {
-          "heading": "Personal Details",
-          "html": "<ul><li><strong>Birthplace:</strong> United States (Indian-American)</li><li><strong>Family:</strong> Indian-American</li></ul>"
-        },
-        {
-          "heading": "Early Life & Career Beginnings",
-          "html": "<p>Digital creator from the US who gained widespread fame after Diljit Dosanjh shared one of her reels.</p>"
-        },
-        {
-          "heading": "Music Career / Other Entertainment",
-          "html": "<p>Dance and content creation; known for Indian dance reels.</p>"
-        },
-        {
-          "heading": "Professional Career (Outside Entertainment)",
-          "html": "<p>Full-time digital content creator.</p>"
-        },
-        {
-          "heading": "Reality Television Journey",
-          "html": "<ul><li><em>Alliance India</em> (Prime Video, 2026): Contestant — paired with Niti Taylor</li></ul>"
-        },
-        {
-          "heading": "Personal Life",
-          "html": "<p>US-based; represents the Indian-American digital creator community.</p>"
-        },
-        {
-          "heading": "Trivia / Fun Facts",
-          "html": "<ul><li>Gained fame when Diljit Dosanjh shared her reel</li><li>Represents the international digital creator space in Alliance</li></ul>"
-        }
-      ]
-    },
-    {
       "name": "Riva Kishan",
       "gender": "F",
       "status": "CONFIRMED",
@@ -1620,8 +1480,8 @@ window.DB = {
       "follBeforeDate": "June 23",
       "follLast": "1.6M",
       "follLastDate": "June 23",
-      "follCur": "N/V",
-      "follCurDate": "",
+      "follCur": "1627034",
+      "follCurDate": "2 Jul 2026",
       "knownFor": "Daughter of Ravi Kishan; Bhojpuri actress; competing alongside father",
       "history": "N/V",
       "id": 6,
@@ -1653,6 +1513,94 @@ window.DB = {
       ]
     },
     {
+      "name": "Daisy Shah",
+      "gender": "F",
+      "status": "CONFIRMED",
+      "profession": "Actress / Dancer",
+      "tier": "",
+      "ig": "@shahdaisy",
+      "photo": "https://i.postimg.cc/63qDP2X3/Daisy-Shah.jpg",
+      "follBefore": "8.3M",
+      "follBeforeDate": "June 23",
+      "follLast": "8.3M",
+      "follLastDate": "June 23",
+      "follCur": "8350387",
+      "follCurDate": "2 Jul 2026",
+      "knownFor": "Jai Ho (2014); Race 3 (2018); dancer",
+      "history": "N/V",
+      "id": 2,
+      "bio": [
+        {
+          "heading": "Personal Details",
+          "html": "<ul><li><strong>Born:</strong> August 25, 1984 (age 41)</li><li><strong>Birthplace:</strong> Mumbai, Maharashtra, India</li><li><strong>Family:</strong> Mangalorean Catholic family</li><li><strong>Spouse:</strong> Unmarried</li></ul>"
+        },
+        {
+          "heading": "Early Life & Career Beginnings",
+          "html": "<p>Started as a background dancer and choreographer before transitioning to acting.</p>"
+        },
+        {
+          "heading": "Film Career",
+          "html": "<ul><li><em>Jai Ho</em> (2014): Rinku — Bollywood debut opposite Salman Khan</li><li><em>Race 3</em> (2018): Sanjana — major Bollywood role</li><li>Also worked in Kannada cinema</li><li>Previously worked as a choreographer (assistant to Ganesh Acharya)</li></ul>"
+        },
+        {
+          "heading": "Reality Television Journey",
+          "html": "<ul><li><em>Alliance India</em> (Prime Video, 2026): Contestant — paired with Zaid Darbar</li></ul>"
+        },
+        {
+          "heading": "Personal Life",
+          "html": "<p>Unmarried. Close to the Salman Khan circle.</p>"
+        },
+        {
+          "heading": "Trivia / Fun Facts",
+          "html": "<ul><li>Started as a background dancer before Bollywood</li><li>Paired with Zaid Darbar in Alliance as close friends</li></ul>"
+        }
+      ]
+    },
+    {
+      "name": "Zaid Darbar",
+      "gender": "M",
+      "status": "CONFIRMED",
+      "profession": "Influencer / Actor / Musician ",
+      "tier": "",
+      "ig": "@zaid_darbar",
+      "photo": "https://i.postimg.cc/0Q4L1kk6/Zaid-Darbar.jpg",
+      "follBefore": "5.5M",
+      "follBeforeDate": "June 23",
+      "follLast": "5.5M",
+      "follLastDate": "30 Jun 2026",
+      "follCur": "5658460",
+      "follCurDate": "2 Jul 2026",
+      "knownFor": " Viral TikTok/Instagram content; brother of Awez Darbar; actor & music videos  \n\n",
+      "history": "",
+      "id": 12,
+      "bio": [
+        {
+          "heading": "Personal Details",
+          "html": "<ul><li><strong>Born:</strong> November 24, 1995 (age 30)</li><li><strong>Birthplace:</strong> Mumbai, Maharashtra, India</li><li><strong>Family:</strong> Son of music composer Ismail Darbar; brother of choreographer Awez Darbar</li><li><strong>Spouse:</strong> Gauahar Khan (m. December 25, 2020)</li><li><strong>Children:</strong> 1 son (born 2023)</li></ul>"
+        },
+        {
+          "heading": "Early Life & Career Beginnings",
+          "html": "<p>Born into a creative family; father is Bollywood music composer Ismail Darbar. Started as a choreographer and content creator.</p>"
+        },
+        {
+          "heading": "Music Career / Other Entertainment",
+          "html": "<p>Choreographer, dancer, and content creator.</p>"
+        },
+        {
+          "heading": "Reality Television Journey",
+          "html": "<ul><li><em>Alliance India</em> (Prime Video, 2026): Contestant — paired with Daisy Shah (close friends)</li></ul>"
+        },
+        {
+          "heading": "Personal Life",
+          "html": "<p>Married to actress Gauahar Khan (Bigg Boss 7 winner) on December 25, 2020. They have a son born in 2023.</p>"
+        },
+        {
+          "heading": "Trivia / Fun Facts",
+          "html": "<ul><li>Son of legendary Bollywood composer Ismail Darbar</li><li>Brother of Awez Darbar (also confirmed for Alliance initially)</li><li>Married to Bigg Boss 7 winner Gauahar Khan</li></ul>"
+        }
+      ]
+    },
+    {
       "name": "Niti Taylor",
       "gender": "F",
       "status": "CONFIRMED",
@@ -1664,8 +1612,8 @@ window.DB = {
       "follBeforeDate": "June 23",
       "follLast": "6.5M",
       "follLastDate": "N/V",
-      "follCur": "N/V",
-      "follCurDate": "",
+      "follCur": "6593382",
+      "follCurDate": "2 Jul 2026",
       "knownFor": "Nandini in Kaisi Yeh Yaariaan (MTV); Ishqbaaz",
       "history": "N/V",
       "id": 7,
@@ -1701,6 +1649,54 @@ window.DB = {
       ]
     },
     {
+      "name": "Ruhee Dosani",
+      "gender": "F",
+      "status": "CONFIRMED",
+      "profession": "Digital Creator",
+      "tier": "",
+      "ig": "@ruheedosani",
+      "photo": "https://i.postimg.cc/SsRwP2h6/Ruhee-Dosani.jpg",
+      "follBefore": "2.4M",
+      "follBeforeDate": "June 23",
+      "follLast": "2.4M",
+      "follLastDate": "N/V",
+      "follCur": "2456073",
+      "follCurDate": "2 Jul 2026",
+      "knownFor": "US-based creator; Diljit Dosanjh shared her viral reel",
+      "history": "N/V",
+      "id": 5,
+      "bio": [
+        {
+          "heading": "Personal Details",
+          "html": "<ul><li><strong>Birthplace:</strong> United States (Indian-American)</li><li><strong>Family:</strong> Indian-American</li></ul>"
+        },
+        {
+          "heading": "Early Life & Career Beginnings",
+          "html": "<p>Digital creator from the US who gained widespread fame after Diljit Dosanjh shared one of her reels.</p>"
+        },
+        {
+          "heading": "Music Career / Other Entertainment",
+          "html": "<p>Dance and content creation; known for Indian dance reels.</p>"
+        },
+        {
+          "heading": "Professional Career (Outside Entertainment)",
+          "html": "<p>Full-time digital content creator.</p>"
+        },
+        {
+          "heading": "Reality Television Journey",
+          "html": "<ul><li><em>Alliance India</em> (Prime Video, 2026): Contestant — paired with Niti Taylor</li></ul>"
+        },
+        {
+          "heading": "Personal Life",
+          "html": "<p>US-based; represents the Indian-American digital creator community.</p>"
+        },
+        {
+          "heading": "Trivia / Fun Facts",
+          "html": "<ul><li>Gained fame when Diljit Dosanjh shared her reel</li><li>Represents the international digital creator space in Alliance</li></ul>"
+        }
+      ]
+    },
+    {
       "name": "Vanshaj Singh",
       "gender": "M",
       "status": "CONFIRMED",
@@ -1712,8 +1708,8 @@ window.DB = {
       "follBeforeDate": "June 23",
       "follLast": "1.1M",
       "follLastDate": "N/V",
-      "follCur": "N/V",
-      "follCurDate": "",
+      "follCur": "1112808",
+      "follCurDate": "2 Jul 2026",
       "knownFor": "Popular Indian IRL livestreamer; posted cryptic 'taking a break' hint",
       "history": "Reality TV debut if confirmed",
       "id": 10,
@@ -1741,6 +1737,46 @@ window.DB = {
       ]
     },
     {
+      "name": "Dolly Javed",
+      "gender": "M",
+      "status": "CONFIRMED",
+      "profession": "Influencer / Reality Personality",
+      "tier": "",
+      "ig": "@_dollyyjavved",
+      "photo": "https://i.postimg.cc/76hpRGkf/Dolly-Javed.jpg",
+      "follBefore": "160.0K",
+      "follBeforeDate": "June 23",
+      "follLast": "160.0K",
+      "follLastDate": "30 Jun 2026",
+      "follCur": "160867",
+      "follCurDate": "2 Jul 2026",
+      "knownFor": "Sister of Urfi Javed; Follow Kar Lo Yaar; bold fashion & lifestyle content  \n\n",
+      "history": "Did Choriya Chali gaown, 7 Days live",
+      "id": 13,
+      "bio": [
+        {
+          "heading": "Personal Details",
+          "html": "<ul><li><strong>Family:</strong> Not publicly detailed (note: despite the surname, not related to Urfi Javed as per confirmed reports)</li></ul>"
+        },
+        {
+          "heading": "Early Life & Career Beginnings",
+          "html": "<p>Fashion and lifestyle influencer and content creator.</p>"
+        },
+        {
+          "heading": "Professional Career (Outside Entertainment)",
+          "html": "<p>Full-time fashion and lifestyle influencer / content creator.</p>"
+        },
+        {
+          "heading": "Reality Television Journey",
+          "html": "<ul><li><em>Alliance India</em> (Prime Video, 2026): Contestant — paired with Vanshaj Singh</li></ul>"
+        },
+        {
+          "heading": "Trivia / Fun Facts",
+          "html": "<ul><li>Fashion and lifestyle influencer</li><li>Paired with gaming creator Vanshaj Singh — an interesting cross-community pairing</li></ul>"
+        }
+      ]
+    },
+    {
       "name": "Payal Dhare (Payal Gaming)",
       "gender": "F",
       "status": "CONFIRMED",
@@ -1752,8 +1788,8 @@ window.DB = {
       "follBeforeDate": "June 23",
       "follLast": "5.2M",
       "follLastDate": "30 Jun 2026",
-      "follCur": "N/V",
-      "follCurDate": "",
+      "follCur": "5295756",
+      "follCurDate": "2 Jul 2026",
       "knownFor": "Top female BGMI/PUBG Mobile streamer in India; S8UL Esports; Mobile Streamer of the Year 2024  \n\n",
       "history": "",
       "id": 11,
@@ -1789,86 +1825,234 @@ window.DB = {
       ]
     },
     {
-      "name": "Zaid Darbar",
-      "gender": "M",
+      "name": "Sabby Suri",
+      "gender": "F",
       "status": "CONFIRMED",
-      "profession": "Influencer / Actor / Musician ",
+      "profession": "Actress / Model / Influencer",
       "tier": "",
-      "ig": "@zaid_darbar",
-      "photo": "https://i.postimg.cc/0Q4L1kk6/Zaid-Darbar.jpg",
-      "follBefore": "5.5M",
+      "ig": "@sabbysuriofficial",
+      "photo": "https://i.postimg.cc/xC8WZJ2y/Sabby-Suri.jpg",
+      "follBefore": "296.0K",
       "follBeforeDate": "June 23",
-      "follLast": "5.5M",
+      "follLast": "296.0K",
       "follLastDate": "30 Jun 2026",
-      "follCur": "N/V",
-      "follCurDate": "",
-      "knownFor": " Viral TikTok/Instagram content; brother of Awez Darbar; actor & music videos  \n\n",
+      "follCur": "301648",
+      "follCurDate": "2 Jul 2026",
+      "knownFor": "Punjabi films & modeling, MTV Roadies, Miss India pageant background  \n\n",
       "history": "",
-      "id": 12,
+      "id": 19,
       "bio": [
         {
           "heading": "Personal Details",
-          "html": "<ul><li><strong>Born:</strong> November 24, 1995 (age 30)</li><li><strong>Birthplace:</strong> Mumbai, Maharashtra, India</li><li><strong>Family:</strong> Son of music composer Ismail Darbar; brother of choreographer Awez Darbar</li><li><strong>Spouse:</strong> Gauahar Khan (m. December 25, 2020)</li><li><strong>Children:</strong> 1 son (born 2023)</li></ul>"
+          "html": "<ul><li><strong>Born:</strong> June 25, 1997 (age 29)</li><li><strong>Birthplace:</strong> Punjab, India</li><li><strong>Family:</strong> Punjabi family</li></ul>"
         },
         {
           "heading": "Early Life & Career Beginnings",
-          "html": "<p>Born into a creative family; father is Bollywood music composer Ismail Darbar. Started as a choreographer and content creator.</p>"
+          "html": "<p>Well-known Punjabi actress, model, and dancer.</p>"
         },
         {
-          "heading": "Music Career / Other Entertainment",
-          "html": "<p>Choreographer, dancer, and content creator.</p>"
+          "heading": "Film Career",
+          "html": "<ul><li>Punjabi films and music videos</li><li>Recognized in regional entertainment</li></ul>"
+        },
+        {
+          "heading": "Professional Career (Outside Entertainment)",
+          "html": "<p>Model; influencer; dancer; content creator.</p>"
         },
         {
           "heading": "Reality Television Journey",
-          "html": "<ul><li><em>Alliance India</em> (Prime Video, 2026): Contestant — paired with Daisy Shah (close friends)</li></ul>"
-        },
-        {
-          "heading": "Personal Life",
-          "html": "<p>Married to actress Gauahar Khan (Bigg Boss 7 winner) on December 25, 2020. They have a son born in 2023.</p>"
+          "html": "<ul><li><em>Alliance India</em> (Prime Video, 2026): Contestant — paired with Payal Gaming (Payal Dhare)</li></ul>"
         },
         {
           "heading": "Trivia / Fun Facts",
-          "html": "<ul><li>Son of legendary Bollywood composer Ismail Darbar</li><li>Brother of Awez Darbar (also confirmed for Alliance initially)</li><li>Married to Bigg Boss 7 winner Gauahar Khan</li></ul>"
+          "html": "<ul><li>Punjabi actor, influencer, dancer, and content creator</li><li>Brings glamour and strong screen presence to Alliance</li><li>Paired with Payal Gaming — blending gaming community with regional entertainment appeal</li></ul>"
         }
       ]
     },
     {
-      "name": "Dolly Javed",
+      "name": "Arslan Goni",
       "gender": "M",
       "status": "CONFIRMED",
-      "profession": "Influencer / Reality Personality",
+      "profession": "Actor",
       "tier": "",
-      "ig": "@_dollyyjavved",
-      "photo": "https://i.postimg.cc/76hpRGkf/Dolly-Javed.jpg",
-      "follBefore": "160.0K",
+      "ig": "@arslangoni",
+      "photo": "https://i.postimg.cc/SsRwP2hj/Arslan-Goni.jpg",
+      "follBefore": "110.0K",
       "follBeforeDate": "June 23",
-      "follLast": "160.0K",
+      "follLast": "110.0K",
       "follLastDate": "30 Jun 2026",
-      "follCur": "N/V",
-      "follCurDate": "",
-      "knownFor": "Sister of Urfi Javed; Follow Kar Lo Yaar; bold fashion & lifestyle content  \n\n",
-      "history": "Did Choriya Chali gaown, 7 Days live",
-      "id": 13,
+      "follCur": "113975",
+      "follCurDate": "2 Jul 2026",
+      "knownFor": "Tanaav, Mai Hero Boll Raha Hu; known in celebrity circles (partner of Sussanne Khan)  \n\n",
+      "history": "",
+      "id": 15,
       "bio": [
         {
           "heading": "Personal Details",
-          "html": "<ul><li><strong>Family:</strong> Not publicly detailed (note: despite the surname, not related to Urfi Javed as per confirmed reports)</li></ul>"
+          "html": "<ul><li><strong>Born:</strong> April 16, 1988 (age 38)</li><li><strong>Birthplace:</strong> Bhopal, Madhya Pradesh, India (Kashmiri origin)</li><li><strong>Family:</strong> Brother of actor Aly Goni</li><li><strong>Spouse:</strong> In a relationship with Sussanne Khan (interior designer, ex-wife of Hrithik Roshan)</li></ul>"
         },
         {
           "heading": "Early Life & Career Beginnings",
-          "html": "<p>Fashion and lifestyle influencer and content creator.</p>"
+          "html": "<p>Started acting in Bollywood films and web series.</p>"
         },
         {
-          "heading": "Professional Career (Outside Entertainment)",
-          "html": "<p>Full-time fashion and lifestyle influencer / content creator.</p>"
+          "heading": "Film Career",
+          "html": "<ul><li><em>Jia Aur Jia</em> (2017): Bollywood debut</li></ul>"
+        },
+        {
+          "heading": "Web Series / OTT Career",
+          "html": "<ul><li><em>Mai Hero Boll Raha Hu</em> (ALTBalaji/Zee5, 2021): Lead role — gained acclaim</li></ul>"
         },
         {
           "heading": "Reality Television Journey",
-          "html": "<ul><li><em>Alliance India</em> (Prime Video, 2026): Contestant — paired with Vanshaj Singh</li></ul>"
+          "html": "<ul><li><em>Alliance India</em> (Prime Video, 2026): Contestant — paired with Kushal Tandon</li></ul>"
+        },
+        {
+          "heading": "Personal Life",
+          "html": "<p>In a high-profile relationship with Sussanne Khan (interior designer). Brother of actor Aly Goni (Jasmin Bhasin's partner).</p>"
         },
         {
           "heading": "Trivia / Fun Facts",
-          "html": "<ul><li>Fashion and lifestyle influencer</li><li>Paired with gaming creator Vanshaj Singh — an interesting cross-community pairing</li></ul>"
+          "html": "<ul><li>Brother of Aly Goni (who is Jasmin Bhasin's partner — Jasmin is on KKK 15 simultaneously)</li><li>Stays in the spotlight for his relationship with Sussanne Khan</li><li>Brings a calm, grounded presence to Alliance</li></ul>"
+        }
+      ]
+    },
+    {
+      "name": "Kushal Tandon",
+      "gender": "M",
+      "status": "CONFIRMED",
+      "profession": "Television Actor",
+      "tier": "",
+      "ig": "@therealkushaltandon",
+      "photo": "https://i.postimg.cc/j52G1wbn/Kushal-Tandon.jpg",
+      "follBefore": "1.5M",
+      "follBeforeDate": "June 23",
+      "follLast": "1.5M",
+      "follLastDate": "June 23",
+      "follCur": "1543739",
+      "follCurDate": "2 Jul 2026",
+      "knownFor": "Beyhadh; Barsatein; BB7; ex-girlfriend Shivangi Joshi (simultaneously in Lock Upp S2)",
+      "history": "Bigg Boss 7 (2013)",
+      "id": 3,
+      "bio": [
+        {
+          "heading": "Personal Details",
+          "html": "<ul><li><strong>Born:</strong> March 28, 1985 (age 41)</li><li><strong>Birthplace:</strong> Lucknow, Uttar Pradesh, India</li><li><strong>Spouse:</strong> Unmarried</li></ul>"
+        },
+        {
+          "heading": "Early Life & Career Beginnings",
+          "html": "<p>Moved to Mumbai for acting; started with modeling before TV.</p>"
+        },
+        {
+          "heading": "Television Career",
+          "html": "<ul><li><em>Ek Hazaaron Mein Meri Behna Hai</em> (2011–2013): Virat — breakout role</li><li><em>Beyhadh</em> (2016–2017): Arjun — lead</li></ul>"
+        },
+        {
+          "heading": "Professional Career (Outside Entertainment)",
+          "html": "<p>Restaurant business in Mumbai.</p>"
+        },
+        {
+          "heading": "Reality Television Journey",
+          "html": "<ul><li><em>Bigg Boss 7</em> (2013): Contestant</li><li><em>Khatron Ke Khiladi 5</em> (2014): Contestant</li><li><em>Alliance India</em> (Prime Video, 2026): Contestant — paired with Arslan Goni</li></ul>"
+        },
+        {
+          "heading": "Personal Life",
+          "html": "<p>Previously dated actress Gauahar Khan. Bold and outspoken personality.</p>"
+        },
+        {
+          "heading": "Trivia / Fun Facts",
+          "html": "<ul><li>Has proven his mettle in reality shows (Bigg Boss 7 and KKK 5)</li><li>Known for bold and outspoken personality</li><li>Teams up with Arslan Goni in Alliance</li></ul>"
+        }
+      ]
+    },
+    {
+      "name": "Delbar Arya",
+      "gender": "F",
+      "status": "CONFIRMED",
+      "profession": "Actress (Punjabi Cinema)",
+      "tier": "",
+      "ig": " @delbararya",
+      "photo": "https://i.postimg.cc/nzr6WjJr/Delbar-Arya.jpg",
+      "follBefore": "692.0K",
+      "follBeforeDate": "June 23",
+      "follLast": "692.0K",
+      "follLastDate": "30 Jun 2026",
+      "follCur": "686794",
+      "follCurDate": "2 Jul 2026",
+      "knownFor": "Punjabi films & music videos; Downtown (Guru Randhawa collab); Pollywood actress  \n\n",
+      "history": "",
+      "id": 17,
+      "bio": [
+        {
+          "heading": "Personal Details",
+          "html": "<ul><li><strong>Birthplace:</strong> Germany (German-Persian descent)</li><li><strong>Family:</strong> German-Persian heritage</li></ul>"
+        },
+        {
+          "heading": "Early Life & Career Beginnings",
+          "html": "<p>International actress and model of German-Persian descent. Made a mark in Indian entertainment through Punjabi music videos and regional films.</p>"
+        },
+        {
+          "heading": "Music Career / Other Entertainment",
+          "html": "<ul><li>Punjabi music videos including collaborations with Guru Randhawa</li></ul>"
+        },
+        {
+          "heading": "Professional Career (Outside Entertainment)",
+          "html": "<p>International model.</p>"
+        },
+        {
+          "heading": "Reality Television Journey",
+          "html": "<ul><li><em>Alliance India</em> (Prime Video, 2026): Contestant — paired with Armaan Khera</li></ul>"
+        },
+        {
+          "heading": "Personal Life",
+          "html": "<p>Brings a unique global and multicultural perspective.</p>"
+        },
+        {
+          "heading": "Trivia / Fun Facts",
+          "html": "<ul><li>German-Persian actress working in Indian entertainment</li><li>Collaborated with Guru Randhawa in music videos</li><li>Brings unique global appeal and glamour to Alliance</li></ul>"
+        }
+      ]
+    },
+    {
+      "name": "Armaan Khera",
+      "gender": "M",
+      "status": "CONFIRMED",
+      "profession": "Actor / Musician",
+      "tier": "",
+      "ig": "@armaankhera",
+      "photo": "https://i.postimg.cc/fLy6PtNw/Armaan-Khera.jpg",
+      "follBefore": "8.4K",
+      "follBeforeDate": "June 23",
+      "follLast": "8.7K",
+      "follLastDate": "30 Jun 2026",
+      "follCur": "8941",
+      "follCurDate": "2 Jul 2026",
+      "knownFor": "Masaba Masaba, Taish, Citadel: Honey Bunny, Kalki 2898 AD  \n\n",
+      "history": "",
+      "id": 16,
+      "bio": [
+        {
+          "heading": "Early Life & Career Beginnings",
+          "html": "<p>Actor, singer, and musician. Gained recognition through OTT work.</p>"
+        },
+        {
+          "heading": "Web Series / OTT Career",
+          "html": "<ul><li><em>Taaza Khabar</em> (Netflix): Role alongside Bhuvan Bam — gained recognition</li></ul>"
+        },
+        {
+          "heading": "Music Career / Other Entertainment",
+          "html": "<p>Singer and musician — artistic versatility.</p>"
+        },
+        {
+          "heading": "Reality Television Journey",
+          "html": "<ul><li><em>Alliance India</em> (Prime Video, 2026): Contestant — paired with Delbar Arya</li></ul>"
+        },
+        {
+          "heading": "Personal Life",
+          "html": "<p>Private. Known for suave screen presence.</p>"
+        },
+        {
+          "heading": "Trivia / Fun Facts",
+          "html": "<ul><li>Known for his role in Netflix's <em>Taaza Khabar</em> with Bhuvan Bam</li><li>Actor, singer, and musician — artistic versatility</li><li>Part of an internationally diverse and creatively driven duo with Delbar Arya</li></ul>"
         }
       ]
     },
@@ -1884,8 +2068,8 @@ window.DB = {
       "follBeforeDate": "June 23",
       "follLast": "985.0K",
       "follLastDate": "30 Jun 2026",
-      "follCur": "N/V",
-      "follCurDate": "",
+      "follCur": "987026",
+      "follCurDate": "2 Jul 2026",
       "knownFor": "Legendary MTV VJ; Sunburn Festival curator; pioneer of EDM scene in India  \n\n",
       "history": "",
       "id": 14,
@@ -1925,146 +2109,6 @@ window.DB = {
       ]
     },
     {
-      "name": "Arslan Goni",
-      "gender": "M",
-      "status": "CONFIRMED",
-      "profession": "Actor",
-      "tier": "",
-      "ig": "@arslangoni",
-      "photo": "https://i.postimg.cc/SsRwP2hj/Arslan-Goni.jpg",
-      "follBefore": "110.0K",
-      "follBeforeDate": "June 23",
-      "follLast": "110.0K",
-      "follLastDate": "30 Jun 2026",
-      "follCur": "N/V",
-      "follCurDate": "",
-      "knownFor": "Tanaav, Mai Hero Boll Raha Hu; known in celebrity circles (partner of Sussanne Khan)  \n\n",
-      "history": "",
-      "id": 15,
-      "bio": [
-        {
-          "heading": "Personal Details",
-          "html": "<ul><li><strong>Born:</strong> April 16, 1988 (age 38)</li><li><strong>Birthplace:</strong> Bhopal, Madhya Pradesh, India (Kashmiri origin)</li><li><strong>Family:</strong> Brother of actor Aly Goni</li><li><strong>Spouse:</strong> In a relationship with Sussanne Khan (interior designer, ex-wife of Hrithik Roshan)</li></ul>"
-        },
-        {
-          "heading": "Early Life & Career Beginnings",
-          "html": "<p>Started acting in Bollywood films and web series.</p>"
-        },
-        {
-          "heading": "Film Career",
-          "html": "<ul><li><em>Jia Aur Jia</em> (2017): Bollywood debut</li></ul>"
-        },
-        {
-          "heading": "Web Series / OTT Career",
-          "html": "<ul><li><em>Mai Hero Boll Raha Hu</em> (ALTBalaji/Zee5, 2021): Lead role — gained acclaim</li></ul>"
-        },
-        {
-          "heading": "Reality Television Journey",
-          "html": "<ul><li><em>Alliance India</em> (Prime Video, 2026): Contestant — paired with Kushal Tandon</li></ul>"
-        },
-        {
-          "heading": "Personal Life",
-          "html": "<p>In a high-profile relationship with Sussanne Khan (interior designer). Brother of actor Aly Goni (Jasmin Bhasin's partner).</p>"
-        },
-        {
-          "heading": "Trivia / Fun Facts",
-          "html": "<ul><li>Brother of Aly Goni (who is Jasmin Bhasin's partner — Jasmin is on KKK 15 simultaneously)</li><li>Stays in the spotlight for his relationship with Sussanne Khan</li><li>Brings a calm, grounded presence to Alliance</li></ul>"
-        }
-      ]
-    },
-    {
-      "name": "Armaan Khera",
-      "gender": "M",
-      "status": "CONFIRMED",
-      "profession": "Actor / Musician",
-      "tier": "",
-      "ig": "@armaankhera",
-      "photo": "https://i.postimg.cc/fLy6PtNw/Armaan-Khera.jpg",
-      "follBefore": "8.4K",
-      "follBeforeDate": "June 23",
-      "follLast": "8.7K",
-      "follLastDate": "30 Jun 2026",
-      "follCur": "N/V",
-      "follCurDate": "",
-      "knownFor": "Masaba Masaba, Taish, Citadel: Honey Bunny, Kalki 2898 AD  \n\n",
-      "history": "",
-      "id": 16,
-      "bio": [
-        {
-          "heading": "Early Life & Career Beginnings",
-          "html": "<p>Actor, singer, and musician. Gained recognition through OTT work.</p>"
-        },
-        {
-          "heading": "Web Series / OTT Career",
-          "html": "<ul><li><em>Taaza Khabar</em> (Netflix): Role alongside Bhuvan Bam — gained recognition</li></ul>"
-        },
-        {
-          "heading": "Music Career / Other Entertainment",
-          "html": "<p>Singer and musician — artistic versatility.</p>"
-        },
-        {
-          "heading": "Reality Television Journey",
-          "html": "<ul><li><em>Alliance India</em> (Prime Video, 2026): Contestant — paired with Delbar Arya</li></ul>"
-        },
-        {
-          "heading": "Personal Life",
-          "html": "<p>Private. Known for suave screen presence.</p>"
-        },
-        {
-          "heading": "Trivia / Fun Facts",
-          "html": "<ul><li>Known for his role in Netflix's <em>Taaza Khabar</em> with Bhuvan Bam</li><li>Actor, singer, and musician — artistic versatility</li><li>Part of an internationally diverse and creatively driven duo with Delbar Arya</li></ul>"
-        }
-      ]
-    },
-    {
-      "name": "Delbar Arya",
-      "gender": "F",
-      "status": "CONFIRMED",
-      "profession": "Actress (Punjabi Cinema)",
-      "tier": "",
-      "ig": " @delbararya",
-      "photo": "https://i.postimg.cc/nzr6WjJr/Delbar-Arya.jpg",
-      "follBefore": "692.0K",
-      "follBeforeDate": "June 23",
-      "follLast": "692.0K",
-      "follLastDate": "30 Jun 2026",
-      "follCur": "N/V",
-      "follCurDate": "",
-      "knownFor": "Punjabi films & music videos; Downtown (Guru Randhawa collab); Pollywood actress  \n\n",
-      "history": "",
-      "id": 17,
-      "bio": [
-        {
-          "heading": "Personal Details",
-          "html": "<ul><li><strong>Birthplace:</strong> Germany (German-Persian descent)</li><li><strong>Family:</strong> German-Persian heritage</li></ul>"
-        },
-        {
-          "heading": "Early Life & Career Beginnings",
-          "html": "<p>International actress and model of German-Persian descent. Made a mark in Indian entertainment through Punjabi music videos and regional films.</p>"
-        },
-        {
-          "heading": "Music Career / Other Entertainment",
-          "html": "<ul><li>Punjabi music videos including collaborations with Guru Randhawa</li></ul>"
-        },
-        {
-          "heading": "Professional Career (Outside Entertainment)",
-          "html": "<p>International model.</p>"
-        },
-        {
-          "heading": "Reality Television Journey",
-          "html": "<ul><li><em>Alliance India</em> (Prime Video, 2026): Contestant — paired with Armaan Khera</li></ul>"
-        },
-        {
-          "heading": "Personal Life",
-          "html": "<p>Brings a unique global and multicultural perspective.</p>"
-        },
-        {
-          "heading": "Trivia / Fun Facts",
-          "html": "<ul><li>German-Persian actress working in Indian entertainment</li><li>Collaborated with Guru Randhawa in music videos</li><li>Brings unique global appeal and glamour to Alliance</li></ul>"
-        }
-      ]
-    },
-    {
       "name": "Mini Mathur",
       "gender": "F",
       "status": "CONFIRMED",
@@ -2076,8 +2120,8 @@ window.DB = {
       "follBeforeDate": "June 23",
       "follLast": "607.0K",
       "follLastDate": "30 Jun 2026",
-      "follCur": "N/V",
-      "follCurDate": "",
+      "follCur": "608114",
+      "follCurDate": "2 Jul 2026",
       "knownFor": "Long-time Indian Idol host, MTV VJ background, Jhalak Dikhhla Jaa contestant  \n\n",
       "history": "",
       "id": 18,
@@ -2119,54 +2163,10 @@ window.DB = {
           "html": "<ul><li>One of India's most iconic television hosts (Indian Idol)</li><li>Married to <em>Bajrangi Bhaijaan</em> director Kabir Khan</li><li>Paired with Nikhil Chinapa — decades of combined media experience</li></ul>"
         }
       ]
-    },
-    {
-      "name": "Sabby Suri",
-      "gender": "F",
-      "status": "CONFIRMED",
-      "profession": "Actress / Model / Influencer",
-      "tier": "",
-      "ig": "@sabbysuriofficial",
-      "photo": "https://i.postimg.cc/xC8WZJ2y/Sabby-Suri.jpg",
-      "follBefore": "296.0K",
-      "follBeforeDate": "June 23",
-      "follLast": "296.0K",
-      "follLastDate": "30 Jun 2026",
-      "follCur": "N/V",
-      "follCurDate": "",
-      "knownFor": "Punjabi films & modeling, MTV Roadies, Miss India pageant background  \n\n",
-      "history": "",
-      "id": 19,
-      "bio": [
-        {
-          "heading": "Personal Details",
-          "html": "<ul><li><strong>Born:</strong> June 25, 1997 (age 29)</li><li><strong>Birthplace:</strong> Punjab, India</li><li><strong>Family:</strong> Punjabi family</li></ul>"
-        },
-        {
-          "heading": "Early Life & Career Beginnings",
-          "html": "<p>Well-known Punjabi actress, model, and dancer.</p>"
-        },
-        {
-          "heading": "Film Career",
-          "html": "<ul><li>Punjabi films and music videos</li><li>Recognized in regional entertainment</li></ul>"
-        },
-        {
-          "heading": "Professional Career (Outside Entertainment)",
-          "html": "<p>Model; influencer; dancer; content creator.</p>"
-        },
-        {
-          "heading": "Reality Television Journey",
-          "html": "<ul><li><em>Alliance India</em> (Prime Video, 2026): Contestant — paired with Payal Gaming (Payal Dhare)</li></ul>"
-        },
-        {
-          "heading": "Trivia / Fun Facts",
-          "html": "<ul><li>Punjabi actor, influencer, dancer, and content creator</li><li>Brings glamour and strong screen presence to Alliance</li><li>Paired with Payal Gaming — blending gaming community with regional entertainment appeal</li></ul>"
-        }
-      ]
     }
   ],
   "traitors": [],
   "bb20": []
 };
 
-window.HIDDEN_SHOWS_INIT = ["traitors", "kkk", "bb20"];
+window.HIDDEN_SHOWS_INIT = ["traitors","kkk","bb20"];
