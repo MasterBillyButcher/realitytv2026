@@ -62,10 +62,13 @@ async function refreshFollowersLive(scopeKey) {
         continue;
       }
 
-      console.log('[Live Followers] response:', data);
+      console.log('[Live Followers] full response:', data);
+      if (data.sampleRaw?.length) {
+        console.log('[Live Followers] RAW sample from Apify (copy this if asking for help):', JSON.stringify(data.sampleRaw, null, 2));
+      }
 
-      if (data.received === 0 && data.note) {
-        toast('⚠ ' + data.note, 'err');
+      if ((data.received || 0) === 0) {
+        toast('⚠ ' + (data.note || 'No usable data returned — check browser console (F12) for the raw Apify response.'), 'err');
         failed.push(...batch.map(t => t.contestant.name));
         continue;
       }

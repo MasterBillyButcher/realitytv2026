@@ -87,31 +87,33 @@ export default async function handler(req, res) {
       return;
     }
 
-    const items = await apifyRes.json();
-    const itemsArr = Array.isArray(items) ? items : [];
-
-    if (itemsArr.length === 0) {
-      res.status(200).json({
-        results: [],
-        requested: usernames.length,
-        received: 0,
-        note: 'Apify run completed but returned zero dataset items. This usually means Instagram blocked every request (residential proxy is now enabled by default — if this still happens, check the run in your Apify Console → Runs tab for the actual error per profile), or the actor input format changed since this was written.'
-      });
-      return;
-    }
-
     // Normalize output — this actor's field names have shifted between
     // versions historically, so check a few common shapes defensively
     // rather than assuming one exact key.
     const results = itemsArr.map(item => {
-      const username = item.username || item.handle || item.user || '';
+      const username = item.username || item.handle || item.user || item.profile_url || '';
       const followers =
         item.followers ?? item.followersCount ?? item.follower_count ??
-        item.followersCount1 ?? null;
-      return { username: String(username).replace(/^@/, ''), followers, raw: item };
+        item.followersCount1 ?? item.follower_count_int ?? null;
+      return { username: String(username).replace(/^@/, '').replace(/^https?:\/\/(www\.)?instagram\.com\//i, '').replace(/\/$/, ''), followers, raw: item };
     }).filter(r => r.username);
 
-    res.status(200).json({ results, requested: usernames.length, received: results.length });
+    res.status(200).json({
+      results,
+      requested: usernames.length,
+      received: results.length,
+      rawItemCount: itemsArr.length,
+      // Always include a sample of the untouched Apify response — this is
+      // the ground truth for what field names the actor actually returns.
+      // If `received` ever comes back lower than `rawItemCount`, the sample
+      // below shows exactly which keys to add to the extraction above.
+      sampleRaw: itemsArr.slice(0, 2),
+      note: itemsArr.length === 0
+        ? 'Apify run completed but returned zero dataset items. Check Apify Console → Actors → this actor → Runs tab for the actual per-profile error.'
+        : (results.length === 0
+          ? 'Apify returned data, but none of it matched the expected field names. Check sampleRaw below in the browser console for the real field names — the site owner needs to update the extraction logic in api/followers.js to match.'
+          : undefined),
+    });
 
   } catch (err) {
     const isAbort = err.name === 'AbortError';
