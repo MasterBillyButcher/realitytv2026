@@ -84,10 +84,12 @@ async function refreshFollowersLive(scopeKey) {
           return;
         }
         const c = t.contestant;
-        if (c.follCur && c.follCur !== 'N/V') {
-          c.follLast = c.follCur;
-          c.follLastDate = c.follCurDate || today;
-        }
+        /* Update Current only — Last Checked is now only touched by the
+           explicit "⟳ Roll Current → Last Checked" button in the Growth
+           tab, never automatically on a live refresh. This matters more
+           here than anywhere else: a scheduled/frequent refresh would
+           otherwise erode "Last" into "yesterday's number" every single
+           run, making growth-since-last meaningless. */
         c.follCur = normalizeFollowerInput(String(result.followers));
         c.follCurDate = today;
         updated++;

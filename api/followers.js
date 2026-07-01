@@ -92,23 +92,46 @@ export default async function handler(req, res) {
     const items = await apifyRes.json();
     const itemsArr = Array.isArray(items) ? items : [];
 
-    // Confirmed real field names — see header comment.
-    const results = itemsArr.map(item => ({
-      username: String(item.userName || '').replace(/^@/, ''),
-      followers: item.followersCount ?? null,
-      fullName: item.userFullName || null,
-      raw: item,
-    })).filter(r => r.username);
+    // Confirmed real field names for successful items — see header comment.
+    // Failed items' shape isn't confirmed (we've only seen this actor's
+    // success case), so check common failure-indicator patterns
+    // defensively rather than assuming a silent success/omit split.
+    const results = itemsArr.map(item => {
+      const errMsg =
+        item.error || item.errorMessage ||
+        (item.status && item.status !== 'ok' ? String(item.status) : null) ||
+        (item.success === false ? 'Marked unsuccessful by Apify' : null);
+      return {
+        username: String(item.userName || item.username || '').replace(/^@/, ''),
+        followers: item.followersCount ?? null,
+        fullName: item.userFullName || null,
+        error: errMsg,
+        raw: item,
+      };
+    }).filter(r => r.username || r.error);
+
+    // Usernames we sent that never appear in the response at all — this
+    // actor may simply omit failed profiles instead of returning an
+    // error object for them, which is the most likely explanation for
+    // "some succeed, one fails with no message."
+    const returnedHandles = new Set(results.map(r => r.username.toLowerCase()));
+    const missing = usernames.filter(u => !returnedHandles.has(u.toLowerCase()));
+    missing.forEach(u => results.push({
+      username: u,
+      followers: null,
+      error: 'Not present in Apify response — likely private account, wrong/renamed handle, deleted account, or Instagram blocked this specific lookup. Check Apify Console → this run → Log tab for the per-profile reason.',
+      raw: null,
+    }));
 
     res.status(200).json({
       results,
       requested: usernames.length,
-      received: results.length,
+      received: results.filter(r => r.followers !== null).length,
       rawItemCount: itemsArr.length,
       sampleRaw: itemsArr.slice(0, 2),
       note: itemsArr.length === 0
         ? 'Apify run completed but returned zero dataset items. Check Apify Console → this actor → Runs tab.'
-        : (results.length === 0
+        : (results.filter(r => r.followers !== null).length === 0
           ? 'Apify returned data, but field extraction found no userName values — check sampleRaw in the browser console.'
           : undefined),
     });

@@ -230,11 +230,9 @@ function bulkImportFollowers() {
     );
     if (!c) { skipped.push(`${line} (contestant not found)`); return; }
 
-    /* Shift current → last */
-    if (c.follCur && c.follCur !== 'N/V') {
-      c.follLast     = c.follCur;
-      c.follLastDate = c.follCurDate || today;
-    }
+    /* Update Current only — Last Checked is now only touched by the
+       explicit "⟳ Roll Current → Last Checked" button in the Growth
+       tab, never automatically on import. */
     c.follCur     = normalizeFollowerInput(follRaw);
     c.follCurDate = today;
     updated++;
