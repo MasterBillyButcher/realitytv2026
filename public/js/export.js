@@ -149,7 +149,8 @@ function rebuildExportPanel() {
   if (!el) return;
   el.innerHTML = getShowKeys().map(k =>
     `<button class="btn b-gld b-sm" onclick="capture('sw-${k}-tbl','${k}_Table')">📷 ${window.SHOWS[k].emoji || ''} ${window.SHOWS[k].label} Table</button>
-     <button class="btn b-gh b-sm"  onclick="capture('sw-${k}-gtbl','${k}_Growth')">📈 ${window.SHOWS[k].label} Growth</button>`
+     <button class="btn b-gh b-sm"  onclick="capture('sw-${k}-gtbl','${k}_Growth')">📈 ${window.SHOWS[k].label} Growth</button>
+     <button class="btn b-pur b-sm admin-only" onclick="refreshFollowersLive('${k}')">🔄 ${window.SHOWS[k].label} (Live)</button>`
   ).join('');
 }
 

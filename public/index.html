@@ -390,8 +390,15 @@ git commit -m "Update data"
 git push</pre>
           </div>
 
+          <div class="dnote admin-only" style="margin-top:12px;margin-bottom:16px">
+            <strong>Live Instagram Refresh:</strong> Fetches current follower counts through a server-side proxy (Apify), so today's total shifts to "Last" and the fresh number becomes "Current" — same shift logic as Bulk Import, just automated.
+            <div style="margin-top:8px">
+              <button class="btn b-pur b-sm" id="live-refresh-btn-all" onclick="refreshFollowersLive(null)">🔄 Refresh ALL Followers (Live)</button>
+            </div>
+          </div>
+
           <div class="dnote" style="margin-top:12px">
-            <strong>Note on Instagram auto-fetch:</strong> Instagram blocks browser requests. Follower counts must be entered manually via Edit Mode or Bulk Follower Import. This is a platform restriction, not a bug.
+            <strong>Note on Instagram auto-fetch:</strong> Public visitors don't see live-fetch controls — they're admin-only, since each run uses the site owner's Apify quota. Manual entry via Edit Mode or Bulk Import always works as a fallback.
           </div>
         </div>
       </div>
@@ -565,9 +572,9 @@ git push</pre>
     <div class="msec">
       <div class="clarify-box" style="margin-bottom:16px">
         <h3>ℹ️ About Auto-Fetch</h3>
-        <p>Instagram blocks cross-origin requests. Enter follower counts manually via Edit Mode, or use Bulk Import below.</p>
+        <p>Instagram blocks direct browser requests, but this dashboard can fetch live counts through a server-side proxy (requires an Apify API token configured by the site owner). If that's not set up, enter counts manually via Edit Mode or Bulk Import below.</p>
         <div style="display:flex;gap:8px;margin-top:8px">
-          <span class="verdict verdict-no">❌ Auto-fetch: not possible</span>
+          <span class="verdict verdict-yes admin-only">✓ Live auto-fetch: available (admin)</span>
           <span class="verdict verdict-yes">✓ Manual via Edit Mode: works</span>
         </div>
       </div>
@@ -679,6 +686,7 @@ git push</pre>
 
 <!-- 2. Core utilities (must be first) -->
 <script src="js/utils.js"></script>
+<script src="js/live-followers.js"></script>
 
 <!-- 3. Main app logic -->
 <script src="js/app.js"></script>

@@ -1,0 +1,99 @@
+/* ═══════════════════════════════════════════════════════════
+   live-followers.js  —  Reality TV Intel 2026
+   Admin-triggered live Instagram follower refresh via /api/followers
+   (a Vercel serverless proxy — see api/followers.js for why this
+   can't run purely client-side).
+═══════════════════════════════════════════════════════════ */
+
+const LIVE_BATCH_SIZE = 40; // stay under the API route's own cap with room to spare
+
+function _collectRefreshTargets(scopeKey) {
+  const keys = scopeKey ? [scopeKey] : getShowKeys();
+  const targets = [];
+  keys.forEach(k => {
+    (window.DB[k] || []).forEach(c => {
+      const handle = String(c.ig || '').trim().replace(/^@/, '');
+      if (handle && handle.toLowerCase() !== 'n/v') {
+        targets.push({ key: k, id: c.id, handle: handle.toLowerCase(), contestant: c });
+      }
+    });
+  });
+  return targets;
+}
+
+async function refreshFollowersLive(scopeKey) {
+  if (!document.body.classList.contains('admin-active')) {
+    toast('Admin only', 'err');
+    return;
+  }
+
+  const targets = _collectRefreshTargets(scopeKey);
+  if (!targets.length) {
+    toast('No Instagram handles found to refresh', 'warn');
+    return;
+  }
+
+  const label = scopeKey ? (window.SHOWS[scopeKey]?.label || scopeKey) : 'all shows';
+  const btnIds = ['live-refresh-btn', 'live-refresh-btn-all'];
+  btnIds.forEach(id => { const b = document.getElementById(id); if (b) b.disabled = true; });
+  toast(`⟳ Fetching live follower counts for ${targets.length} profile(s) in ${label}…`);
+
+  const today = new Date().toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' });
+  let updated = 0;
+  const failed = [];
+
+  try {
+    for (let i = 0; i < targets.length; i += LIVE_BATCH_SIZE) {
+      const batch = targets.slice(i, i + LIVE_BATCH_SIZE);
+      const usernames = [...new Set(batch.map(t => t.handle))];
+
+      let data;
+      try {
+        const res = await fetch('/api/followers', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ usernames }),
+        });
+        data = await res.json();
+        if (!res.ok) throw new Error(data.error || `HTTP ${res.status}`);
+      } catch (e) {
+        toast('Live fetch failed: ' + e.message, 'err');
+        failed.push(...batch.map(t => t.contestant.name));
+        continue;
+      }
+
+      const byHandle = {};
+      (data.results || []).forEach(r => { byHandle[r.username.toLowerCase()] = r; });
+
+      batch.forEach(t => {
+        const result = byHandle[t.handle];
+        if (!result || result.followers === null || result.followers === undefined) {
+          failed.push(t.contestant.name);
+          return;
+        }
+        const c = t.contestant;
+        if (c.follCur && c.follCur !== 'N/V') {
+          c.follLast = c.follCur;
+          c.follLastDate = c.follCurDate || today;
+        }
+        c.follCur = normalizeFollowerInput(String(result.followers));
+        c.follCurDate = today;
+        updated++;
+      });
+    }
+  } finally {
+    btnIds.forEach(id => { const b = document.getElementById(id); if (b) b.disabled = false; });
+  }
+
+  if (typeof renderAll === 'function') renderAll();
+  if (typeof renderRankings === 'function') renderRankings();
+
+  let msg = `✓ Live-updated ${updated} contestant${updated !== 1 ? 's' : ''} in ${label}`;
+  if (failed.length) msg += ` — ${failed.length} failed: ${failed.slice(0, 3).join(', ')}${failed.length > 3 ? '…' : ''}`;
+  toast(msg, updated > 0 ? '' : 'warn');
+
+  if (updated > 0) {
+    if (typeof saveToLocalStorage === 'function') saveToLocalStorage(false);
+    if (typeof logActivity === 'function') logActivity('Live follower refresh', `${updated} updated in ${label}`, '📡');
+  }
+}
