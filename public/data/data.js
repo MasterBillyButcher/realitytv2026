@@ -1,6 +1,6 @@
 /* ═══════════════════════════════════════════════════════════
    data.js  —  Reality TV Intelligence Dashboard 2026
-   Last saved: 02 Jul 2026, 03:46
+   Last saved: 02 Jul 2026, 04:07
 
    HOW TO UPDATE EVERYONE:
    Upload this file to GitHub at:  public/data/data.js
@@ -2022,7 +2022,7 @@ window.DB = {
       "photo": "https://i.postimg.cc/fLy6PtNw/Armaan-Khera.jpg",
       "follBefore": "8.4K",
       "follBeforeDate": "June 23",
-      "follLast": "8.7K",
+      "follLast": "8.4K",
       "follLastDate": "30 Jun 2026",
       "follCur": "8941",
       "follCurDate": "2 Jul 2026",
