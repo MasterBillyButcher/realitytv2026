@@ -89,11 +89,20 @@ async function refreshFollowersLive(scopeKey) {
   if (typeof renderRankings === 'function') renderRankings();
 
   let msg = `✓ Live-updated ${updated} contestant${updated !== 1 ? 's' : ''} in ${label}`;
+  if (updated > 0) msg += ' — now click ↓ Save JSON to download and push to GitHub';
   if (failed.length) msg += ` — ${failed.length} failed: ${failed.slice(0, 3).join(', ')}${failed.length > 3 ? '…' : ''}`;
   toast(msg, updated > 0 ? '' : 'warn');
 
   if (updated > 0) {
     if (typeof saveToLocalStorage === 'function') saveToLocalStorage(false);
     if (typeof logActivity === 'function') logActivity('Live follower refresh', `${updated} updated in ${label}`, '📡');
+    _pulseSaveJsonButton();
   }
+}
+
+function _pulseSaveJsonButton() {
+  document.querySelectorAll('button[onclick="exportJSON()"]').forEach(btn => {
+    btn.classList.add('save-json-pulse');
+    setTimeout(() => btn.classList.remove('save-json-pulse'), 6000);
+  });
 }

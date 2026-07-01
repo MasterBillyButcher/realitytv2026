@@ -2112,3 +2112,14 @@ body.theme-light .bio-photo-fallback { color: var(--txt); }
 
 .bio-link { color: var(--txt); text-decoration: none; cursor: pointer; }
 .bio-link:hover { color: var(--acc); text-decoration: underline; }
+
+/* ─── LIVE FOLLOWER REFRESH — SAVE JSON PULSE ───────────────
+   Briefly highlights the Save JSON button after a successful live
+   refresh, so the next step (export → push to GitHub) is obvious. */
+@keyframes saveJsonPulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(245,166,35,.6); }
+  50%      { box-shadow: 0 0 0 6px rgba(245,166,35,0); }
+}
+.save-json-pulse {
+  animation: saveJsonPulse 1s ease-in-out 3;
+}
