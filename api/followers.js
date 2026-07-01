@@ -1,26 +1,34 @@
 /* ═══════════════════════════════════════════════════════════
    /api/followers.js — Reality TV Intel 2026
-   Server-side proxy to Apify's Instagram Followers Count Scraper.
+   Server-side proxy to Apify's Instagram Followers Count Bulk Scraper
+   (automation-lab/instagram-followers-count-bulk-scraper).
 
-   WHY THIS EXISTS:
-   This site is otherwise 100% static (no backend). Instagram follower
-   counts can't be fetched directly from the browser — Instagram blocks
-   cross-origin requests, and even if it didn't, putting an Apify API
-   token in client-side JS would expose it to every visitor.
+   WHY THIS ACTOR:
+   Pay-Per-Event pricing — $0.005 per run + $0.002 per profile on the
+   free tier. A full 46-contestant refresh costs about 10 cents, and
+   Apify gives every new account $5/month free — this never gets
+   anywhere near that. Residential proxy is used automatically
+   (Instagram blocks datacenter IPs), so no proxy config is required
+   in the request below.
 
-   This function is the ONE place the Apify token is used. It runs on
-   Vercel's servers, never ships to the browser, and is only reachable
-   by this deployment.
-
-   SETUP (one-time, in the Vercel dashboard — NOT in this file):
-   1. Project → Settings → Environment Variables
-   2. Add: APIFY_TOKEN = <your Apify API token>
-   3. Redeploy
-   Never commit the token itself to GitHub. This file only reads it
+   ONE-TIME SETUP STEP (unavoidable — this is an Apify platform rule
+   for ANY actor with a price tag, not specific to this one):
+   1. Open https://apify.com/automation-lab/instagram-followers-count-bulk-scraper
+   2. Click "Try for free" once, logged into the account whose token
+      you're using below. This authorizes your token to run it via API.
+   3. In Vercel → Project → Settings → Environment Variables, add:
+      APIFY_TOKEN = <your Apify API token>
+   4. Redeploy.
+   Never commit the token itself to GitHub — this file only reads it
    from process.env, which Vercel injects at runtime.
+
+   Documented output shape (confirmed from the actor's own docs, not
+   guessed): { username, fullName, followersCount, followingCount,
+   postsCount, isVerified, isPrivate, biography, externalUrl,
+   profilePicUrl, profileUrl, error }
 ═══════════════════════════════════════════════════════════ */
 
-const APIFY_ACTOR = 'apify~instagram-followers-count-scraper';
+const APIFY_ACTOR = 'automation-lab~instagram-followers-count-bulk-scraper';
 const APIFY_URL = `https://api.apify.com/v2/acts/${APIFY_ACTOR}/run-sync-get-dataset-items`;
 const MAX_USERNAMES_PER_REQUEST = 60; // safety cap — avoid accidental huge/expensive runs
 const APIFY_TIMEOUT_MS = 90000; // Apify runs aren't instant; give it real time before giving up
@@ -73,7 +81,9 @@ export default async function handler(req, res) {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         usernames,
-        proxyConfiguration: { useApifyProxy: true, apifyProxyGroups: ['RESIDENTIAL'] },
+        delayBetweenRequestsMs: 300,
+        // proxyConfiguration intentionally omitted — the actor uses
+        // residential proxy automatically when this is left out.
       }),
       signal: controller.signal,
     });
@@ -87,31 +97,29 @@ export default async function handler(req, res) {
       return;
     }
 
-    // Normalize output — this actor's field names have shifted between
-    // versions historically, so check a few common shapes defensively
-    // rather than assuming one exact key.
-    const results = itemsArr.map(item => {
-      const username = item.username || item.handle || item.user || item.profile_url || '';
-      const followers =
-        item.followers ?? item.followersCount ?? item.follower_count ??
-        item.followersCount1 ?? item.follower_count_int ?? null;
-      return { username: String(username).replace(/^@/, '').replace(/^https?:\/\/(www\.)?instagram\.com\//i, '').replace(/\/$/, ''), followers, raw: item };
-    }).filter(r => r.username);
+    const items = await apifyRes.json();
+    const itemsArr = Array.isArray(items) ? items : [];
+
+    // This actor's output shape is documented and stable — no guessing.
+    const results = itemsArr.map(item => ({
+      username: String(item.username || '').replace(/^@/, ''),
+      followers: item.followersCount ?? null,
+      error: item.error || null,
+      raw: item,
+    })).filter(r => r.username);
+
+    const succeeded = results.filter(r => r.followers !== null && !r.error);
 
     res.status(200).json({
       results,
       requested: usernames.length,
-      received: results.length,
+      received: succeeded.length,
       rawItemCount: itemsArr.length,
-      // Always include a sample of the untouched Apify response — this is
-      // the ground truth for what field names the actor actually returns.
-      // If `received` ever comes back lower than `rawItemCount`, the sample
-      // below shows exactly which keys to add to the extraction above.
       sampleRaw: itemsArr.slice(0, 2),
       note: itemsArr.length === 0
-        ? 'Apify run completed but returned zero dataset items. Check Apify Console → Actors → this actor → Runs tab for the actual per-profile error.'
-        : (results.length === 0
-          ? 'Apify returned data, but none of it matched the expected field names. Check sampleRaw below in the browser console for the real field names — the site owner needs to update the extraction logic in api/followers.js to match.'
+        ? 'Apify run completed but returned zero dataset items. Check Apify Console → this actor → Runs tab for the actual error.'
+        : (succeeded.length === 0
+          ? 'Apify returned data, but every profile failed individually — check the `error` field per result (often: username not found, or temporarily rate-limited).'
           : undefined),
     });
 

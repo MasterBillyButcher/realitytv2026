@@ -79,7 +79,8 @@ async function refreshFollowersLive(scopeKey) {
       batch.forEach(t => {
         const result = byHandle[t.handle];
         if (!result || result.followers === null || result.followers === undefined) {
-          failed.push(t.contestant.name);
+          const reason = result?.error ? ` (${result.error})` : '';
+          failed.push(t.contestant.name + reason);
           return;
         }
         const c = t.contestant;
