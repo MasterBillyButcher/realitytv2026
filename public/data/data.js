@@ -1,6 +1,6 @@
 /* ═══════════════════════════════════════════════════════════
    data.js  —  Reality TV Intelligence Dashboard 2026
-   Last saved: 30 Jun 2026, 21:19
+   Last saved: 01 Jul 2026, 12:26
 
    HOW TO UPDATE EVERYONE:
    Upload this file to GitHub at:  public/data/data.js
@@ -417,24 +417,6 @@ window.DB = {
       "id": 16
     },
     {
-      "name": "Akanksha Choudhary",
-      "gender": "F",
-      "status": "CONFIRMED",
-      "profession": "Model, Reality TV Personality, Influencer",
-      "tier": "",
-      "ig": "@akankshachoudhary_official",
-      "photo": "https://i.postimg.cc/wMYjtcMh/Akansha.jpg",
-      "follBefore": "3.1M",
-      "follBeforeDate": "June 24",
-      "follLast": "3.1M",
-      "follLastDate": "June 24",
-      "follCur": "3.2M",
-      "follCurDate": "June 30",
-      "knownFor": "MTV Splitsvilla X6 (paired with Yogesh Rawat), modeling, pageants (Miss Universe India participation buzz), fashion &amp;amp; lifestyle content.\n\n",
-      "history": "MTV Splitsvilla Season 16 / X6 (2026) – Major breakout role.\nPageant background and modeling shows.\nNew to big OTT prison-format shows like Lock Upp.\n\n",
-      "id": 17
-    },
-    {
       "name": "Yogesh Rawat",
       "gender": "M",
       "status": "CONFIRMED",
@@ -451,6 +433,24 @@ window.DB = {
       "knownFor": "MTV Splitsvilla X6, Roadies XX ; fitness &amp; lifestyle content.\n\n",
       "history": "MTV Splitsvilla Season 16/X6 (major breakout), Roadies appearances.\n\n",
       "id": 18
+    },
+    {
+      "name": "Akanksha Choudhary",
+      "gender": "F",
+      "status": "CONFIRMED",
+      "profession": "Model, Reality TV Personality, Influencer",
+      "tier": "",
+      "ig": "@akankshachoudhary_official",
+      "photo": "https://i.postimg.cc/wMYjtcMh/Akansha.jpg",
+      "follBefore": "3.1M",
+      "follBeforeDate": "June 24",
+      "follLast": "3.1M",
+      "follLastDate": "June 24",
+      "follCur": "3.2M",
+      "follCurDate": "June 30",
+      "knownFor": "MTV Splitsvilla X6 (paired with Yogesh Rawat), modeling, pageants (Miss Universe India participation buzz), fashion &amp;amp; lifestyle content.\n\n",
+      "history": "MTV Splitsvilla Season 16 / X6 (2026) – Major breakout role.\nPageant background and modeling shows.\nNew to big OTT prison-format shows like Lock Upp.\n\n",
+      "id": 17
     },
     {
       "name": "Sunita Ahuja",
@@ -598,7 +598,7 @@ window.DB = {
     },
     {
       "name": "Sufi Motiwala",
-      "gender": "M",
+      "gender": "O",
       "status": "CONFIRMED",
       "profession": "Fashion Commentator, Social Media Influencer, Digital Creator",
       "tier": "",
@@ -909,4 +909,4 @@ window.DB = {
   "bb20": []
 };
 
-window.HIDDEN_SHOWS_INIT = [];
+window.HIDDEN_SHOWS_INIT = ["traitors","kkk","bb20"];
