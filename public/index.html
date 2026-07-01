@@ -620,11 +620,24 @@ git push</pre>
       <button class="btn b-acc" id="admin-login-btn" style="width:calc(100% - 40px);margin:0 20px 8px;justify-content:center" onclick="submitAdminLogin()">
         Unlock Admin Mode
       </button>
-      <div class="admin-note">
-        Session lasts 8 hours &middot; Password is hashed with SHA-256<br>
-        To change it: run <code style="background:var(--bdr);padding:1px 5px;border-radius:3px">adminHash('newpassword')</code> in console
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════
+     CONTESTANT BIO MODAL
+═══════════════════════════════════════════════════════════ -->
+<div class="mbg no-capture" id="modal-bio">
+  <div class="modal bio-modal">
+    <div class="mhdr bio-mhdr" id="bio-mhdr">
+      <button class="mclose" onclick="closeModal('modal-bio')">✕</button>
+      <div class="bio-mhdr-photo" id="bio-photo-wrap"></div>
+      <div class="bio-mhdr-info">
+        <div class="bio-mhdr-name" id="bio-name"></div>
+        <div class="bio-mhdr-meta" id="bio-meta"></div>
       </div>
     </div>
+    <div class="bio-body" id="bio-body"></div>
   </div>
 </div>
 

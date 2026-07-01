@@ -465,7 +465,7 @@ function renderTable(key) {
         <div class="contestant-cell">
           ${contestantAvatar(c)}
           <div>
-            <div class="tn">${ed(c.name, key, c.id, 'name')}</div>
+            <div class="tn">${(c.bio && !editMode) ? `<a href="javascript:void(0)" class="bio-link" onclick="openBio('${key}',${c.id})">${ed(c.name, key, c.id, 'name')}</a>` : ed(c.name, key, c.id, 'name')}</div>
             <div class="ts">${gender} · ${igLink(c.ig)}</div>
           </div>
         </div>
@@ -641,6 +641,7 @@ function renderCards(key) {
         <div class="crow"><span class="crow-l">Instagram</span><span class="crow-r">${igLink(c.ig)}</span></div>
         ${c.knownFor ? `<div class="crow" style="align-items:flex-start"><span class="crow-l">Known For</span><span class="crow-r" style="color:var(--mut);white-space:normal;text-align:right">${sanitizeHTML(c.knownFor)}</span></div>` : ''}
         <div class="ccard-footer no-capture">
+          ${c.bio ? `<button class="btn b-pur b-sm" style="flex:1;justify-content:center" onclick="openBio('${key}',${c.id})">ℹ️ Profile</button>` : ''}
           <button class="btn b-gh b-sm admin-only" style="flex:1;justify-content:center" onclick="openEdit('${key}',${c.id})">✎ Edit</button>
           <button class="btn ${hid ? 'b-grn' : 'b-warn'} b-sm" onclick="toggleH('${key}',${c.id})">${hid ? '✓ Show' : '👁 Hide'}</button>
         </div>
@@ -1269,6 +1270,39 @@ function closeModal(id) {
   document.getElementById(id).classList.remove('open');
   editTarget = null;
   if (id === 'modal-shows') resetShowForm();
+}
+
+/* ─── CONTESTANT BIO MODAL ──────────────────────────────── */
+function openBio(key, id) {
+  const c = (window.DB[key] || []).find(x => x.id === id);
+  if (!c || !c.bio) return;
+
+  const col   = window.SHOWS[key]?.color || '#8B5CF6';
+  const photo = String(c.photo || '').trim();
+
+  const photoWrap = document.getElementById('bio-photo-wrap');
+  photoWrap.style.borderColor = col;
+  photoWrap.innerHTML = photo
+    ? `<img src="${photo.replace(/"/g, '&quot;')}" alt="${sanitizeHTML(c.name)}"
+        onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+       <div class="bio-photo-fallback" style="display:none;background:linear-gradient(150deg,${col}30,${col}60)">${contestantInitials(c.name)}</div>`
+    : `<div class="bio-photo-fallback" style="background:linear-gradient(150deg,${col}30,${col}60)">${contestantInitials(c.name)}</div>`;
+
+  document.getElementById('bio-name').textContent = c.name;
+  document.getElementById('bio-meta').innerHTML =
+    `${sanitizeHTML(c.profession || '')}${c.gender ? ' · ' + sanitizeHTML(c.gender) : ''}
+     <span class="bio-show-tag" style="color:${col};border-color:${col}55">${sanitizeHTML(window.SHOWS[key]?.label || key)}</span>`;
+
+  const body = document.getElementById('bio-body');
+  body.innerHTML = c.bio.map(sec => `
+    <div class="bio-section">
+      <div class="bio-section-heading">${sanitizeHTML(sec.heading)}</div>
+      <div class="bio-section-content">${sec.html}</div>
+    </div>
+  `).join('');
+  body.scrollTop = 0;
+
+  document.getElementById('modal-bio').classList.add('open');
 }
 
 /* ─── RENDER ALL ────────────────────────────────────────── */
