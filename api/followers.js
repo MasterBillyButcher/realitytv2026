@@ -71,7 +71,10 @@ export default async function handler(req, res) {
     const apifyRes = await fetch(`${APIFY_URL}?token=${encodeURIComponent(token)}`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ usernames }),
+      body: JSON.stringify({
+        usernames,
+        proxyConfiguration: { useApifyProxy: true, apifyProxyGroups: ['RESIDENTIAL'] },
+      }),
       signal: controller.signal,
     });
     clearTimeout(timer);
@@ -85,11 +88,22 @@ export default async function handler(req, res) {
     }
 
     const items = await apifyRes.json();
+    const itemsArr = Array.isArray(items) ? items : [];
+
+    if (itemsArr.length === 0) {
+      res.status(200).json({
+        results: [],
+        requested: usernames.length,
+        received: 0,
+        note: 'Apify run completed but returned zero dataset items. This usually means Instagram blocked every request (residential proxy is now enabled by default — if this still happens, check the run in your Apify Console → Runs tab for the actual error per profile), or the actor input format changed since this was written.'
+      });
+      return;
+    }
 
     // Normalize output — this actor's field names have shifted between
     // versions historically, so check a few common shapes defensively
     // rather than assuming one exact key.
-    const results = (Array.isArray(items) ? items : []).map(item => {
+    const results = itemsArr.map(item => {
       const username = item.username || item.handle || item.user || '';
       const followers =
         item.followers ?? item.followersCount ?? item.follower_count ??

@@ -62,6 +62,14 @@ async function refreshFollowersLive(scopeKey) {
         continue;
       }
 
+      console.log('[Live Followers] response:', data);
+
+      if (data.received === 0 && data.note) {
+        toast('⚠ ' + data.note, 'err');
+        failed.push(...batch.map(t => t.contestant.name));
+        continue;
+      }
+
       const byHandle = {};
       (data.results || []).forEach(r => { byHandle[r.username.toLowerCase()] = r; });
 
