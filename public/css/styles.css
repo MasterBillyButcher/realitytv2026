@@ -397,6 +397,10 @@ select, input, textarea { font-family: var(--ff); }
 /* Admin-only visibility */
 .admin-only { display: none !important; }
 body.admin-active .admin-only { display: flex !important; }
+/* .ecard needs block layout (icon/title/description stacked, centered)
+   — the flex override above is meant for buttons and was squashing
+   this card's content into a sideways row instead. */
+body.admin-active .ecard.admin-only { display: block !important; }
 
 /* Sidebar items should show as block, not flex */
 body.admin-active .sb-item.admin-only { display: flex !important; }
