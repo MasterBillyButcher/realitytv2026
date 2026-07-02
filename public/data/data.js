@@ -1,6 +1,6 @@
 /* ═══════════════════════════════════════════════════════════
    data.js  —  Reality TV Intelligence Dashboard 2026
-   Last saved: 02 Jul 2026, 05:40
+   Last saved: 02 Jul 2026, 12:16
 
    HOW TO UPDATE EVERYONE:
    Upload this file to GitHub at:  public/data/data.js
@@ -393,7 +393,7 @@ window.DB = {
       "profession": "Social Media Personality",
       "tier": "CHALLENGER",
       "ig": "@orry",
-      "photo": "https://assets.gqindia.com/photos/6548b4ea2aa87a95dcf3cdf9/4:3/w_1440,h_1080,c_limit/The-mystery-behind-Orry-s-profession-is-finally-revealed-Hint-He-has-a-link-to-Mukesh-Ambani.jpg",
+      "photo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRw6GHjey1XJVuUw7AYeHdwvMeViGRhOcVY1BnHuzDvgB-yVj5jfceB6CU&s=10",
       "follBefore": "N/V",
       "follBeforeDate": "",
       "follLast": "N/V",
@@ -402,53 +402,7 @@ window.DB = {
       "follCurDate": "Jun 2026",
       "knownFor": "Bollywood's Gen-Z BFF; ex-Reliance Project Manager (Nita Ambani); Parsons NYC alum",
       "history": "Reality TV debut – KKK15 is first reality show",
-      "id": 6,
-      "bio": [
-        {
-          "heading": "Personal Details",
-          "html": "<ul><li>Born: 2 August (year variously reported as 1995 or 1999 across sources; not definitively confirmed)</li><li>Birthplace: Mumbai, Maharashtra, India</li><li>Education: Kodaikanal International School; Bachelor of Fine Arts in Communication Design, The New School / Parsons School of Design, New York; also associated with Columbia University</li><li>Languages: English, Hindi</li><li>Family: Father Suraj Kundanlal Awatramani (business interests in liquor, real estate, and hospitality; some reports also name a \"Jorj Awatramani\"), mother Shahnaz Awatramani; brother Kabir Awatramani (PR executive in New York)</li><li>Other Names/Aliases: Orry (nickname); self-described as a \"liver\" (\"I'm a liver, I live\")</li><li>Spouse: Unmarried</li><li>Children: None</li></ul>"
-        },
-        {
-          "heading": "Early Life & Career Beginnings",
-          "html": "<p>Grew up in an affluent, well-connected Mumbai family; became known through viral photos partying with Bollywood and international celebrities rather than through a traditional profession.</p>"
-        },
-        {
-          "heading": "Television Career",
-          "html": "<p>No scripted television roles; reality-adjacent fame.</p>"
-        },
-        {
-          "heading": "Film Career",
-          "html": "<p>Has claimed a Hollywood cameo (in Gurinder Chadha's <em>Christmas Karma</em>), though his inclusion in official credits has been disputed by media.</p>"
-        },
-        {
-          "heading": "Professional Career (Outside Entertainment)",
-          "html": "<p>Reportedly holds/held the title of Special Project Manager at Reliance Industries Limited since 2017; earns through brand collaborations and business ventures.</p>"
-        },
-        {
-          "heading": "Reality Television Journey",
-          "html": "<ul><li><em>Bigg Boss 17</em> (2023): Featured/associated appearances</li><li><em>Khatron Ke Khiladi 15</em> (2026): Contestant</li></ul>"
-        },
-        {
-          "heading": "Awards & Recognition",
-          "html": "<p>None publicly documented; known for cultural/internet influence rather than formal accolades.</p>"
-        },
-        {
-          "heading": "Personal Life",
-          "html": "<p>Has spoken about struggling with drug exposure and a suicide attempt during his time at boarding school (per a 2015 Humans of Bombay feature). Identifies as gay, per multiple reports, though he keeps his personal life largely private.</p>"
-        },
-        {
-          "heading": "Controversies / Notable Events",
-          "html": "<ul><li>March 2025: Booked for allegedly consuming alcohol near the Vaishno Devi Temple, a prohibited zone.</li><li>February 2026: Named in connection with a Mumbai Police probe into a large-scale drugs case; summoned for questioning.</li><li>2026: Public social media fallout with actress Sara Ali Khan.</li><li>A leaked/publicized chat exchange with actress Palak Tiwari drew controversy.</li></ul>"
-        },
-        {
-          "heading": "Social Media Presence",
-          "html": "<ul><li>Instagram: @orry (widely followed)</li><li>YouTube: Not confirmed</li><li>Twitter/X: Not confirmed</li></ul>"
-        },
-        {
-          "heading": "Trivia / Fun Facts",
-          "html": "<p>Known for his \"Orry-ing\" signature pose; famous for gifting custom phone covers featuring his own face to celebrities.</p>"
-        }
-      ]
+      "id": 6
     },
     {
       "showNumber": 5,
@@ -586,7 +540,7 @@ window.DB = {
       "profession": "Television Actress",
       "tier": "CHAMPION",
       "ig": "@jasminbhasin2806",
-      "photo": "https://www.thestatesman.com/wp-content/uploads/2025/08/Jasmin-Bhasin-Bigg-Boss.webp",
+      "photo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQZnrjccsbyCcTQE6OSe-wzbXDVDSuppr2CEGSkiqW1TDbcQzBJ9Iqyi7NG&s=10",
       "follBefore": "N/V",
       "follBeforeDate": "Pre-KKK15 Apr 2026",
       "follLast": "N/V",
@@ -595,53 +549,7 @@ window.DB = {
       "follCurDate": "Jun 2026",
       "knownFor": "Tashan-e-Ishq; Naagin 4; KKK S9 7th; KKK Made in India 2nd Runner-Up; Traitors India S1 6th",
       "history": "KKK S9 7th; KKK Made in India 2nd Runner-Up; BB14 11th; Traitors India S1 6th (Jun 2025)",
-      "id": 9,
-      "bio": [
-        {
-          "heading": "Personal Details",
-          "html": "<ul><li>Born: 28 June 1990</li><li>Birthplace: Kota, Rajasthan, India</li><li>Education: Graduate of a hospitality management college in Jaipur</li><li>Languages: Hindi, English, Punjabi</li><li>Family: Sikh family; father Surpal Singh Bhasin, mother Gurmeet Kaur Bhasin; brother Mankaran Singh Bhasin</li><li>Other Names/Aliases: N/A</li><li>Spouse: Unmarried; in a long-term relationship with actor Aly Goni since 2020/2021 (moved in together March 2025)</li><li>Children: None</li></ul>"
-        },
-        {
-          "heading": "Early Life & Career Beginnings",
-          "html": "<p>Worked as a marketing intern at American Express; discovered as a model and cast in her first Tamil film.</p>"
-        },
-        {
-          "heading": "Television Career",
-          "html": "<ul><li><em>Tashan-e-Ishq</em> (2015–16): Twinkle Taneja — TV debut</li><li><em>Dil Se Dil Tak</em> (2017–18): Teni Bhanushali</li><li><em>Dil Toh Happy Hai Ji</em> (2019): Happy Mehra</li><li><em>Naagin 4</em> (2019–20): Nayantara</li></ul>"
-        },
-        {
-          "heading": "Film Career",
-          "html": "<ul><li><em>Vaanam</em> (2011, Tamil): Debut film</li><li>Malayalam and Telugu films (<em>Beware of Dogs</em>, <em>Veta</em>, <em>Ladies &amp; Gentlemen</em>)</li><li>Punjabi films: <em>Honeymoon</em> (2022), <em>Carry on Jattiye</em> (2024), <em>Ardaas Sarbat De Bhale Di</em> (2024)</li></ul>"
-        },
-        {
-          "heading": "Web Series / OTT Career",
-          "html": "<p>Various Hindi and Punjabi music videos with T-Series, Desi Music Factory, Saregama.</p>"
-        },
-        {
-          "heading": "Reality Television Journey",
-          "html": "<ul><li><em>Khatron Ke Khiladi 9</em> (2019): 7th place</li><li><em>Khatron Ke Khiladi – Made in India</em> (2020): 3rd place</li><li><em>Bigg Boss 14</em> (2020): 11th position</li><li><em>The Traitors India</em> (2025): 6th place</li><li><em>Khatron Ke Khiladi 15</em> (2026): Contestant</li></ul>"
-        },
-        {
-          "heading": "Awards & Recognition",
-          "html": "<p>Ranked in Times of India's Most Desirable Women of Indian Television lists (No. 16 in 2018, No. 12 in 2019, No. 3 in 2020).</p>"
-        },
-        {
-          "heading": "Personal Life",
-          "html": "<p>In a public, long-term relationship with actor Aly Goni; the two met on <em>Khatron Ke Khiladi 9</em> (2018) and began dating after <em>Bigg Boss 14</em> (2020–21).</p>"
-        },
-        {
-          "heading": "Controversies / Notable Events",
-          "html": "<p>Has spoken about a distressing early-career experience involving a director; faced online scrutiny and false tabloid reports over her relationship and appearance.</p>"
-        },
-        {
-          "heading": "Social Media Presence",
-          "html": "<ul><li>Instagram: @jasminbhasin2806</li><li>YouTube: JasLY (joint channel with Aly Goni)</li><li>Twitter/X: Not confirmed</li></ul>"
-        },
-        {
-          "heading": "Trivia / Fun Facts",
-          "html": "<p>Ranked among the most-followed Indian television actresses on Instagram.</p>"
-        }
-      ]
+      "id": 9
     },
     {
       "name": "Rithvik Dhanjani",
@@ -2969,4 +2877,4 @@ window.DB = {
   "bb20": []
 };
 
-window.HIDDEN_SHOWS_INIT = ["traitors", "kkk", "bb20"];
+window.HIDDEN_SHOWS_INIT = ["traitors","kkk","bb20"];
