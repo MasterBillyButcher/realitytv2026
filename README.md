@@ -62,6 +62,13 @@ Name, showKey, followers
 Gaurav Khanna, kkk, 2.1M
 ```
 
+**Live refresh (admin only)** — Export panel → **🔄 Refresh ALL Followers (Live)**, or per-show for a scoped update. Pulls real Instagram follower counts through a server-side proxy (Apify). Requires one-time setup:
+- `APIFY_TOKEN` set in Vercel → Project → Settings → Environment Variables
+- The actor authorized once at [apify.com/apify/instagram-followers-count-scraper](https://apify.com/apify/instagram-followers-count-scraper) (click Start, accept pricing — required for any paid Apify actor, one time per account)
+- Costs roughly $0.10–0.15 per full 46-contestant refresh, covered by Apify's free $5/month credit even at once-daily use
+
+**Important:** Live refresh and Bulk Import only ever update "Current" — they never touch "Last Checked." To create a new growth checkpoint, use **⟳ Roll Current → Last Checked** in the Growth tab explicitly, whenever you decide. This is intentional — automatic shifting on every refresh would make the growth-since-last number meaningless if you refresh more than once between checkpoints.
+
 ---
 
 ## 👥 Who Can Do What

@@ -302,6 +302,11 @@
               <div class="ecard-t">Print / PDF</div>
               <div class="ecard-d">Browser print dialog</div>
             </div>
+            <div class="ecard admin-only" id="live-refresh-btn-all" onclick="refreshFollowersLive(null)">
+              <div class="ecard-ico">🔄</div>
+              <div class="ecard-t">Refresh Followers (Live)</div>
+              <div class="ecard-d">Pull real Instagram counts via Apify — updates "Current" only</div>
+            </div>
           </div>
 
           <div style="margin-top:24px">
@@ -390,15 +395,8 @@ git commit -m "Update data"
 git push</pre>
           </div>
 
-          <div class="dnote admin-only" style="margin-top:12px;margin-bottom:16px">
-            <strong>Live Instagram Refresh:</strong> Fetches current follower counts through a server-side proxy (Apify), so today's total shifts to "Last" and the fresh number becomes "Current" — same shift logic as Bulk Import, just automated.
-            <div style="margin-top:8px">
-              <button class="btn b-pur b-sm" id="live-refresh-btn-all" onclick="refreshFollowersLive(null)">🔄 Refresh ALL Followers (Live)</button>
-            </div>
-          </div>
-
           <div class="dnote" style="margin-top:12px">
-            <strong>Note on Instagram auto-fetch:</strong> Public visitors don't see live-fetch controls — they're admin-only, since each run uses the site owner's Apify quota. Manual entry via Edit Mode or Bulk Import always works as a fallback.
+            <strong>Note on Instagram auto-fetch:</strong> Public visitors don't see live-fetch controls — they're admin-only, since each run uses the site owner's Apify quota. Manual entry via Edit Mode or Bulk Import always works as a fallback. Live refresh is available in the <strong>↓ Export</strong> panel.
           </div>
         </div>
       </div>

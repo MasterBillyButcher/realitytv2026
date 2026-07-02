@@ -35,7 +35,12 @@ async function refreshFollowersLive(scopeKey) {
 
   const label = scopeKey ? (window.SHOWS[scopeKey]?.label || scopeKey) : 'all shows';
   const btnIds = ['live-refresh-btn', 'live-refresh-btn-all'];
-  btnIds.forEach(id => { const b = document.getElementById(id); if (b) b.disabled = true; });
+  btnIds.forEach(id => {
+    const b = document.getElementById(id);
+    if (!b) return;
+    b.disabled = true; // real buttons (per-show export list)
+    b.classList.add('ecard-disabled'); // the Export panel's div-based card
+  });
   toast(`⟳ Fetching live follower counts for ${targets.length} profile(s) in ${label}…`);
 
   const today = new Date().toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' });
@@ -96,7 +101,12 @@ async function refreshFollowersLive(scopeKey) {
       });
     }
   } finally {
-    btnIds.forEach(id => { const b = document.getElementById(id); if (b) b.disabled = false; });
+    btnIds.forEach(id => {
+      const b = document.getElementById(id);
+      if (!b) return;
+      b.disabled = false;
+      b.classList.remove('ecard-disabled');
+    });
   }
 
   if (typeof renderAll === 'function') renderAll();
