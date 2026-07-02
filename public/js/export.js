@@ -200,9 +200,20 @@ async function capture(elId, filename) {
       el.style.cssText = 'position:fixed!important;left:-9999px!important;top:0!important;display:block!important;z-index:-1!important;min-width:1200px!important;background:var(--bg)!important;';
     }
 
-    /* Hide UI chrome */
+    /* Hide UI chrome. Dedupe by node — an element can legitimately match
+       MORE THAN ONE selector in HIDE_IN_CAPTURE (e.g. class="tab-bar
+       no-capture", or class="btn b-red b-xs"). Without dedup, that same
+       node gets pushed into hiddenEls twice: once with its real original
+       visibility, and a second time capturing the mid-hide "hidden"
+       state as if it were the original. Restoration then runs in order
+       and the second entry silently overwrites the correct restore with
+       "hidden" again — which is exactly why the tab bar and delete
+       button were staying invisible after every capture. */
+    const seen = new Set();
     HIDE_IN_CAPTURE.forEach(sel => {
       el.querySelectorAll(sel).forEach(node => {
+        if (seen.has(node)) return;
+        seen.add(node);
         if (getComputedStyle(node).display !== 'none') {
           hiddenEls.push({ node, v: node.style.visibility });
           node.style.visibility = 'hidden';
